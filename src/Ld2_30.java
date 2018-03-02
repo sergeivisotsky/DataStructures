@@ -100,7 +100,7 @@ public class Ld2_30 {
 
                         if (current.next == null) {
                             tail = previous;
-                        } // git test
+                        }
                     } else {
                         head = head.next;
 
