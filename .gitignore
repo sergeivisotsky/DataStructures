@@ -10,6 +10,8 @@
 
 # idea project files
 .idea/*
+DataStructures.iml
 
 # Compilation binary files
 /out/*
+
