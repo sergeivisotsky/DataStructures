@@ -3,7 +3,10 @@ import org.jetbrains.annotations.Contract;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.LinkedList;
 
 
 public class Ld2_30 {
@@ -76,44 +79,20 @@ public class Ld2_30 {
         return quantifier;
     }
 
-    private static void deleteNodeElement(int nodeIndex) {
+    private static void deleteNode(int nodeIndex) {
         if (!empty()) {
-
-            Node<Integer> current = head;
-            Node<Integer> previous = null;
-//              1: Empty list: noshing change
-//              2: One element: put parent = null
-//              3: Many elements:
-//                 a: Deletable element first
-//                 b: Deletable element in the middle or in the end
-            while (current != null) {
-                if (current.data.equals(nodeIndex)) {
-
-                    // Node in the middle or in the end
-                    if (previous != null) {
-                        // Bullet 3b
-
-                        // Before:  Head -> 3 -> 5 -> null
-                        // After:   Head -> 3 ------> null
-
-                        previous.next = current.next;
-
-                        if (current.next == null) {
-                            tail = previous;
-                        }
-                    } else {
-                        head = head.next;
-
-                        if (head == null) {
-                            tail = null;
-                        }
-                    }
-                    size--;
-                }
-
-                previous = current;
-                current = current.next;
+            if (head == null) {
+                return;
             }
+
+            Node<Integer> node = head;
+
+            for (int i = 0; i < nodeIndex; i++) {
+                node = node.next;
+            }
+
+            node.next = node;
+            size--;
 
             outputSortedList();
         } else {
@@ -137,6 +116,7 @@ public class Ld2_30 {
         boolean endSession = false; // checks whether user closed session
 
         int choiceAnswer;
+        int elementToInput;
 
         try {
             do {
@@ -146,9 +126,11 @@ public class Ld2_30 {
                 switch (choiceAnswer) {
                     case 1:
                         while (!full()) {
+
                             for (int i = 0; i < 10; i++) {
                                 System.out.print("Ievadiet " + (i + 1) + " elementu: ");
-                                insert(Integer.parseInt(br.readLine()));
+                                elementToInput = Integer.parseInt(br.readLine());
+                                insert(elementToInput);
                             }
                             System.out.println("\nIzveidots saraksts:");
                             outputSortedList();
@@ -167,7 +149,8 @@ public class Ld2_30 {
                         System.out.print("Dzēšamais elements: ");
                         int deletableElementIndex =
                                 Integer.parseInt(br.readLine());
-                        deleteNodeElement(deletableElementIndex);
+
+                        deleteNode(deletableElementIndex);
 
                         if (empty()) {
                             System.out.println("Saraksts ir tukšs...");
