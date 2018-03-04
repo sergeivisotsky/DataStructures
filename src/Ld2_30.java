@@ -114,9 +114,8 @@ public class Ld2_30 {
 
         boolean listCreated = false; // Checks if any value was input
         boolean endSession = false; // checks whether user closed session
-
-        int choiceAnswer;
-        int elementToInput;
+        int choiceAnswer; // Operation to be performed
+        int elementToInput; // Element to be added to the list
 
         try {
             do {
