@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.Contract;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,7 +22,6 @@ public class Ld2_30 {
     private static Node<Integer> tail = null;
     private static int size = 0;
 
-    @Contract(pure = true)
     private static boolean empty() {
         return size == 0;
     }
@@ -53,18 +50,14 @@ public class Ld2_30 {
         System.out.println();
     }
 
-
-    @Contract(pure = true)
     private static boolean full() {
         return size == 10;
     }
 
-    @Contract(pure = true)
     private static int size() {
         return size;
     }
 
-    @Contract(pure = true)
     private static int equalsToZero() {
         Node<Integer> node = tail;
         int quantifier = 0;
