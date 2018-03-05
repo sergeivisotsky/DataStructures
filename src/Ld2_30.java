@@ -3,10 +3,7 @@ import org.jetbrains.annotations.Contract;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 
 
 public class Ld2_30 {
@@ -92,6 +89,7 @@ public class Ld2_30 {
             }
 
             node.next = node;
+            tail = node;
             size--;
 
             outputSortedList();
