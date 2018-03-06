@@ -7,11 +7,11 @@ import java.util.InputMismatchException;
 public class Ld2_30 {
 
     private static class Node<E> {
-        private E data;
+        private E current;
         private Node<E> next;
 
         Node(E num) {
-            this.data = num;
+            this.current = num;
         }
     }
 
@@ -27,23 +27,38 @@ public class Ld2_30 {
     }
 
     private static void insert(int current) {
-        Node<Integer> node = new Node<>(current);
-        node.next = tail;
-        if (tail == null) {
-            tail = node;
-        } else {
-            head.next = node;
-        }
+        /*if (empty() || !full()) {
+            Node<Integer> node = new Node<>(current);
+            node.next = tail;
+            if (tail == null) {
+                tail = node;
+            } else {
+                head.next = node;
+            }
 
-        head = node;
-        size++;
+            head = node;
+            size++;
+        }*/
+
+        if (empty() || !full()) {
+            Node<Integer> node = new Node<>(current);
+            node.next = head;
+            if (head == null) {
+                head = node;
+            } else {
+                tail.next = node;
+            }
+
+            tail = node;
+            size++;
+        }
     }
 
     private static void outputSortedList() {
         Node<Integer> temp = tail;
         for (int i = 0; i < size; i++) {
             if (temp != null) {
-                System.out.print(temp.data + "\t");
+                System.out.print(temp.current + "\t");
                 temp = temp.next;
             }
         }
@@ -62,7 +77,7 @@ public class Ld2_30 {
         Node<Integer> node = tail;
         int quantifier = 0;
         for (int i = 0; i < size; i++) {
-            if (node.data == 0) {
+            if (node.current == 0) {
                 quantifier++;
             }
         }
@@ -71,18 +86,19 @@ public class Ld2_30 {
 
     private static void deleteNode(int nodeIndex) {
         if (!empty()) {
-            if (head == null) {
+            /*if (head == null) {
                 return;
-            }
+            }*/
 
             Node<Integer> node = head;
 
-            for (int i = 0; i < nodeIndex; i++) {
+            for (int i = 0; i < nodeIndex - 3; i++) {
                 node = node.next;
             }
 
-            node.next = node;
-            tail = node;
+            node.next = node.next.next;
+
+            tail.next = head;
             size--;
 
             outputSortedList();
