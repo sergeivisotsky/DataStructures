@@ -73,10 +73,6 @@ public class Ld2_30 {
 
     private static void deleteNode(int nodeIndex) {
         if (!empty()) {
-            /*if (head == null) {
-                return;
-            }*/
-
             Node<Integer> node = head;
 
             for (int i = 0; i < nodeIndex - 3; i++) {
