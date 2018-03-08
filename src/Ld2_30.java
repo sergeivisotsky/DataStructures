@@ -27,19 +27,6 @@ public class Ld2_30 {
     }
 
     private static void insert(int current) {
-        /*if (empty() || !full()) {
-            Node<Integer> node = new Node<>(current);
-            node.next = tail;
-            if (tail == null) {
-                tail = node;
-            } else {
-                head.next = node;
-            }
-
-            head = node;
-            size++;
-        }*/
-
         if (empty() || !full()) {
             Node<Integer> node = new Node<>(current);
             node.next = head;
