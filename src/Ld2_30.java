@@ -3,30 +3,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
+class Node<E> {
+    protected E current;
+    protected Node<E> next;
 
-public class Ld2_30 {
-
-    private static class Node<E> {
-        private E current;
-        private Node<E> next;
-
-        Node(E num) {
-            this.current = num;
-        }
+    Node(E num) {
+        this.current = num;
     }
+}
 
-    private static BufferedReader br =
-            new BufferedReader(
-                    new InputStreamReader(System.in));
+class LinkedList {
     private static Node<Integer> head = null;
     private static Node<Integer> tail = null;
     private static int size = 0;
 
-    private static boolean empty() {
-        return size == 0;
+    public boolean empty() {
+        return head == null;
     }
 
-    private static void insert(int current) {
+    public void insert(int current) {
         if (empty() || !full()) {
             Node<Integer> node = new Node<>(current);
             node.next = head;
@@ -41,7 +36,7 @@ public class Ld2_30 {
         }
     }
 
-    private static void outputSortedList() {
+    public void outputSortedList() {
         Node<Integer> temp = tail;
         for (int i = 0; i < size; i++) {
             if (temp != null) {
@@ -52,15 +47,16 @@ public class Ld2_30 {
         System.out.println();
     }
 
-    private static boolean full() {
+
+    public boolean full() {
         return size == 10;
     }
 
-    private static int size() {
+    public int size() {
         return size;
     }
 
-    private static int equalsToZero() {
+    public int equalsToZero() {
         Node<Integer> node = tail;
         int quantifier = 0;
         for (int i = 0; i < size; i++) {
@@ -71,24 +67,73 @@ public class Ld2_30 {
         return quantifier;
     }
 
-    private static void deleteNode(int nodeIndex) {
+    public int getNodeByIndex(int index) {
+        Node<Integer> node = head.next;
+        for (int i = 0; i < index - 3; i++) {
+            node = node.next;
+        }
+
+        return node.current;
+    }
+
+    public void deleteNode(int nodeIndex) {
         if (!empty()) {
-            Node<Integer> node = head;
+            /*Node<Integer> node = head;
             for (int i = 0; i < nodeIndex - 3; i++) {
                 node = node.next;
             }
             node.next = node.next.next;
             tail.next = head;
+            size--;*/
+            if (nodeIndex == 1 && size == 1) {
+                size = 0;
+                return;
+            }
+
+            if (nodeIndex == 1) {
+                head = head.next;
+                tail = head;
+                size--;
+                return;
+            }
+
+            if (nodeIndex == size) {
+                Node<Integer> ptr = head;
+                for (int i = 0; i < size - 1; i++) {
+                    ptr = ptr.next;
+                }
+                ptr = head;
+                tail = ptr;
+                size--;
+                return;
+            }
+
+            Node<Integer> ptr = head;
+            nodeIndex--;
+            for (int i = 0; i < size - 1; i++) {
+                if (i == nodeIndex) {
+                    Node<Integer> temp = ptr.next;
+                    temp = temp.next;
+                    ptr = temp.next;
+                    break;
+                }
+                ptr = ptr.next;
+            }
             size--;
 
             outputSortedList();
         } else {
             System.out.println("Saraksts ir tukšs!");
-
         }
     }
+}
 
+public class Ld2_30 {
+    private static BufferedReader br =
+            new BufferedReader(
+                    new InputStreamReader(System.in));
     public static void main(String[] args) {
+        LinkedList list = new LinkedList();
         System.out.println("Sergejs Visockis IRDBD12 171RDB043");
 
         // User menu to choose answer variant
@@ -111,18 +156,18 @@ public class Ld2_30 {
                 choiceAnswer = Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        while (!full()) {
+                        while (!list.full()) {
 
                             for (int i = 0; i < 10; i++) {
                                 System.out.print("Ievadiet " + (i + 1) + " elementu: ");
                                 elementToInput = Integer.parseInt(br.readLine());
-                                insert(elementToInput);
+                                list.insert(elementToInput);
                             }
                             System.out.println("\nIzveidots saraksts:");
-                            outputSortedList();
+                            list.outputSortedList();
                         }
 
-                        if (full()) {
+                        if (list.full()) {
                             System.out.println("Saraksts ir pilns...");
                         }
                         listCreated = true;
@@ -136,14 +181,14 @@ public class Ld2_30 {
                         int deletableElementIndex =
                                 Integer.parseInt(br.readLine());
 
-                        deleteNode(deletableElementIndex);
+                        list.deleteNode(deletableElementIndex);
 
-                        if (empty()) {
+                        if (list.empty()) {
                             System.out.println("Saraksts ir tukšs...");
                         }
                         break;
                     case 3:
-                        System.out.println(size());
+                        System.out.println(list.size());
                         if (!listCreated) {
                             System.out.println("Sākuma nepieciešams izveidot sarakstu!");
                             continue;
@@ -155,7 +200,7 @@ public class Ld2_30 {
                             continue;
                         }
 
-                        System.out.println(equalsToZero());
+                        System.out.println(list.equalsToZero());
                         break;
                     case 5:
                         if (!listCreated) {
@@ -164,8 +209,9 @@ public class Ld2_30 {
                         }
 
                         System.out.print("Elementa indekss: ");
-                        int nodeIndex = Integer.parseInt(br.readLine());
-//                        System.out.print(getNodeAt(nodeIndex));
+                        int nodeIndex =
+                                Integer.parseInt(br.readLine());
+                        System.out.print(list.getNodeByIndex(nodeIndex));
                         break;
                     case 0:
                         endSession = true;
