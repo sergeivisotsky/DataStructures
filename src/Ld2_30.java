@@ -3,19 +3,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-class Node<E> {
-    protected E current;
-    protected Node<E> next;
+class Node {
+    public int data;
+    public Node next;
 
-    Node(E num) {
-        this.current = num;
+    Node(int num) {
+        this.data = num;
+    }
+
+    public int getData() {
+        return data;
+    }
+
+    public void setData(int data) {
+        this.data = data;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 }
 
 class LinkedList {
-    private static Node<Integer> head = null;
-    private static Node<Integer> tail = null;
-    private static int size = 0;
+    private Node head = null, tail = null;
+    private int size = 0;
 
     public boolean empty() {
         return head == null;
@@ -23,12 +38,12 @@ class LinkedList {
 
     public void insert(int current) {
         if (empty() || !full()) {
-            Node<Integer> node = new Node<>(current);
-            node.next = head;
+            Node node = new Node(current);
+            node.setNext(head);
             if (head == null) {
                 head = node;
             } else {
-                tail.next = node;
+                tail.setNext(node);
             }
 
             tail = node;
@@ -37,10 +52,10 @@ class LinkedList {
     }
 
     public void outputSortedList() {
-        Node<Integer> temp = tail;
+        Node temp = tail;
         for (int i = 0; i < size; i++) {
             if (temp != null) {
-                System.out.print(temp.current + "\t");
+                System.out.print(temp.data + "\t");
                 temp = temp.next;
             }
         }
@@ -57,10 +72,10 @@ class LinkedList {
     }
 
     public int equalsToZero() {
-        Node<Integer> node = tail;
+        Node node = tail;
         int quantifier = 0;
         for (int i = 0; i < size; i++) {
-            if (node.current == 0) {
+            if (node.data == 0) {
                 quantifier++;
             }
         }
@@ -68,12 +83,12 @@ class LinkedList {
     }
 
     public int getNodeByIndex(int index) {
-        Node<Integer> node = head.next;
+        Node node = head.next;
         for (int i = 0; i < index - 3; i++) {
             node = node.next;
         }
 
-        return node.current;
+        return node.data;
     }
 
     public void deleteNode(int nodeIndex) {
@@ -91,48 +106,48 @@ class LinkedList {
             }
 
             if (nodeIndex == 1) {
-                head = head.next;
-                tail = head;
+                head = head.getNext();
+                tail.setNext(head);
                 size--;
                 return;
             }
 
             if (nodeIndex == size) {
-                Node<Integer> ptr = head;
+                Node ptr = head;
                 for (int i = 0; i < size - 1; i++) {
-                    ptr = ptr.next;
+                    ptr = ptr.getNext();
                 }
-                ptr = head;
+                ptr.setNext(head);
                 tail = ptr;
                 size--;
                 return;
             }
 
-            Node<Integer> ptr = head;
+            Node ptr = head;
             nodeIndex--;
             for (int i = 0; i < size - 1; i++) {
                 if (i == nodeIndex) {
-                    Node<Integer> temp = ptr.next;
-                    temp = temp.next;
-                    ptr = temp.next;
+                    Node temp = ptr.getNext();
+                    temp = temp.getNext();
+                    ptr.setNext(temp);
                     break;
                 }
-                ptr = ptr.next;
+                ptr = ptr.getNext();
             }
             size--;
-
-            outputSortedList();
         } else {
             System.out.println("Saraksts ir tukšs!");
         }
+
+//        outputSortedList();
     }
 }
 
 public class Ld2_30 {
-    private static BufferedReader br =
+    public static void main(String[] args) {
+        BufferedReader br =
             new BufferedReader(
                     new InputStreamReader(System.in));
-    public static void main(String[] args) {
         LinkedList list = new LinkedList();
         System.out.println("Sergejs Visockis IRDBD12 171RDB043");
 
@@ -163,8 +178,8 @@ public class Ld2_30 {
                                 elementToInput = Integer.parseInt(br.readLine());
                                 list.insert(elementToInput);
                             }
-                            System.out.println("\nIzveidots saraksts:");
-                            list.outputSortedList();
+//                            System.out.println("\nIzveidots saraksts:");
+//                            list.outputSortedList();
                         }
 
                         if (list.full()) {
@@ -219,6 +234,9 @@ public class Ld2_30 {
                     default:
                         System.out.print("Ievādīta nepieņēmāma vērtība!");
                 }
+
+                System.out.println("\nIzveidots saraksts:");
+                list.outputSortedList();
             } while (!endSession);
         } catch (InputMismatchException | IOException |
                 NumberFormatException e) {
