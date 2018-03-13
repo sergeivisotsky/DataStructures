@@ -5,10 +5,10 @@ import java.util.InputMismatchException;
 
 class Node {
     public int data;
-    public Node next;
+    private Node next;
 
     Node(int num) {
-        this.data = num;
+        data = num;
     }
 
     public int getData() {
@@ -37,42 +37,37 @@ class LinkedList {
     }
 
     public void insert(int current) {
-        if (empty() || !full()) {
-            Node nptr, ptr, temp;
-            nptr = new Node(current);
+        Node nptr, ptr, temp;
+        nptr = new Node(current);
+        if (empty()) {
+            head = nptr;
             nptr.setNext(head);
-            if (head == null) {
-                head = nptr;
-                nptr.setNext(head);
-                tail = head;
-            } else if (current <= head.getData()) {
-                nptr.setNext(head);
-                tail.setNext(nptr);
-                head = nptr;
-            } else if (current >= tail.getData()) {
-                tail.setNext(nptr);
-                nptr.setNext(head);
-                tail = nptr;
-            } else {
-                temp = head;
-                ptr = head.getNext();
+            tail = head;
+        } else if (current <= head.getData()) {
+            nptr.setNext(head);
+            tail.setNext(nptr);
+            head = nptr;
+        } else if (current >= tail.getData()) {
+            tail.setNext(nptr);
+            nptr.setNext(head);
+            tail = nptr;
+        } else {
+            temp = head;
+            ptr = head.getNext();
 
-                while (temp != tail) {
-                    if (current >= temp.getData() &&
-                            current <= ptr.getData()) {
-                        temp.setNext(nptr);
-                        nptr.setNext(ptr);
-                        break;
-                    } else {
-                        temp = ptr;
-                        ptr = ptr.getNext();
-                    }
+            while (temp != tail) {
+                if (current >= temp.getData() &&
+                        current <= ptr.getData()) {
+                    temp.setNext(nptr);
+                    nptr.setNext(ptr);
+                    break;
+                } else {
+                    temp = ptr;
+                    ptr = ptr.getNext();
                 }
             }
-
-//            tail = nptr;
-            size++;
         }
+        size++;
     }
 
     public void outputSortedList() {
