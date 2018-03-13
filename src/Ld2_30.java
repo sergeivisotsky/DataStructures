@@ -38,15 +38,39 @@ class LinkedList {
 
     public void insert(int current) {
         if (empty() || !full()) {
-            Node node = new Node(current);
-            node.setNext(head);
+            Node nptr, ptr, temp;
+            nptr = new Node(current);
+            nptr.setNext(head);
             if (head == null) {
-                head = node;
+                head = nptr;
+                nptr.setNext(head);
+                tail = head;
+            } else if (current <= head.getData()) {
+                nptr.setNext(head);
+                tail.setNext(nptr);
+                head = nptr;
+            } else if (current >= tail.getData()) {
+                tail.setNext(nptr);
+                nptr.setNext(head);
+                tail = nptr;
             } else {
-                tail.setNext(node);
+                temp = head;
+                ptr = head.getNext();
+
+                while (temp != tail) {
+                    if (current >= temp.getData() &&
+                            current <= ptr.getData()) {
+                        temp.setNext(nptr);
+                        nptr.setNext(ptr);
+                        break;
+                    } else {
+                        temp = ptr;
+                        ptr = ptr.getNext();
+                    }
+                }
             }
 
-            tail = node;
+//            tail = nptr;
             size++;
         }
     }
@@ -54,9 +78,13 @@ class LinkedList {
     public void outputSortedList() {
         Node temp = tail;
         for (int i = 0; i < size; i++) {
+            if (empty()) {
+                System.out.println("Saraksts ir tukšs!");
+                return;
+            }
             if (temp != null) {
                 System.out.print(temp.data + "\t");
-                temp = temp.next;
+                temp = temp.getNext();
             }
         }
         System.out.println();
@@ -75,31 +103,15 @@ class LinkedList {
         Node node = tail;
         int quantifier = 0;
         for (int i = 0; i < size; i++) {
-            if (node.data == 0) {
+            if (node.getData() == 0) {
                 quantifier++;
             }
         }
         return quantifier;
     }
 
-    public int getNodeByIndex(int index) {
-        Node node = head.next;
-        for (int i = 0; i < index - 3; i++) {
-            node = node.next;
-        }
-
-        return node.data;
-    }
-
     public void deleteNode(int nodeIndex) {
         if (!empty()) {
-            /*Node<Integer> node = head;
-            for (int i = 0; i < nodeIndex - 3; i++) {
-                node = node.next;
-            }
-            node.next = node.next.next;
-            tail.next = head;
-            size--;*/
             if (nodeIndex == 1 && size == 1) {
                 size = 0;
                 return;
@@ -138,16 +150,14 @@ class LinkedList {
         } else {
             System.out.println("Saraksts ir tukšs!");
         }
-
-//        outputSortedList();
     }
 }
 
 public class Ld2_30 {
     public static void main(String[] args) {
         BufferedReader br =
-            new BufferedReader(
-                    new InputStreamReader(System.in));
+                new BufferedReader(
+                        new InputStreamReader(System.in));
         LinkedList list = new LinkedList();
         System.out.println("Sergejs Visockis IRDBD12 171RDB043");
 
@@ -156,7 +166,6 @@ public class Ld2_30 {
         System.out.println("2: Izmest no saraksta elementu ar konkrētu pozīciju");
         System.out.println("3: Elementu daudzums sarakstā");
         System.out.println("4: Elementu daudzums kas ir vienādi ar nulli");
-        System.out.println("5 (Test): Paņēmt elelemntu ar konkrētu pozīciju");
         System.out.println("0: Slēgt sesiju");
 
         boolean listCreated = false; // Checks if any value was input
@@ -178,13 +187,8 @@ public class Ld2_30 {
                                 elementToInput = Integer.parseInt(br.readLine());
                                 list.insert(elementToInput);
                             }
-//                            System.out.println("\nIzveidots saraksts:");
-//                            list.outputSortedList();
                         }
 
-                        if (list.full()) {
-                            System.out.println("Saraksts ir pilns...");
-                        }
                         listCreated = true;
                         break;
                     case 2:
@@ -217,17 +221,6 @@ public class Ld2_30 {
 
                         System.out.println(list.equalsToZero());
                         break;
-                    case 5:
-                        if (!listCreated) {
-                            System.out.println("Sākuma nepieciešams izveidot sarakstu!");
-                            continue;
-                        }
-
-                        System.out.print("Elementa indekss: ");
-                        int nodeIndex =
-                                Integer.parseInt(br.readLine());
-                        System.out.print(list.getNodeByIndex(nodeIndex));
-                        break;
                     case 0:
                         endSession = true;
                         break;
@@ -237,6 +230,9 @@ public class Ld2_30 {
 
                 System.out.println("\nIzveidots saraksts:");
                 list.outputSortedList();
+                if (list.full()) {
+                    System.out.println("Saraksts ir pilns...");
+                }
             } while (!endSession);
         } catch (InputMismatchException | IOException |
                 NumberFormatException e) {
