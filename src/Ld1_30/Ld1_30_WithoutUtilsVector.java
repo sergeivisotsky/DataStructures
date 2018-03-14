@@ -62,13 +62,15 @@ public class Ld1_30_WithoutUtilsVector {
      * @param vector  One-dimensional array as a vector
      */
     private static void linearSearch(int element, int[] vector) {
+        boolean found = false;
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] == element) {
-                System.out.print(i);
-                break;
-            } else if (i == vector.length - 1) {
-                System.out.println("Elements nav atrasts!");
+                System.out.print(i + "\t");
+                found = true;
             }
+        }
+        if (!found) {
+            System.out.println("Elements nav atrasts!");
         }
     }
 
