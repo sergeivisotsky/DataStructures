@@ -65,7 +65,7 @@ public class Ld1_30_WithoutUtilsVector {
         boolean found = false;
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] == element) {
-                System.out.print(i + "\t");
+                System.out.print((i+1) + "\t");
                 found = true;
             }
         }

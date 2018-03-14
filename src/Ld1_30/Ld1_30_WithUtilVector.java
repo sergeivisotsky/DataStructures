@@ -59,10 +59,16 @@ public class Ld1_30_WithUtilVector {
      * @param getVector Vector in which should be found
      */
     private static void linearSearch(int element, Vector<Integer> getVector) {
+        boolean found = false;
 
-        if (getVector.contains(element)) {
-            System.out.print(getVector.indexOf(element));
-        } else {
+        for (int i = 0; i < getVector.size(); i++) {
+            if (Integer.valueOf(element).equals(getVector.get(i))) {
+                System.out.print(i + 1 + "\t");
+                found = true;
+            }
+        }
+
+        if (!found) {
             System.out.print("Elements nav atrasts!");
         }
     }
