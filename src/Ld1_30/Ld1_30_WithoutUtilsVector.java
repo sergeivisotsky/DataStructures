@@ -20,7 +20,7 @@ public class Ld1_30_WithoutUtilsVector {
         // Array creation
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j <= i; j++) {
-                array[i][j] = rd.nextInt(100);
+                array[i][j] = rd.nextInt(99) + 1;
             }
         }
 
@@ -65,7 +65,7 @@ public class Ld1_30_WithoutUtilsVector {
         boolean found = false;
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] == element) {
-                System.out.print((i+1) + "\t");
+                System.out.print((i + 1) + "\t");
                 found = true;
             }
         }
@@ -81,11 +81,11 @@ public class Ld1_30_WithoutUtilsVector {
      */
     private static void insertionSort(int[] vector) {
         int temp;
-        for (int i = 1; i < vector.length - 1; i++) {
+        for (int i = 1; i < vector.length; i++) {
             temp = vector[i];
             int j = i - 1;
 
-            while (j >= 0 && vector[j] > temp) {
+            while (j >= 0 && vector[j] < temp) {
                 vector[j + 1] = vector[j];
                 j--;
             }
