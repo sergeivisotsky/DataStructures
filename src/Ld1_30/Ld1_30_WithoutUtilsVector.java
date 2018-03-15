@@ -20,7 +20,7 @@ public class Ld1_30_WithoutUtilsVector {
         // Array creation
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j <= i; j++) {
-                array[i][j] = rd.nextInt(99) + 1;
+                array[i][j] = rd.nextInt(9) + 1;
             }
         }
 
