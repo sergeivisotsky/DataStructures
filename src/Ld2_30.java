@@ -71,7 +71,7 @@ class LinkedList {
     }
 
     public void outputSortedList() {
-        Node temp = tail;
+        /*Node temp = tail;
         for (int i = 0; i < size; i++) {
             if (empty()) {
                 System.out.println("Saraksts ir tukšs!");
@@ -82,7 +82,25 @@ class LinkedList {
                 temp = temp.getNext();
             }
         }
-        System.out.println();
+        System.out.println();*/
+        Node node = head;
+        if (empty()) {
+            System.out.println("Saraksts ir tukšs!");
+        }
+
+        if(head.getNext() == head) {
+            System.out.print(head.getData() + "\t" + node.getNext());
+        }
+
+        System.out.print(head.getData() + "\t");
+
+        node = head.getNext();
+        while (node.getNext() != head) {
+            System.out.print(node.getData() + "\t");
+            node = node.getNext();
+        }
+
+        System.out.print(node.getData() + "\n");
     }
 
 
