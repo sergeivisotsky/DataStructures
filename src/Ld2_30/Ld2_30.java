@@ -145,21 +145,19 @@ class LinkedList {
     }
 
     public int equalsToZero() {
-        Node node = head;
+        Node node/* = head*/;
         int quantifier = 0;
 
         if (head.data == 0) {
             quantifier++;
         }
 
-        for (int i = 0; i < size(); i++) {
+        for (node = head;
+             node != tail;
+             node = node.getNext()) {
             if (node.getNext().data == 0) {
                 quantifier++;
             }
-        }
-
-        if (tail.data == 0) {
-            quantifier++;
         }
         return quantifier;
     }
