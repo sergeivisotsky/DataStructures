@@ -47,8 +47,8 @@ public class Ld1_Example {
         int searchKey;                    // Mainiigaa searchKey defineesana
         int a, i, j, c = 0;
         String st;
-        Lb1_Example insertion = new Lb1_Example();
-        Lb1_Example selection = new Lb1_Example();
+        Ld1_Example insertion = new Ld1_Example();
+        Ld1_Example selection = new Ld1_Example();
         Random rnd = new Random();
 
         System.out.println("Datis Strukturis RDBD0 000RDB007");
