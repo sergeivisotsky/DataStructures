@@ -145,7 +145,7 @@ class LinkedList {
     }
 
     public int equalsToZero() {
-        Node node/* = head*/;
+        Node node;
         int quantifier = 0;
 
         if (head.data == 0) {
@@ -161,12 +161,6 @@ class LinkedList {
         }
         return quantifier;
     }
-
-    /*public int exp() {
-        Node node = head;
-
-        return node.getNext().data;
-    }*/
 }
 
 public class Ld2_30 {
