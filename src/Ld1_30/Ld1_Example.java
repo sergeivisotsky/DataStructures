@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Lb1_Example {
+public class Ld1_Example {
     // Tiek izpildiita vektora kaartosana ar iesprausanu
     public int[] insertionSort(int array[]) {
         int temp;
