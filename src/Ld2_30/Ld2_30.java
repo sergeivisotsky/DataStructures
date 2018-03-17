@@ -1,3 +1,5 @@
+package Ld2_30;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,20 +39,20 @@ class LinkedList {
     }
 
     public void insert(int current) {
-        Node nptr, ptr, temp;
-        nptr = new Node(current);
+        Node node, ptr, temp;
+        node = new Node(current);
         if (empty()) {
-            head = nptr;
-            nptr.setNext(head);
+            head = node;
+            node.setNext(head);
             tail = head;
         } else if (current <= head.getData()) {
-            nptr.setNext(head);
-            tail.setNext(nptr);
-            head = nptr;
+            node.setNext(head);
+            tail.setNext(node);
+            head = node;
         } else if (current >= tail.getData()) {
-            tail.setNext(nptr);
-            nptr.setNext(head);
-            tail = nptr;
+            tail.setNext(node);
+            node.setNext(head);
+            tail = node;
         } else {
             temp = head;
             ptr = head.getNext();
@@ -58,8 +60,8 @@ class LinkedList {
             while (temp != tail) {
                 if (current >= temp.getData() &&
                         current <= ptr.getData()) {
-                    temp.setNext(nptr);
-                    nptr.setNext(ptr);
+                    temp.setNext(node);
+                    node.setNext(ptr);
                     break;
                 } else {
                     temp = ptr;
@@ -71,25 +73,14 @@ class LinkedList {
     }
 
     public void outputSortedList() {
-        /*Node temp = tail;
-        for (int i = 0; i < size; i++) {
-            if (empty()) {
-                System.out.println("Saraksts ir tukšs!");
-                return;
-            }
-            if (temp != null) {
-                System.out.print(temp.data + "\t");
-                temp = temp.getNext();
-            }
-        }
-        System.out.println();*/
         Node node = head;
         if (empty()) {
             System.out.println("Saraksts ir tukšs!");
         }
 
-        if(head.getNext() == head) {
-            System.out.print(head.getData() + "\t" + node.getNext());
+        if (head.getNext() == head) {
+            System.out.print(head.getData() +
+                    "\t" + node.getNext());
         }
 
         System.out.print(head.getData() + "\t");
@@ -101,26 +92,6 @@ class LinkedList {
         }
 
         System.out.print(node.getData() + "\n");
-    }
-
-
-    public boolean full() {
-        return size == 10;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    public int equalsToZero() {
-        Node node = tail;
-        int quantifier = 0;
-        for (int i = 0; i < size; i++) {
-            if (node.getData() == 0) {
-                quantifier++;
-            }
-        }
-        return quantifier;
     }
 
     public void deleteNode(int nodeIndex) {
@@ -138,32 +109,66 @@ class LinkedList {
             }
 
             if (nodeIndex == size) {
-                Node ptr = head;
+                Node node = head;
                 for (int i = 0; i < size - 1; i++) {
-                    ptr = ptr.getNext();
+                    node = node.getNext();
                 }
-                ptr.setNext(head);
-                tail = ptr;
+                node.setNext(head);
+                tail = node;
                 size--;
                 return;
             }
 
-            Node ptr = head;
+            Node node = head;
             nodeIndex--;
             for (int i = 0; i < size - 1; i++) {
                 if (i == nodeIndex) {
-                    Node temp = ptr.getNext();
+                    Node temp = node.getNext();
                     temp = temp.getNext();
-                    ptr.setNext(temp);
+                    node.setNext(temp);
                     break;
                 }
-                ptr = ptr.getNext();
+                node = node.getNext();
             }
             size--;
         } else {
             System.out.println("Saraksts ir tukšs!");
         }
     }
+
+    public boolean full() {
+        return size == 10;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public int equalsToZero() {
+        Node node = head;
+        int quantifier = 0;
+
+        if (head.data == 0) {
+            quantifier++;
+        }
+
+        for (int i = 0; i < size(); i++) {
+            if (node.getNext().data == 0) {
+                quantifier++;
+            }
+        }
+
+        if (tail.data == 0) {
+            quantifier++;
+        }
+        return quantifier;
+    }
+
+    /*public int exp() {
+        Node node = head;
+
+        return node.getNext().data;
+    }*/
 }
 
 public class Ld2_30 {
@@ -232,8 +237,13 @@ public class Ld2_30 {
                             continue;
                         }
 
-                        System.out.println(list.equalsToZero());
+                        System.out.println("Elementu daudzums kas ir " +
+                                "vienādi ar nulli: " +
+                                list.equalsToZero());
                         break;
+                    /*case 5:
+                        System.out.println(list.exp());
+                        break;*/
                     case 0:
                         endSession = true;
                         break;
