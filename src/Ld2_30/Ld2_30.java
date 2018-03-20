@@ -9,8 +9,8 @@ class Node {
     public int data;
     private Node next;
 
-    Node(int num) {
-        data = num;
+    Node(int number) {
+        data = number;
     }
 
     public int getData() {
@@ -217,7 +217,7 @@ public class Ld2_30 {
                         }
                         break;
                     case 3:
-                        System.out.println(list.size());
+                        System.out.println("Elementu daudzums sarakstā: " + list.size());
                         if (!listCreated) {
                             System.out.println("Sākuma nepieciešams izveidot sarakstu!");
                             continue;
@@ -233,9 +233,6 @@ public class Ld2_30 {
                                 "vienādi ar nulli: " +
                                 list.equalsToZero());
                         break;
-                    /*case 5:
-                        System.out.println(list.exp());
-                        break;*/
                     case 0:
                         endSession = true;
                         break;
