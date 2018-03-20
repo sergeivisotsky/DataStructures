@@ -53,12 +53,12 @@ class linkedListEx {
         size = 0;
     }
 
-    /*  Function to check if list is empty  */
+    /*  Function to check if list is isEmpty  */
     public boolean isEmpty() {
         return start == null;
     }
 
-    /*  Function to check size of list  */
+    /*  Function to check getSize of list  */
     public int getSize() {
         return size;
     }
@@ -145,7 +145,7 @@ class linkedListEx {
         System.out.print("Sorted Circular Singly Linked List = ");
         NodeEx ptr = start;
         if (size == 0) {
-            System.out.print("empty\n");
+            System.out.print("isEmpty\n");
             return;
         }
         if (start.getLink() == start) {
@@ -176,8 +176,8 @@ public class Ld2_30_example {
             System.out.println("\nSorted Circular Singly Linked List Operations\n");
             System.out.println("1. insert");
             System.out.println("2. delete at position");
-            System.out.println("3. check empty");
-            System.out.println("4. get size");
+            System.out.println("3. check isEmpty");
+            System.out.println("4. get getSize");
 
             int choice = scan.nextInt();
             switch (choice) {
