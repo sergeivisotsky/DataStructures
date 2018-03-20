@@ -38,6 +38,14 @@ class LinkedList {
         return head == null;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public boolean isFull() {
+        return size == 10;
+    }
+
     public void insert(int current) {
         Node node, ptr, temp;
         node = new Node(current);
@@ -105,7 +113,7 @@ class LinkedList {
 
             Node node = head;
             nodeIndex--;
-            for (int i = 0; i < size - 1; i++) {
+            for (int i = 1; i < size - 1; i++) {
                 if (i == nodeIndex) {
                     Node temp = node.getNext();
                     temp = temp.getNext();
@@ -144,13 +152,6 @@ class LinkedList {
         System.out.print(node.getData() + "\n");
     }
 
-    public boolean isFull() {
-        return size == 10;
-    }
-
-    public int getSize() {
-        return size;
-    }
 
     public int equalsToZero() {
         Node node;
@@ -194,7 +195,7 @@ public class Ld2_30 {
         try {
             do {
                 System.out.println();
-                System.out.print("Izvēlēties saskarsmes vērtību: ");
+                System.out.print("Izvēlēties izpildes numuru: ");
                 choiceAnswer = Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
