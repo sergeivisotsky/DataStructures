@@ -197,7 +197,7 @@ public class Ld2_30 {
         try {
             do {
                 System.out.println();
-                System.out.print("Izvēlēties izpildes numuru: ");
+                System.out.print("Izvēlēties saskarnes numuru: ");
                 choiceAnswer = Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
