@@ -209,6 +209,11 @@ public class Ld2_30 {
                             elementToInput = Integer.parseInt(br.readLine());
                             list.insert(elementToInput);
                         }
+
+                        if (list.isFull()) {
+                            System.out.println("\nSaraksts ir pilns!" + "\n" +
+                                    "Ievietot elementus vairs nav iespējams!");
+                        }
                         System.out.println("\nIzveidots saraksts:");
                         list.outputSortedList();
 
