@@ -89,6 +89,8 @@ class LinkedList {
     public void deleteNode(int nodeIndex) {
         if (!isEmpty()) {
             if (nodeIndex == 1 && size == 1) {
+                head = null;
+                tail = null;
                 size = 0;
                 return;
             }
@@ -102,7 +104,7 @@ class LinkedList {
 
             if (nodeIndex == size) {
                 Node node = head;
-                for (int i = 0; i < size - 1; i++) {
+                for (int i = 1; i < size - 1; i++) {
                     node = node.getNext();
                 }
                 node.setNext(head);
@@ -202,7 +204,7 @@ public class Ld2_30 {
                         while (!list.isFull()) {
 
                             for (int i = 0; i < 10; i++) {
-                                System.out.print("Ievadiet elementu: ");
+                                System.out.print("Ievadiet veselo skaitli: ");
                                 elementToInput = Integer.parseInt(br.readLine());
                                 list.insert(elementToInput);
                             }
