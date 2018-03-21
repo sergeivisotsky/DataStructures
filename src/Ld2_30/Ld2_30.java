@@ -46,88 +46,93 @@ class LinkedList {
         return size == 10;
     }
 
-    public void insert(int current) {
-        Node node, ptr, temp;
-        node = new Node(current);
-        boolean inserted = false;
+    private void insertAtBeginning(int current) {
+        Node node = new Node(current);
+        node.setNext(head);
+        tail.setNext(node);
+        head = node;
+    }
 
+    private void insertInTheMiddle(int current) {
+        Node node, temp, ptr;
+        node = new Node(current);
+        temp = head;
+        ptr = head.getNext();
+
+        while (temp != tail) {
+            if (current >= temp.getData() &&
+                    current <= ptr.getData()) {
+                temp.setNext(node);
+                node.setNext(ptr);
+                break;
+            } else {
+                temp = ptr;
+                ptr = ptr.getNext();
+            }
+        }
+    }
+
+    private void insertAtTheEnd(int current) {
+        Node node = new Node(current);
+        tail.setNext(node);
+        node.setNext(head);
+        tail = node;
+    }
+
+    public void insert(int current) {
+        Node node = new Node(current);
         if (isEmpty()) {
             head = node;
             node.setNext(head);
             tail = head;
         } else if (current <= head.getData()) {
-            node.setNext(head);
-            tail.setNext(node);
-            head = node;
+            insertAtBeginning(current);
         } else if (current >= tail.getData()) {
-            tail.setNext(node);
-            node.setNext(head);
-            tail = node;
+            insertAtTheEnd(current);
         } else {
-            temp = head;
-            ptr = head.getNext();
-
-            while (temp != tail) {
-                if (current >= temp.getData() &&
-                        current <= ptr.getData()) {
-                    temp.setNext(node);
-                    node.setNext(ptr);
-                    inserted = true;
-                    break;
-                } else {
-                    temp = ptr;
-                    ptr = ptr.getNext();
-                }
-            }
-            if (!inserted) {
-                temp.setNext(node);
-            }
+            insertInTheMiddle(current);
         }
         size++;
     }
 
     public void deleteNode(int nodeIndex) {
-        if (!isEmpty()) {
-            if (nodeIndex == 1 && size == 1) {
-                head = null;
-                tail = null;
-                size = 0;
-                return;
-            }
+        if (nodeIndex == 1 && size == 1) {
+            head = null;
+            tail = null;
+            size = 0;
+            return;
+        }
 
-            if (nodeIndex == 1) {
-                head = head.getNext();
-                tail.setNext(head);
-                size--;
-                return;
-            }
+        if (nodeIndex == 1) {
+            head = head.getNext();
+            tail.setNext(head);
+            size--;
+            return;
+        }
 
-            if (nodeIndex == size) {
-                Node node = head;
-                for (int i = 1; i < size - 1; i++) {
-                    node = node.getNext();
-                }
-                node.setNext(head);
-                tail = node;
-                size--;
-                return;
-            }
-
+        if (nodeIndex == size) {
             Node node = head;
-            nodeIndex--;
             for (int i = 1; i < size - 1; i++) {
-                if (i == nodeIndex) {
-                    Node temp = node.getNext();
-                    temp = temp.getNext();
-                    node.setNext(temp);
-                    break;
-                }
                 node = node.getNext();
             }
+            node.setNext(head);
+            tail = node;
             size--;
-        } else {
-            System.out.println("Saraksts ir tukšs!");
+            return;
         }
+
+        Node node = head;
+        nodeIndex--;
+        for (int i = 1; i < size - 1; i++) {
+            if (i == nodeIndex) {
+                Node temp = node.getNext();
+                temp = temp.getNext();
+                node.setNext(temp);
+                break;
+            }
+            node = node.getNext();
+        }
+        size--;
     }
 
     public void outputSortedList() {
@@ -201,13 +206,19 @@ public class Ld2_30 {
                 choiceAnswer = Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        while (!list.isFull()) {
+                        if (!list.isFull()) {
 
                             for (int i = 0; i < 10; i++) {
                                 System.out.print("Ievadiet veselo skaitli: ");
                                 elementToInput = Integer.parseInt(br.readLine());
                                 list.insert(elementToInput);
                             }
+
+                            System.out.println("\nIzveidots saraksts:");
+                            list.outputSortedList();
+                        } else {
+                            System.out.println("Saraksts ir pilns!");
+                            continue;
                         }
 
                         listCreated = true;
@@ -217,14 +228,23 @@ public class Ld2_30 {
                             System.out.println("Sākuma nepieciešams izveidot sarakstu!");
                             continue;
                         }
-                        System.out.print("Dzēšamais elements: ");
-                        int deletableElementIndex =
-                                Integer.parseInt(br.readLine());
 
-                        list.deleteNode(deletableElementIndex);
+                        if (!list.isEmpty()) {
+                            System.out.print("Dzēšamais elements: ");
+                            int deletableElementIndex =
+                                    Integer.parseInt(br.readLine());
 
-                        if (list.isEmpty()) {
-                            System.out.println("Saraksts ir tukšs...");
+                            if (deletableElementIndex < 1 ||
+                                    deletableElementIndex > list.getSize()) {
+                                System.out.println("Nepareiza pozcijas vertība!");
+                            } else {
+                                list.deleteNode(deletableElementIndex);
+                                System.out.println("\nIzveidots saraksts:");
+                                list.outputSortedList();
+                            }
+                        } else {
+                            System.out.println("Saraksts ir tukšs!");
+                            continue;
                         }
                         break;
                     case 3:
@@ -240,21 +260,20 @@ public class Ld2_30 {
                             continue;
                         }
 
-                        System.out.println("Elementu daudzums kas ir " +
-                                "vienādi ar nulli: " +
-                                list.equalsToZero());
+                        if (!list.isEmpty()) {
+                            System.out.println("Elementu daudzums kas ir " +
+                                    "vienādi ar nulli: " +
+                                    list.equalsToZero());
+                        } else {
+                            System.out.println("Saraksts ir tukšs!");
+                            continue;
+                        }
                         break;
                     case 0:
                         endSession = true;
                         break;
                     default:
                         System.out.print("Ievādīta nepieņēmāma vērtība!");
-                }
-
-                System.out.println("\nIzveidots saraksts:");
-                list.outputSortedList();
-                if (list.isFull()) {
-                    System.out.println("Saraksts ir pilns...");
                 }
             } while (!endSession);
         } catch (InputMismatchException | IOException |
