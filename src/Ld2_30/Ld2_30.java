@@ -17,10 +17,6 @@ class Node {
         return data;
     }
 
-    /*public void setData(int data) {
-        this.data = data;
-    }*/
-
     public Node getNext() {
         return next;
     }
@@ -192,6 +188,8 @@ public class Ld2_30 {
         System.out.println("2: Izmest no saraksta elementu ar konkrētu pozīciju");
         System.out.println("3: Elementu daudzums sarakstā");
         System.out.println("4: Elementu daudzums kas ir vienādi ar nulli");
+        System.out.println("5: Tukšuma statuss");
+        System.out.println("6: Pilnīguma statuss");
         System.out.println("0: Slēgt sesiju");
 
         boolean listCreated = false; // Checks if any value was input
@@ -206,20 +204,13 @@ public class Ld2_30 {
                 choiceAnswer = Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        if (!list.isFull()) {
-
-                            for (int i = 0; i < 10; i++) {
-                                System.out.print("Ievadiet veselo skaitli: ");
-                                elementToInput = Integer.parseInt(br.readLine());
-                                list.insert(elementToInput);
-                            }
-
-                            System.out.println("\nIzveidots saraksts:");
-                            list.outputSortedList();
-                        } else {
-                            System.out.println("Saraksts ir pilns!");
-                            continue;
+                        while (!list.isFull()) {
+                            System.out.print("Ievadiet veselo skaitli: ");
+                            elementToInput = Integer.parseInt(br.readLine());
+                            list.insert(elementToInput);
                         }
+                        System.out.println("\nIzveidots saraksts:");
+                        list.outputSortedList();
 
                         listCreated = true;
                         break;
@@ -228,7 +219,6 @@ public class Ld2_30 {
                             System.out.println("Sākuma nepieciešams izveidot sarakstu!");
                             continue;
                         }
-
                         if (!list.isEmpty()) {
                             System.out.print("Dzēšamais elements: ");
                             int deletableElementIndex =
@@ -267,6 +257,20 @@ public class Ld2_30 {
                         } else {
                             System.out.println("Saraksts ir tukšs!");
                             continue;
+                        }
+                        break;
+                    case 5:
+                        System.out.println("Tukšuma statuss = " + list.isEmpty());
+                        break;
+                    case 6:
+                        if (!listCreated) {
+                            System.out.println("Sākuma nepieciešams izveidot sarakstu!");
+                            continue;
+                        }
+                        if (list.isFull()) {
+                            System.out.println("Saraksts ir pilns!");
+                        } else {
+                            System.out.println("Saraksts nav pilns!");
                         }
                         break;
                     case 0:
