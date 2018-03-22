@@ -5,8 +5,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
+class Node {
+    private int data;
+    private Node next;
+    private Node prev;
+
+    public Node(int data) {
+        this.data = data;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
+    public Node getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
+}
+
 class VectorQueue {
-    private VectorQueue head = null, tail = null;
+    private Node head = null, tail = null;
     private int size = 0;
 
     private void enQueue() {
