@@ -6,11 +6,15 @@ import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
 class Node {
-    private int data;
-    private Node next;
-    private Node prev;
+    int data;
+    Node next;
+    Node prev;
 
-    public Node(int data) {
+/*    public int getData() {
+        return data;
+    }
+
+    public void setData(int data) {
         this.data = data;
     }
 
@@ -28,7 +32,7 @@ class Node {
 
     public void setPrev(Node prev) {
         this.prev = prev;
-    }
+    }*/
 }
 
 class VectorQueue {
@@ -55,8 +59,10 @@ class VectorQueue {
         return size == 10;
     }
 
-    private void peek() {
-
+    private Integer peek() {
+        final Node head = this.head;
+        return (head == null) ?
+                null : head.data;
     }
 }
 
@@ -71,12 +77,13 @@ public class Ld3_30 {
         System.out.println("Sergejs Visockis IRDBD12 171RDB043");
 
         // User menu to choose answer variant
-        System.out.println("1: Izveidot sarakstu");
-        System.out.println("2: Izmest no saraksta elementu ar konkrētu pozīciju");
-        System.out.println("3: Elementu daudzums sarakstā");
-        System.out.println("4: Elementu daudzums kas ir vienādi ar nulli");
+        System.out.println("1: Pievienot elementu rindā");
+        System.out.println("2: Izmest elementu no rindas");
+        System.out.println("3: Elementu daudzums rindā");
+        System.out.println("4: Saņēmt kaut kādu elementu");
         System.out.println("5: Tukšuma statuss");
         System.out.println("6: Pilnīguma statuss");
+        System.out.println("7: Negatīvu elementu daudzums");
         System.out.println("0: Slēgt sesiju");
 
         boolean queueCreated = false; // Checks if any value was input
@@ -97,21 +104,21 @@ public class Ld3_30 {
                         break;
                     case 2:
                         if (!queueCreated) {
-                            System.out.println("Sākuma nepieciešams izveidot sarakstu!");
+                            System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
 
                         break;
                     case 3:
                         if (!queueCreated) {
-                            System.out.println("Sākuma nepieciešams izveidot sarakstu!");
+                            System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
 
                         break;
                     case 4:
                         if (!queueCreated) {
-                            System.out.println("Sākuma nepieciešams izveidot sarakstu!");
+                            System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
 
@@ -121,7 +128,13 @@ public class Ld3_30 {
                         break;
                     case 6:
                         if (!queueCreated) {
-                            System.out.println("Sākuma nepieciešams izveidot sarakstu!");
+                            System.out.println("Sākuma nepieciešams izveidot rindu!");
+                            continue;
+                        }
+                        break;
+                    case 7:
+                        if (!queueCreated) {
+                            System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
                         break;
