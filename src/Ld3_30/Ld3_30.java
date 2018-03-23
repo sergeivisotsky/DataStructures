@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
 class VectorQueue {
-    private int[] data;
+    private int[] queue;
     private int maxSize;
     private int size;
     private int head;
@@ -14,7 +14,7 @@ class VectorQueue {
 
     VectorQueue(int maxSize) {
         this.maxSize = maxSize;
-        data = new int[maxSize];
+        queue = new int[maxSize];
         tail = -1;
         head = 0;
         size = 0;
@@ -29,7 +29,7 @@ class VectorQueue {
     }
 
     public boolean isEmpty() {
-        return head == 0;
+        return size == 0;
     }
 
     public void enQueue(int element) {
@@ -38,19 +38,27 @@ class VectorQueue {
                 tail = -1;
             }
 
-            data[++tail] = element;
+            queue[++tail] = element;
         }
         size++;
     }
 
+    public void deQueue() {
+//        int temp = queue[head++];
+        if (head == maxSize) {
+            head = 0;
+        }
+        size--;
+    }
+
     public void outputQueue() {
-        for (int aQueue : data) {
+        for (int aQueue : queue) {
             System.out.print(aQueue + "\t");
         }
     }
 
     public int peek() {
-        return data[0];
+        return queue[0];
     }
 }
 
@@ -98,7 +106,7 @@ public class Ld3_30 {
 
                         if (queue.isFull()) {
                             System.out.println("\nRinda ir pilna!" + "\n" +
-                                    "Ievietot elementu vair nav iespējams!");
+                                    "Ievietot elementu vairs nav iespējams!");
                         }
                         System.out.println("\nIzveidota rinda:");
                         queue.outputQueue();
@@ -110,6 +118,12 @@ public class Ld3_30 {
                             continue;
                         }
 
+                        if (!queue.isEmpty()) {
+                            queue.deQueue();
+                        } else {
+                            System.out.println("Rinda ir tukša!");
+                            continue;
+                        }
                         break;
                     case 3:
                         if (!queueCreated) {
@@ -125,7 +139,9 @@ public class Ld3_30 {
                             continue;
                         }
 
-                        System.out.print(queue.peek());
+                        if (!queue.isEmpty()) {
+                            System.out.print(queue.peek());
+                        }
                         break;
                     case 5:
                         System.out.println("Tukšuma statuss = " +
