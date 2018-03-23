@@ -7,15 +7,17 @@ import java.util.InputMismatchException;
 
 class VectorQueue {
     private int[] data;
+    private int maxSize;
     private int size;
     private int head;
     private int tail;
 
-    VectorQueue(int size) {
-        this.size = size;
-        data = new int[size];
+    VectorQueue(int maxSize) {
+        this.maxSize = maxSize;
+        data = new int[maxSize];
         tail = -1;
         head = 0;
+        size = 0;
     }
 
     public boolean isFull() {
@@ -32,25 +34,23 @@ class VectorQueue {
 
     public void enQueue(int element) {
         if (isEmpty()) {
-            if (tail == size - 1) {
+            if (tail == maxSize - 1) {
                 tail = -1;
             }
 
-            data[tail++] = element;
+            data[++tail] = element;
         }
         size++;
     }
 
     public void outputQueue() {
-        if (!isEmpty()) {
-            for (int aQueue : data) {
-                System.out.print(aQueue + "\t");
-            }
+        for (int aQueue : data) {
+            System.out.print(aQueue + "\t");
         }
     }
 
-    public void peek() {
-
+    public int peek() {
+        return data[0];
     }
 }
 
@@ -124,12 +124,8 @@ public class Ld3_30 {
                             System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
-                        if (!queue.isEmpty()) {
-                            queue.peek();
-                        } else {
-                            System.out.println("Rinda ir tukša");
-                            continue;
-                        }
+
+                        System.out.print(queue.peek());
                         break;
                     case 5:
                         System.out.println("Tukšuma statuss = " +
