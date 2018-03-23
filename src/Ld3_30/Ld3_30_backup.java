@@ -5,58 +5,79 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-class VectorQueue {
-    private int[] data;
-    private int size;
-    private int head;
-    private int tail;
+class Node {
+    int data;
+    Node next;
+    Node prev;
 
-    VectorQueue(int size) {
-        this.size = size;
-        data = new int[size];
-        tail = -1;
-        head = 0;
+    Node(int data) {
+        this.data = data;
     }
+}
 
-    public boolean isFull() {
-        return size == 10;
-    }
+class VectorQueue_backup {
+    private Node head = null, tail = null;
+    private int size = 0;
 
     public int getSize() {
         return size;
     }
 
     public boolean isEmpty() {
-        return head == 0;
+        return head == null;
+    }
+
+    public boolean isFull() {
+        return size == 10;
     }
 
     public void enQueue(int element) {
-        if (isEmpty()) {
-            if (tail == size - 1) {
-                tail = -1;
-            }
-
-            data[tail++] = element;
+        Node node = new Node(element);
+        if (!isFull()) {
+            head = node;
         }
         size++;
     }
 
     public void outputQueue() {
-        if (!isEmpty()) {
-            for (int aQueue : data) {
-                System.out.print(aQueue + "\t");
-            }
+        Node node = tail;
+        if (isEmpty()) {
+            System.out.println("Rinda ir tukša!");
+            return;
         }
+
+        if (head.next == head) {
+            System.out.print(head.next +
+                    "\t" + node.next);
+            return;
+        }
+
+        System.out.print(head.next + "\t");
+        node = head.next;
+
+        while (node.next != head) {
+            System.out.println(node.data + "\t");
+            node = node.next;
+        }
+
+        System.out.print(node.data + "\n");
     }
 
-    public void peek() {
+    public void deQueue() {
 
+    }
+
+
+
+    public Integer peek() {
+        final Node head = this.head;
+        return (head == null) ?
+                null : head.data;
     }
 }
 
-public class Ld3_30 {
-    private static VectorQueue queue =
-            new VectorQueue(10);
+public class Ld3_30_backup {
+    private static VectorQueue_backup queue = new VectorQueue_backup();
 
     public static void main(String[] args) {
         BufferedReader br =
