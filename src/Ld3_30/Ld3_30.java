@@ -39,27 +39,27 @@ class VectorQueue {
     private Node head = null, tail = null;
     private int size = 0;
 
-    private void enQueue() {
+    public void enQueue() {
 
     }
 
-    private void deQueue() {
+    public void deQueue() {
 
     }
 
-    private int getSize() {
+    public int getSize() {
         return size;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return head == null;
     }
 
-    private boolean isFull() {
+    public boolean isFull() {
         return size == 10;
     }
 
-    private Integer peek() {
+    public Integer peek() {
         final Node head = this.head;
         return (head == null) ?
                 null : head.data;
@@ -67,7 +67,7 @@ class VectorQueue {
 }
 
 public class Ld3_30 {
-    VectorQueue queue = new VectorQueue();
+    private static VectorQueue queue = new VectorQueue();
 
     public static void main(String[] args) {
         BufferedReader br =
@@ -124,12 +124,18 @@ public class Ld3_30 {
 
                         break;
                     case 5:
-
+                        System.out.println("Tukšuma statuss = " +
+                                queue.isEmpty());
                         break;
                     case 6:
                         if (!queueCreated) {
                             System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
+                        }
+                        if (queue.isFull()) {
+                            System.out.println("Rinda ir pilna!");
+                        } else {
+                            System.out.println("Rinda nav pilna!");
                         }
                         break;
                     case 7:
