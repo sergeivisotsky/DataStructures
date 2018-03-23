@@ -10,7 +10,10 @@ class Node {
     Node next;
     Node prev;
 
-/*    public int getData() {
+    Node(int data) {
+        this.data = data;
+    }
+    /*    public int getData() {
         return data;
     }
 
@@ -39,20 +42,6 @@ class VectorQueue {
     private Node head = null, tail = null;
     private int size = 0;
 
-    public void enQueue(int element) {
-        Node node = new Node();
-        if (isEmpty()) {
-            head = node;
-            node.next = head;
-            tail = head;
-            size++;
-        }
-    }
-
-    public void deQueue() {
-
-    }
-
     public int getSize() {
         return size;
     }
@@ -64,6 +53,44 @@ class VectorQueue {
     public boolean isFull() {
         return size == 10;
     }
+
+    public void enQueue(int element) {
+        Node node = new Node(element);
+        if (!isFull()) {
+            tail = node;
+        }
+        size++;
+    }
+
+    public void outputQueue() {
+        Node node = tail;
+        if (isEmpty()) {
+            System.out.println("Rinda ir tukša!");
+            return;
+        }
+
+        if (tail.next == head) {
+            System.out.print(head.next +
+                    "\t" + node.next);
+            return;
+        }
+
+        System.out.print(head.next + "\t");
+        node = head.next;
+
+        while (node.next != head) {
+            System.out.println(node.data + "\t");
+            node = node.next;
+        }
+
+        System.out.print(node.data + "\t");
+    }
+
+    public void deQueue() {
+
+    }
+
+
 
     public Integer peek() {
         final Node head = this.head;
@@ -112,6 +139,13 @@ public class Ld3_30 {
                                             br.readLine());
                             queue.enQueue(elementToBeAdded);
                         }
+
+                        if (queue.isFull()) {
+                            System.out.println("\nRinda ir pilna!" + "\n" +
+                                    "Ievietot elementu vair nav iespējams!");
+                        }
+                        System.out.println("\nIzveidota rinda:");
+                        queue.outputQueue();
                         queueCreated = true;
                         break;
                     case 2:
@@ -126,7 +160,8 @@ public class Ld3_30 {
                             System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
-
+                        System.out.println("Elementu daudzums rindā: " +
+                                queue.getSize());
                         break;
                     case 4:
                         if (!queueCreated) {
