@@ -33,13 +33,13 @@ class VectorQueue {
     }
 
     public void enQueue(int element) {
-        if (isEmpty()) {
+//        if (isEmpty()) {
             if (tail == maxSize - 1) {
                 tail = -1;
             }
 
             queue[++tail] = element;
-        }
+//        }
         size++;
     }
 
@@ -91,7 +91,7 @@ public class Ld3_30 {
         try {
             do {
                 System.out.println();
-                System.out.print("Izvēlēties saskarnes numuru: ");
+                System.out.print("Izvēlēties saskarnes vērtību: ");
                 choiceAnswer = Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
@@ -120,6 +120,8 @@ public class Ld3_30 {
 
                         if (!queue.isEmpty()) {
                             queue.deQueue();
+                            System.out.println("\nIzveidota rinda:");
+                            queue.outputQueue();
                         } else {
                             System.out.println("Rinda ir tukša!");
                             continue;
