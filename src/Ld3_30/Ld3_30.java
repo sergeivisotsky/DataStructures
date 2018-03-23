@@ -3,6 +3,7 @@ package Ld3_30;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 
 class Node {
@@ -39,8 +40,14 @@ class VectorQueue {
     private Node head = null, tail = null;
     private int size = 0;
 
-    public void enQueue() {
-
+    public void enQueue(int element) {
+        Node node = new Node();
+        if (isEmpty()) {
+            head = node;
+            node.next = head;
+            tail = head;
+            size++;
+        }
     }
 
     public void deQueue() {
@@ -80,7 +87,7 @@ public class Ld3_30 {
         System.out.println("1: Pievienot elementu rindā");
         System.out.println("2: Izmest elementu no rindas");
         System.out.println("3: Elementu daudzums rindā");
-        System.out.println("4: Saņēmt kaut kādu elementu");
+        System.out.println("4: Radīt pirmo elementu");
         System.out.println("5: Tukšuma statuss");
         System.out.println("6: Pilnīguma statuss");
         System.out.println("7: Negatīvu elementu daudzums");
@@ -89,7 +96,7 @@ public class Ld3_30 {
         boolean queueCreated = false; // Checks if any value was input
         boolean endSession = false; // checks whether user closed session
         int choiceAnswer; // Operation to be performed
-        int elementToInput; // Element to be added to the list
+        int elementToBeAdded; // Element to be added to the list
 
         try {
             do {
@@ -99,7 +106,13 @@ public class Ld3_30 {
                 switch (choiceAnswer) {
                     case 1:
 
-
+                        while (!queue.isFull()) {
+                            System.out.print("Ievadiet veselo skaitli: ");
+                            elementToBeAdded =
+                                    Integer.parseInt(
+                                            br.readLine());
+                            queue.enQueue(elementToBeAdded);
+                        }
                         queueCreated = true;
                         break;
                     case 2:
@@ -121,7 +134,12 @@ public class Ld3_30 {
                             System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
-
+                        if (!queue.isEmpty()) {
+                            queue.peek();
+                        } else {
+                            System.out.println("Rinda ir tukša");
+                            continue;
+                        }
                         break;
                     case 5:
                         System.out.println("Tukšuma statuss = " +
