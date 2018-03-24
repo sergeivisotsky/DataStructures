@@ -33,20 +33,20 @@ class VectorQueue {
     }
 
     public void enQueue(int element) {
-//        if (isEmpty()) {
-        if (tail == maxSize - 1) {
-            tail = -1;
-        }
+        if (!isFull()) {
+            if (tail == maxSize - 1) {
+                tail = -1;
+            }
 
-        queue[++tail] = element;
-//        }
+            queue[++tail] = element;
+        }
         size++;
     }
 
     public int deQueue() {
-        int temp = queue[head++];
-        if (head == maxSize) {
-            head = 0;
+        int temp = queue[tail++];
+        if (tail == maxSize) {
+            queue[tail - 1] = 0;
         }
         size--;
         return temp;
@@ -80,7 +80,6 @@ public class Ld3_30 {
                     System.out.print("Rindas garums nevar būt lielāks par 10!");
                 }
             } while (queueSize > 10);
-
             VectorQueue queue =
                     new VectorQueue(queueSize);
             // User menu to choose answer variant
@@ -93,7 +92,7 @@ public class Ld3_30 {
             System.out.println("7: Negatīvu elementu daudzums");
             System.out.println("0: Slēgt sesiju");
 
-            boolean queueCreated = false; // Checks if any value was input
+            boolean queueCreated = false; // Checks if queue was created
             boolean endSession = false; // checks whether user closed session
             int choiceAnswer; // Operation to be performed
 
@@ -133,7 +132,7 @@ public class Ld3_30 {
                         }
 
                         if (!queue.isEmpty()) {
-                            System.out.print("Dzēšamais elements: " +
+                            System.out.print("Izejas elements: " +
                                     queue.deQueue());
                             System.out.println("\nIzveidota rinda:");
                             queue.outputQueue();
