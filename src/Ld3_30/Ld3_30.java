@@ -21,7 +21,7 @@ class VectorQueue {
     }
 
     public boolean isFull() {
-        return size == 10;
+        return size == maxSize;
     }
 
     public int getSize() {
@@ -34,26 +34,27 @@ class VectorQueue {
 
     public void enQueue(int element) {
 //        if (isEmpty()) {
-            if (tail == maxSize - 1) {
-                tail = -1;
-            }
+        if (tail == maxSize - 1) {
+            tail = -1;
+        }
 
-            queue[++tail] = element;
+        queue[++tail] = element;
 //        }
         size++;
     }
 
-    public void deQueue() {
-//        int temp = queue[head++];
+    public int deQueue() {
+        int temp = queue[head++];
         if (head == maxSize) {
             head = 0;
         }
         size--;
+        return temp;
     }
 
     public void outputQueue() {
-        for (int aQueue : queue) {
-            System.out.print(aQueue + "\t");
+        for (int queueElement : queue) {
+            System.out.print(queueElement + "\t");
         }
     }
 
@@ -63,38 +64,51 @@ class VectorQueue {
 }
 
 public class Ld3_30 {
-    private static VectorQueue queue =
-            new VectorQueue(10);
-
     public static void main(String[] args) {
         BufferedReader br =
                 new BufferedReader(
                         new InputStreamReader(System.in));
-
-        System.out.println("Sergejs Visockis IRDBD12 171RDB043");
-
-        // User menu to choose answer variant
-        System.out.println("1: Pievienot elementu rindā");
-        System.out.println("2: Izmest elementu no rindas");
-        System.out.println("3: Elementu daudzums rindā");
-        System.out.println("4: Radīt pirmo elementu");
-        System.out.println("5: Tukšuma statuss");
-        System.out.println("6: Pilnīguma statuss");
-        System.out.println("7: Negatīvu elementu daudzums");
-        System.out.println("0: Slēgt sesiju");
-
-        boolean queueCreated = false; // Checks if any value was input
-        boolean endSession = false; // checks whether user closed session
-        int choiceAnswer; // Operation to be performed
-        int elementToBeAdded; // Element to be added to the list
-
         try {
+            int queueSize; // Queue size
+            System.out.println("Sergejs Visockis IRDBD12 171RDB043");
+            do {
+                System.out.print("Rindas garums (max 10): ");
+                queueSize =
+                        Integer.parseInt(
+                                br.readLine());
+                if (queueSize > 10) {
+                    System.out.print("Rindas garums nevar būt lielāks par 10!");
+                }
+            } while (queueSize > 10);
+
+            VectorQueue queue =
+                    new VectorQueue(queueSize);
+            // User menu to choose answer variant
+            System.out.println("1: Pievienot elementu rindā");
+            System.out.println("2: Izmest elementu no rindas");
+            System.out.println("3: Elementu daudzums rindā");
+            System.out.println("4: Radīt pirmo elementu");
+            System.out.println("5: Tukšuma statuss");
+            System.out.println("6: Pilnīguma statuss");
+            System.out.println("7: Negatīvu elementu daudzums");
+            System.out.println("0: Slēgt sesiju");
+
+            boolean queueCreated = false; // Checks if any value was input
+            boolean endSession = false; // checks whether user closed session
+            int choiceAnswer; // Operation to be performed
+
+            int elementToBeAdded; // Element to be added to the list
+
+
             do {
                 System.out.println();
                 System.out.print("Izvēlēties saskarnes vērtību: ");
-                choiceAnswer = Integer.parseInt(br.readLine());
+                choiceAnswer =
+                        Integer.parseInt(
+                                br.readLine());
                 switch (choiceAnswer) {
                     case 1:
+
 
                         while (!queue.isFull()) {
                             System.out.print("Ievadiet veselo skaitli: ");
@@ -119,7 +133,8 @@ public class Ld3_30 {
                         }
 
                         if (!queue.isEmpty()) {
-                            queue.deQueue();
+                            System.out.print("Dzēšamais elements: " +
+                                    queue.deQueue());
                             System.out.println("\nIzveidota rinda:");
                             queue.outputQueue();
                         } else {
