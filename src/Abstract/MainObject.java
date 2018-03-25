@@ -1,12 +1,12 @@
 package Abstract;
 
-interface StudentState {
+interface IStudentState {
     void working();
     void going();
     void relaxing();
 }
 
-public class MainObject implements StudentState {
+public class MainObject implements IStudentState {
     @Override
     public void working() {
         System.out.println("Student is working too hard doing math!");;

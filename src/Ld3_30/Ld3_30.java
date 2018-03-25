@@ -3,7 +3,7 @@ package Ld3_30;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.InputMismatchException;
+import java.util.*;
 
 class VectorQueue {
     private int[] queue;
@@ -80,6 +80,7 @@ public class Ld3_30 {
                     System.out.print("Rindas garums nevar būt lielāks par 10!");
                 }
             } while (queueSize > 10);
+
             VectorQueue queue =
                     new VectorQueue(queueSize);
             // User menu to choose answer variant
