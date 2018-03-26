@@ -3,10 +3,11 @@ package Ld3_30;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.InputMismatchException;
 
 class VectorQueue {
     private int[] queue;
+    private int[] tempQueue;
     private int maxSize;
     private int size;
     private int head;
@@ -43,13 +44,25 @@ class VectorQueue {
         size++;
     }
 
+
     public int deQueue() {
         int temp = queue[tail++];
+        tempQueue = new int[maxSize - 1];
         if (tail == maxSize) {
-            queue[tail - 1] = 0;
+            /*System.arraycopy(queue, 0, tempQueue,
+                    0, size - 1);*/
+            for (int i = 0; i < size - 1; i++) {
+                tempQueue[i] = queue[i];
+            }
         }
         size--;
         return temp;
+    }
+
+    public void outputQueueWithDeleted() {
+        for (int queueElement : tempQueue) {
+            System.out.print(queueElement + "\t");
+        }
     }
 
     public void outputQueue() {
@@ -60,6 +73,16 @@ class VectorQueue {
 
     public int peek() {
         return queue[0];
+    }
+
+    public int negativeNumberQuantity() {
+        int counter = 0;
+        for (int i = 0; i < size; i++) {
+            if (queue[i] < 0) {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
 
@@ -136,7 +159,8 @@ public class Ld3_30 {
                             System.out.print("Izejas elements: " +
                                     queue.deQueue());
                             System.out.println("\nIzveidota rinda:");
-                            queue.outputQueue();
+//                            queue.outputQueue();
+                            queue.outputQueueWithDeleted();
                         } else {
                             System.out.println("Rinda ir tukša!");
                             continue;
@@ -180,6 +204,8 @@ public class Ld3_30 {
                             System.out.println("Sākuma nepieciešams izveidot rindu!");
                             continue;
                         }
+
+                        System.out.println(queue.negativeNumberQuantity());
                         break;
                     case 0:
                         endSession = true;
