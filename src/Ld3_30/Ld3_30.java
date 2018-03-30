@@ -5,7 +5,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-class VectorQueue {
+interface IQueue {
+    boolean isFull();
+
+    int getSize();
+
+    boolean isEmpty();
+
+    void enQueue(int element);
+
+    int deQueue();
+
+    void outputQueue();
+
+    int peek();
+
+    int negativeNumberQuantity();
+}
+
+class VectorQueue implements IQueue {
     private int[] queue;
     private int[] tempQueue;
     private int maxSize;
@@ -21,18 +39,22 @@ class VectorQueue {
         size = 0;
     }
 
+    @Override
     public boolean isFull() {
         return size == maxSize;
     }
 
+    @Override
     public int getSize() {
         return size;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public void enQueue(int element) {
         if (!isFull()) {
             if (tail == maxSize - 1) {
@@ -44,13 +66,11 @@ class VectorQueue {
         size++;
     }
 
-
+    @Override
     public int deQueue() {
         int temp = queue[tail++];
-        tempQueue = new int[maxSize - 1];
-        if (tail == maxSize) {
-            /*System.arraycopy(queue, 0, tempQueue,
-                    0, size - 1);*/
+        tempQueue = new int[size - 1];
+        if (tail == size) {
             for (int i = 0; i < size - 1; i++) {
                 tempQueue[i] = queue[i];
             }
@@ -59,22 +79,25 @@ class VectorQueue {
         return temp;
     }
 
-    public void outputQueueWithDeleted() {
+    public void outputQueueWithDeletedElement() {
         for (int queueElement : tempQueue) {
             System.out.print(queueElement + "\t");
         }
     }
 
+    @Override
     public void outputQueue() {
         for (int queueElement : queue) {
             System.out.print(queueElement + "\t");
         }
     }
 
+    @Override
     public int peek() {
         return queue[0];
     }
 
+    @Override
     public int negativeNumberQuantity() {
         int counter = 0;
         for (int i = 0; i < size; i++) {
@@ -100,7 +123,7 @@ public class Ld3_30 {
                         Integer.parseInt(
                                 br.readLine());
                 if (queueSize > 10) {
-                    System.out.print("Rindas garums nevar būt lielāks par 10!");
+                    System.out.println("Rindas garums nevar būt lielāks par 10!");
                 }
             } while (queueSize > 10);
 
@@ -160,7 +183,7 @@ public class Ld3_30 {
                                     queue.deQueue());
                             System.out.println("\nIzveidota rinda:");
 //                            queue.outputQueue();
-                            queue.outputQueueWithDeleted();
+                            queue.outputQueueWithDeletedElement();
                         } else {
                             System.out.println("Rinda ir tukša!");
                             continue;
