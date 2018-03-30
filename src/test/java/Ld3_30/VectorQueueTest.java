@@ -4,12 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Ld3_30Test {
-
-    /**
-     * The queue to use in all the tests: set this in subclasses.
-     */
-    protected VectorQueue queue;
+class VectorQueueTest {
+    protected VectorQueue queue = new VectorQueue(10);
 
     @Test
     public void testNewQueueIsEmpty() {
@@ -45,17 +41,17 @@ public class Ld3_30Test {
 
     @Test
     public void testFiftyInThenFiftyOut() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             queue.enQueue(i);
         }
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             assertEquals(((Integer) queue.deQueue()).intValue(), i);
         }
     }
 
     @Test
     public void testRemovingDownToEmpty() {
-        int numberOfRemoves = (int)(Math.random() * 20 + 1);
+        int numberOfRemoves = (int) (Math.random() * 20 + 1);
         for (int i = 0; i < numberOfRemoves; i++) {
             queue.enQueue(19);
         }
@@ -66,13 +62,15 @@ public class Ld3_30Test {
         assertEquals(queue.getSize(), 0);
     }
 
-//    @Test(expected=NoSuchElementException.class)
+    //    @Test(expected=NoSuchElementException.class)
+    @Test
     public void testRemoveOnEmptyQueue() {
         assertTrue(queue.isEmpty());
         queue.deQueue();
     }
 
-//    @Test(expected=NoSuchElementException.class)
+    //    @Test(expected=NoSuchElementException.class)
+    @Test
     public void testPeekIntoEmptyQueue() {
         assertTrue(queue.isEmpty());
         queue.deQueue();
