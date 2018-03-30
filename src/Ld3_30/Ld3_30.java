@@ -24,8 +24,7 @@ interface IQueue {
 }
 
 class VectorQueue implements IQueue {
-    private int[] queue;
-    private int[] tempQueue;
+    private int queue[];
     private int maxSize;
     private int size;
     private int head;
@@ -33,8 +32,8 @@ class VectorQueue implements IQueue {
 
     VectorQueue(int maxSize) {
         this.maxSize = maxSize;
-        queue = new int[maxSize];
-        tail = -1;
+        queue = new int[this.maxSize];
+        tail = 0;
         head = 0;
         size = 0;
     }
@@ -56,33 +55,19 @@ class VectorQueue implements IQueue {
 
     @Override
     public void enQueue(int element) {
-        if (!isFull()) {
-            if (tail == maxSize - 1) {
-                tail = -1;
-            }
-
-            queue[++tail] = element;
-        }
+        queue[tail] = element;
+        tail = (tail + 1) % queue.length;
         size++;
     }
 
     @Override
     public int deQueue() {
-        int temp = queue[tail++];
-        tempQueue = new int[size - 1];
-        if (tail == size) {
-            for (int i = 0; i < size - 1; i++) {
-                tempQueue[i] = queue[i];
-            }
-        }
+        // TODO Remove elements from queue and not replace with null
+        int temp = queue[tail];
+        queue[tail] = 0;
+        tail = (tail + 1) % queue.length;
         size--;
         return temp;
-    }
-
-    public void outputQueueWithDeletedElement() {
-        for (int queueElement : tempQueue) {
-            System.out.print(queueElement + "\t");
-        }
     }
 
     @Override
@@ -154,8 +139,6 @@ public class Ld3_30 {
                                 br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-
-
                         while (!queue.isFull()) {
                             System.out.print("Ievadiet veselo skaitli: ");
                             elementToBeAdded =
@@ -182,8 +165,7 @@ public class Ld3_30 {
                             System.out.print("Izejas elements: " +
                                     queue.deQueue());
                             System.out.println("\nIzveidota rinda:");
-//                            queue.outputQueue();
-                            queue.outputQueueWithDeletedElement();
+                            queue.outputQueue();
                         } else {
                             System.out.println("Rinda ir tukša!");
                             continue;
