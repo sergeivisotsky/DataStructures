@@ -1,5 +1,6 @@
 package Ld3_30;
 
+import javax.print.attribute.standard.JobKOctets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,19 +13,19 @@ interface IQueue {
 
     boolean isEmpty();
 
-    void enQueue(int element);
+    void enQueue(Object element);
 
-    int deQueue();
+    Object deQueue();
 
     void outputQueue();
 
-    int peek();
+    Object peek();
 
     int negativeNumberQuantity();
 }
 
 class VectorQueue implements IQueue {
-    private int queue[];
+    private Object queue[];
     private int maxSize;
     private int size;
     private int head;
@@ -32,7 +33,7 @@ class VectorQueue implements IQueue {
 
     VectorQueue(int maxSize) {
         this.maxSize = maxSize;
-        queue = new int[this.maxSize];
+        queue = new Object[this.maxSize];
         tail = 0;
         head = 0;
         size = 0;
@@ -54,31 +55,31 @@ class VectorQueue implements IQueue {
     }
 
     @Override
-    public void enQueue(int element) {
+    public void enQueue(Object element) {
         queue[tail] = element;
         tail = (tail + 1) % queue.length;
         size++;
     }
 
     @Override
-    public int deQueue() {
+    public Object deQueue() {
         // TODO: Remove elements from queue and not replace with null
-        int temp = queue[tail];
-        queue[tail] = 0;
-        tail = (tail + 1) % queue.length;
+        Object temp = queue[head];
+        queue[head] = null;
+        head = (head + 1) % queue.length;
         size--;
         return temp;
     }
 
     @Override
     public void outputQueue() {
-        for (int queueElement : queue) {
+        for (Object queueElement : queue) {
             System.out.print(queueElement + "\t");
         }
     }
 
     @Override
-    public int peek() {
+    public Object peek() {
         return queue[0];
     }
 
@@ -86,7 +87,7 @@ class VectorQueue implements IQueue {
     public int negativeNumberQuantity() {
         int counter = 0;
         for (int i = 0; i < size; i++) {
-            if (queue[i] < 0) {
+            if ((int) queue[i] < 0) {
                 counter++;
             }
         }
