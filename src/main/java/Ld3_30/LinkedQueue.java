@@ -31,7 +31,7 @@ public class LinkedQueue implements IQueue {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class LinkedQueue implements IQueue {
 
     @Override
     public Object peek() {
-        return null;
+        return head.data;
     }
 
     @Override
@@ -104,6 +104,7 @@ public class LinkedQueue implements IQueue {
             answer = Integer.parseInt(input.readLine());
             switch (answer) {
                 case 1:
+                    System.out.print("Add element: ");
                     element = Integer.parseInt(input.readLine());
                     linkedQueue.enQueue(element);
                     break;
