@@ -21,7 +21,7 @@ public class LinkedQueue implements IQueue {
 
     @Override
     public boolean isFull() {
-        return false;
+        return size == 10;
     }
 
     @Override
@@ -37,13 +37,10 @@ public class LinkedQueue implements IQueue {
     @Override
     public void enQueue(Object element) {
         NodeA nodeA = new NodeA(element, null);
-        head = nodeA;
-        nodeA = head;
-        tail = head;
         if (!isFull()) {
             head = nodeA;
         } else {
-            tail.next = nodeA;
+            tail = nodeA;
         }
         tail = nodeA;
         size++;
@@ -58,22 +55,20 @@ public class LinkedQueue implements IQueue {
     public void outputQueue() {
         NodeA nodeA = head;
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty!");
-        }
-
-        if (head.next == head) {
-            System.out.print(head.data + "\t" + nodeA.next);
+            System.out.println("Rinda ir tukša!");
             return;
         }
-
+        if (head.next == head) {
+            System.out.print(head.data +
+                    "\t" + nodeA.next);
+            return;
+        }
         System.out.print(head.data + "\t");
         nodeA = head.next;
-
         while (nodeA.next != head) {
             System.out.print(nodeA.data + "\t");
             nodeA = nodeA.next;
         }
-
         System.out.print(nodeA.data + "\n");
     }
 
@@ -102,7 +97,6 @@ public class LinkedQueue implements IQueue {
             System.out.println("4: peek");
             System.out.println("5: size");
             System.out.println("6: isEmpty");
-            System.out.println("0: End session");
             System.out.print("\nChoose answer: ");
             answer = Integer.parseInt(input.readLine());
             switch (answer) {
