@@ -93,8 +93,8 @@ public class LinkedQueue implements IQueue {
                         new InputStreamReader(System.in));
         LinkedQueue linkedQueue = new LinkedQueue();
         int answer;
+        String yesNoAnswer;
         int element;
-        String ch;
         do {
             System.out.println("1: enQueue");
             System.out.println("2: Show queue");
@@ -124,12 +124,11 @@ public class LinkedQueue implements IQueue {
                 case 6:
                     break;
                 default:
-                    System.out.println("Illegal state!");
-                    break;
+                    throw new IllegalStateException("Illegal state!");
             }
-            System.out.println("Continue? (y/n)");
-            ch = input.readLine();
-        } while (ch.equals("y") || ch.equals("Y"));
+            System.out.print("Continue? (y/n) ");
+            yesNoAnswer = input.readLine();
+        } while (yesNoAnswer.equals("y") || yesNoAnswer.equals("Y"));
 
     }
 }
