@@ -63,7 +63,6 @@ class VectorQueue implements IQueue {
 
     @Override
     public Object deQueue() {
-        // TODO: Remove elements from queue and not replace with null
         Object temp = queue[head];
         queue[head] = null;
         head = (head + 1) % queue.length;
