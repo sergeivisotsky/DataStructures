@@ -37,6 +37,9 @@ public class LinkedQueue implements IQueue {
     @Override
     public void enQueue(Object element) {
         NodeA nodeA = new NodeA(element, null);
+        head = nodeA;
+        nodeA = head;
+        tail = head;
         if (!isFull()) {
             head = nodeA;
         } else {
@@ -63,7 +66,7 @@ public class LinkedQueue implements IQueue {
             return;
         }
 
-        System.out.print(nodeA.data + "\t");
+        System.out.print(head.data + "\t");
         nodeA = head.next;
 
         while (nodeA.next != head) {
@@ -114,6 +117,7 @@ public class LinkedQueue implements IQueue {
                 case 3:
                     break;
                 case 4:
+                    System.out.println(linkedQueue.peek());
                     break;
                 case 5:
                     break;
