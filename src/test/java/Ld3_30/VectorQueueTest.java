@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VectorQueueTest {
     protected VectorQueue queue = new VectorQueue(10);
+    private int iterator = 10;
 
     @Test
     public void newQueueIsEmptyTest() {
@@ -15,12 +16,20 @@ class VectorQueueTest {
 
     @Test
     public void insertsToEmptyQueueTest() {
-        int numberOfInserts = 6;
-        for (int i = 0; i < numberOfInserts; i++) {
-            queue.enQueue(40);
+        for (int i = 0; i < iterator; i++) {
+            queue.enQueue(i);
         }
         assertTrue(!queue.isEmpty());
-        assertEquals(queue.getSize(), numberOfInserts);
+        assertEquals(queue.getSize(), iterator);
+    }
+
+    @Test
+    public void enQueueAndOutput() {
+        for (int i = 0; i < iterator; i++) {
+            queue.enQueue(i);
+        }
+
+        queue.outputQueue();
     }
 
     @Test

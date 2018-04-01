@@ -26,12 +26,12 @@ public class LinkedQueue implements IQueue {
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return head == null;
     }
 
     @Override
@@ -40,36 +40,38 @@ public class LinkedQueue implements IQueue {
         if (!isFull()) {
             head = nodeA;
         } else {
+            tail.next = nodeA;
             tail = nodeA;
         }
+
         tail = nodeA;
         size++;
     }
 
     @Override
     public Object deQueue() {
-        return null;
+        NodeA temp = head;
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty!");
+        } else {
+            head = head.next;
+            tail = head;
+        }
+        return temp.data;
     }
 
     @Override
     public void outputQueue() {
         NodeA nodeA = head;
         if (isEmpty()) {
-            System.out.println("Rinda ir tukša!");
-            return;
+            throw new IllegalStateException("Queue is empty!");
+        } else {
+            while (!isEmpty()) {
+                System.out.print(nodeA.data + "\t");
+                nodeA = nodeA.next;
+            }
+            System.out.print(nodeA.data + "\n");
         }
-        if (head.next == head) {
-            System.out.print(head.data +
-                    "\t" + nodeA.next);
-            return;
-        }
-        System.out.print(head.data + "\t");
-        nodeA = head.next;
-        while (nodeA.next != head) {
-            System.out.print(nodeA.data + "\t");
-            nodeA = nodeA.next;
-        }
-        System.out.print(nodeA.data + "\n");
     }
 
     @Override
@@ -106,13 +108,10 @@ public class LinkedQueue implements IQueue {
                     linkedQueue.enQueue(element);
                     break;
                 case 2:
-                    try {
-                        linkedQueue.outputQueue();
-                    } catch (Exception e) {
-
-                    }
+                    linkedQueue.outputQueue();
                     break;
                 case 3:
+                    linkedQueue.deQueue();
                     break;
                 case 4:
                     System.out.println(linkedQueue.peek());

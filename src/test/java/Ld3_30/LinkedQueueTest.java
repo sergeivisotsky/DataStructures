@@ -28,12 +28,22 @@ class LinkedQueueTest {
     public void enqueueThanDequeueTest() {
         int number = 80;
         linkedQueue.enQueue(number);
-        assertEquals(linkedQueue.deQueue(), number);
+        assertEquals(number, linkedQueue.deQueue());
+    }
+
+    @Test
+    public void enQueueAndOutputTest() {
+        for (int i = 0; i < iterator; i++) {
+            linkedQueue.enQueue(i);
+        }
+
+        linkedQueue.outputQueue();
     }
 
     @Test
     public void enqueueThanPeekTest() {
         int number = 90;
+        linkedQueue.enQueue(number);
         int size = linkedQueue.getSize();
         assertEquals(number, linkedQueue.peek());
         assertEquals(size, linkedQueue.getSize());
