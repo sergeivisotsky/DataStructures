@@ -14,7 +14,7 @@ public class Ld1_30_WithoutUtilsVector {
     /**
      * Array creation and output method
      */
-    private static void arrayCreationAndOutput() {
+    protected void arrayCreationAndOutput() {
         Random rd = new Random();
 
         // Array creation
@@ -37,7 +37,7 @@ public class Ld1_30_WithoutUtilsVector {
     /**
      * Vector with non homagen creation and output
      */
-    private static void vectorCreationAndOutput() {
+    protected void vectorCreationAndOutput() {
 
         int k = 0;
         for (int i = 0; i < array.length; i++) {
@@ -61,7 +61,7 @@ public class Ld1_30_WithoutUtilsVector {
      * @param element Searchable element
      * @param vector  One-dimensional array as a vector
      */
-    private static void linearSearch(int element, int[] vector) {
+    protected void linearSearch(int element, int[] vector) {
         boolean found = false;
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] == element) {
@@ -79,7 +79,7 @@ public class Ld1_30_WithoutUtilsVector {
      *
      * @param vector Gets vector data
      */
-    private static void insertionSort(int[] vector) {
+    protected void insertionSort(int[] vector) {
         int temp;
         for (int i = 1; i < vector.length; i++) {
             temp = vector[i];
@@ -100,6 +100,8 @@ public class Ld1_30_WithoutUtilsVector {
     }
 
     public static void main(String[] args) {
+        Ld1_30_WithoutUtilsVector ld1_30_withoutUtilsVector =
+                new Ld1_30_WithoutUtilsVector();
         System.out.println("Sergejs Visockis IRDBD12 171RDB043");
         BufferedReader br =
                 new BufferedReader(
@@ -126,7 +128,8 @@ public class Ld1_30_WithoutUtilsVector {
                         Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        arrayCreationAndOutput(); // Create and output array
+                        ld1_30_withoutUtilsVector
+                                .arrayCreationAndOutput(); // Create and output array
                         inputValueChecker = true;
                         break;
                     case 2:
@@ -135,7 +138,8 @@ public class Ld1_30_WithoutUtilsVector {
                             System.out.println("Sākuma nepieciešams izveidot masīvu!");
                             continue;
                         }
-                        vectorCreationAndOutput(); // Create and output vector
+                        ld1_30_withoutUtilsVector
+                                .vectorCreationAndOutput(); // Create and output vector
                         vectorCreated = true;
                         break;
                     case 3:
@@ -147,7 +151,8 @@ public class Ld1_30_WithoutUtilsVector {
                         System.out.print("\n" + "Meklēt vērtību: ");
                         int inputElement =
                                 Integer.parseInt(br.readLine());
-                        linearSearch(inputElement, vector); // Linear search function call
+                        ld1_30_withoutUtilsVector
+                                .linearSearch(inputElement, vector); // Linear search function call
                         break;
                     case 4:
 
@@ -156,7 +161,8 @@ public class Ld1_30_WithoutUtilsVector {
                             continue;
                         }
 
-                        insertionSort(vector); // Insertion sort function call
+                        ld1_30_withoutUtilsVector
+                                .insertionSort(vector); // Insertion sort function call
                         break;
                     case 0:
                         endSession = true;
