@@ -106,7 +106,11 @@ public class LinkedQueue implements IQueue {
                     linkedQueue.enQueue(element);
                     break;
                 case 2:
-                    linkedQueue.outputQueue();
+                    try {
+                        linkedQueue.outputQueue();
+                    } catch (Exception e) {
+
+                    }
                     break;
                 case 3:
                     break;
@@ -120,7 +124,7 @@ public class LinkedQueue implements IQueue {
                 default:
                     throw new IllegalStateException("Illegal state!");
             }
-            System.out.print("Continue? (y/n) ");
+            System.out.print("\nContinue? (y/n) ");
             yesNoAnswer = input.readLine();
         } while (yesNoAnswer.equals("y") || yesNoAnswer.equals("Y"));
 
