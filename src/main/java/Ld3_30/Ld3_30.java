@@ -102,15 +102,13 @@ public class Ld3_30 {
         try {
             int queueSize; // Queue size
             System.out.println("Sergejs Visockis IRDBD12 171RDB043");
-            do {
                 System.out.print("Rindas garums (max 10): ");
                 queueSize =
                         Integer.parseInt(
                                 br.readLine());
                 if (queueSize > 10) {
-                    System.out.println("Rindas garums nevar būt lielāks par 10!");
+                    throw new IllegalStateException("Rindas garums nevar būt lielāks par 10!");
                 }
-            } while (queueSize > 10);
 
             VectorQueue queue =
                     new VectorQueue(queueSize);
@@ -216,7 +214,7 @@ public class Ld3_30 {
                         endSession = true;
                         break;
                     default:
-                        System.out.print("Ievādīta nepieņēmāma vērtība!");
+                        throw new IllegalStateException("Ievādīta nepieņēmāma vērtība!");
                 }
             } while (!endSession);
         } catch (InputMismatchException | IOException |
