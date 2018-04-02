@@ -76,17 +76,24 @@ class VectorQueueTest {
         assertEquals(0, queue.getSize());
     }
 
-    //    @Test(expected=NoSuchElementException.class)
     @Test
     public void removeOnEmptyQueueTest() {
         assertTrue(queue.isEmpty());
         queue.deQueue();
     }
 
-    //    @Test(expected=NoSuchElementException.class)
     @Test
     public void peekIntoEmptyQueueTest() {
         assertTrue(queue.isEmpty());
         queue.peek();
+    }
+
+    @Test
+    public void negativeElementQuantityTest() {
+        int element = -1;
+        for (int i = 0; i < iterator; i++) {
+            queue.enQueue(element);
+        }
+        assertEquals(10, queue.negativeNumberQuantity());
     }
 }
