@@ -11,7 +11,7 @@ class VectorQueueTest {
     @Test
     public void newQueueIsEmptyTest() {
         assertTrue(queue.isEmpty());
-        assertEquals(queue.getSize(), 0);
+        assertEquals(0, queue.getSize());
     }
 
     @Test
@@ -20,7 +20,7 @@ class VectorQueueTest {
             queue.enQueue(i);
         }
         assertTrue(!queue.isEmpty());
-        assertEquals(queue.getSize(), iterator);
+        assertEquals(iterator, queue.getSize());
     }
 
     @Test
@@ -49,8 +49,8 @@ class VectorQueueTest {
         int number = 19;
         queue.enQueue(number);
         int size = queue.getSize();
-        assertEquals(queue.peek(), number);
-        assertEquals(queue.getSize(), size);
+        assertEquals(number, queue.peek());
+        assertEquals(size, queue.getSize());
     }
 
     @Test
@@ -59,7 +59,7 @@ class VectorQueueTest {
             queue.enQueue(i);
         }
         for (int i = 0; i < 10; i++) {
-            assertEquals(((Integer) queue.deQueue()).intValue(), i);
+            assertEquals(i, ((Integer) queue.deQueue()).intValue());
         }
     }
 
@@ -73,7 +73,7 @@ class VectorQueueTest {
             queue.deQueue();
         }
         assertTrue(queue.isEmpty());
-        assertEquals(queue.getSize(), 0);
+        assertEquals(0, queue.getSize());
     }
 
     //    @Test(expected=NoSuchElementException.class)
