@@ -2,6 +2,8 @@ package Ld3_30;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedQueueTest {
@@ -27,7 +29,7 @@ class LinkedQueueTest {
     @Test
     public void enQueueAndOutputTest() {
         for (int i = 0; i < iterator; i++) {
-            linkedQueue.enQueue(i);
+            linkedQueue.enQueue((int) (Math.random() * 100));
         }
 
         linkedQueue.outputQueue();

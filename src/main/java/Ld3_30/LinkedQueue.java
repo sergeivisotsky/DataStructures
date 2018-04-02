@@ -34,17 +34,53 @@ public class LinkedQueue implements IQueue {
         return head == null;
     }
 
+    private void insertAtBeginning(int element) {
+        NodeA nodeA = new NodeA(element, null);
+        nodeA.next = head;
+        tail.next = nodeA;
+        head = nodeA;
+    }
+
+    private void insertInTheMiddle(int element) {
+        NodeA nodeA, temp, ptr;
+        nodeA = new NodeA(element, null);
+        temp = head;
+        ptr = head.next;
+
+        while (temp != tail) {
+            if (element >= (int) temp.data &&
+                    element <= (int) ptr.data) {
+                temp.next = nodeA;
+                nodeA.next = ptr;
+                break;
+            } else {
+                temp = ptr;
+                ptr = ptr.next;
+            }
+        }
+    }
+
+    private void insertAtTheEnd(int element) {
+        NodeA nodeA = new NodeA(element, null);
+        tail.next = nodeA;
+        nodeA.next = head;
+        tail = nodeA;
+    }
+
     @Override
     public void enQueue(Object element) {
         NodeA nodeA = new NodeA(element, null);
-        if (!isFull()) {
+        if (isEmpty()) {
             head = nodeA;
+            nodeA.next = head;
+            tail = head;
+        } else if ((int) element <= (int) head.data) {
+            insertAtBeginning((int) element);
+        } else if ((int) element >= (int) tail.data) {
+            insertAtTheEnd((int) element);
         } else {
-            tail.next = nodeA;
-            tail = nodeA;
+            insertInTheMiddle((int) element);
         }
-
-        tail = nodeA;
         size++;
     }
 
@@ -64,14 +100,25 @@ public class LinkedQueue implements IQueue {
     public void outputQueue() {
         NodeA nodeA = head;
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty!");
-        } else {
-            while (!isEmpty()) {
-                System.out.print(nodeA.data + "\t");
-                nodeA = nodeA.next;
-            }
-            System.out.print(nodeA.data + "\n");
+            System.out.println("Saraksts ir tukšs!");
+            return;
         }
+
+        if (head.next == head) {
+            System.out.print(head.data +
+                    "\t" + nodeA.next);
+            return;
+        }
+
+        System.out.print(head.data + "\t");
+        nodeA = head.next;
+
+        while (nodeA.next != head) {
+            System.out.print(nodeA.data + "\t");
+            nodeA = nodeA.next;
+        }
+
+        System.out.print(nodeA.data + "\n");
     }
 
     @Override
