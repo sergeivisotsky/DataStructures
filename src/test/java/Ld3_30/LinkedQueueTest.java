@@ -94,6 +94,6 @@ class LinkedQueueTest {
     @Test
     public void peekIntoEmptyQueueTest() {
         assertTrue(linkedQueue.isEmpty());
-        linkedQueue.deQueue();
+        linkedQueue.peek();
     }
 }
