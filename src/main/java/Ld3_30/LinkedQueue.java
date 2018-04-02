@@ -81,7 +81,19 @@ public class LinkedQueue implements IQueue {
 
     @Override
     public int negativeNumberQuantity() {
-        return 0;
+        NodeA nodeA;
+        int counter = 0;
+        if ((int) head.data < 0) {
+            counter++;
+        }
+        for (nodeA = head;
+             nodeA != tail;
+             nodeA = nodeA.next) {
+            if ((int) nodeA.next.data < 0) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     public static void main(String[] args) throws IOException {

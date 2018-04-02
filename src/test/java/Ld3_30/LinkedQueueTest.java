@@ -62,9 +62,9 @@ class LinkedQueueTest {
 
     @Test
     public void removingDownToEmpty() {
-        int numberOfRemoves = (int) (Math.random() * 20 + 1);
+        int numberOfRemoves = 10;
         for (int i = 0; i < numberOfRemoves; i++) {
-            linkedQueue.enQueue(80);
+            linkedQueue.enQueue(i);
         }
         for (int i = 0; i < numberOfRemoves; i++) {
             linkedQueue.deQueue();
@@ -72,6 +72,16 @@ class LinkedQueueTest {
 
         assertTrue(linkedQueue.isEmpty());
         assertEquals(0, linkedQueue.getSize());
+    }
+
+    @Test
+    public void negativeNumberQuantityTest() {
+        int element = -1;
+        for (int i = 0; i < iterator; i++) {
+            linkedQueue.enQueue(element);
+        }
+
+        assertEquals(10, linkedQueue.negativeNumberQuantity());
     }
 
     @Test
