@@ -9,7 +9,7 @@ class LinkedQueueTest {
     private int iterator = 10;
 
     @Test
-    public void QueIsEmptyTest() {
+    public void QueueIsEmptyTest() {
         assertTrue(linkedQueue.isEmpty());
         assertEquals(0, linkedQueue.getSize());
     }
@@ -25,19 +25,19 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void enqueueThanDequeueTest() {
-        int number = 80;
-        linkedQueue.enQueue(number);
-        assertEquals(number, linkedQueue.deQueue());
-    }
-
-    @Test
     public void enQueueAndOutputTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
 
         linkedQueue.outputQueue();
+    }
+
+    @Test
+    public void enqueueThanDequeueTest() {
+        int number = 80;
+        linkedQueue.enQueue(number);
+        assertEquals(number, linkedQueue.deQueue());
     }
 
     @Test

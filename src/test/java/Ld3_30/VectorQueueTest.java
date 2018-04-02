@@ -34,9 +34,14 @@ class VectorQueueTest {
 
     @Test
     public void enqueueThenDequeueTest() {
-        int number = 19;
-        queue.enQueue(number);
-        assertEquals(queue.deQueue(), number);
+        int number = 0;
+        for (int i = 0; i < iterator; i++) {
+            queue.enQueue(i);
+        }
+        queue.outputQueue();
+        assertEquals(number, queue.deQueue());
+        System.out.println();
+        queue.outputQueue();
     }
 
     @Test
@@ -82,6 +87,6 @@ class VectorQueueTest {
     @Test
     public void peekIntoEmptyQueueTest() {
         assertTrue(queue.isEmpty());
-        queue.deQueue();
+        queue.peek();
     }
 }
