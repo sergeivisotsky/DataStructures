@@ -40,6 +40,7 @@ class LinkedQueueTest {
         linkedQueue.enQueue(number);
         assertEquals(number, linkedQueue.deQueue());
         assertTrue(linkedQueue.isEmpty());
+        assertEquals(0, linkedQueue.getSize());
     }
 
     @Test
@@ -59,7 +60,11 @@ class LinkedQueueTest {
 
         for (int i = 0; i < iterator; i++) {
             assertEquals(i, ((Integer) linkedQueue.deQueue()).intValue());
+            linkedQueue.deQueue();
         }
+
+        assertTrue(linkedQueue.isEmpty());
+        assertEquals(0, linkedQueue.getSize());
     }
 
     @Test
