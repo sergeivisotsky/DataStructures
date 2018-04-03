@@ -60,7 +60,6 @@ class LinkedQueueTest {
 
         for (int i = 0; i < iterator; i++) {
             assertEquals(i, ((Integer) linkedQueue.deQueue()).intValue());
-            linkedQueue.deQueue();
         }
 
         assertTrue(linkedQueue.isEmpty());
@@ -94,12 +93,14 @@ class LinkedQueueTest {
     @Test
     public void removingOnEmptyQueueTest() {
         assertTrue(linkedQueue.isEmpty());
+        assertEquals(0, linkedQueue.getSize());
         linkedQueue.deQueue();
     }
 
     @Test
     public void peekIntoEmptyQueueTest() {
         assertTrue(linkedQueue.isEmpty());
+        assertEquals(0, linkedQueue.getSize());
         linkedQueue.peek();
     }
 }

@@ -54,11 +54,14 @@ public class LinkedQueue implements IQueue {
         NodeA temp = head;
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty!");
+        } else if (size == 1) {
+            head = null;
+            tail = null;
         } else {
             head = head.next;
             tail.next = head;
-            size--;
         }
+        size--;
         return temp.data;
     }
 

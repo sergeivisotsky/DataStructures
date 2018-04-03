@@ -33,7 +33,7 @@ class VectorQueueTest {
     }
 
     @Test
-    public void enqueueThenDequeueTest() {
+    public void enQueueThenDequeueTest() {
         int number = 0;
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
@@ -45,7 +45,7 @@ class VectorQueueTest {
     }
 
     @Test
-    public void enqueueThenPeekTest() {
+    public void enQueueThenPeekTest() {
         int number = 19;
         queue.enQueue(number);
         int size = queue.getSize();
