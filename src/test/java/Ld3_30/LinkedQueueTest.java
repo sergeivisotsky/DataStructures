@@ -53,7 +53,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void TenInAndThenTenOutTest() {
+    public void tenInAndThenTenOutTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
