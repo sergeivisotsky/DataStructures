@@ -9,13 +9,13 @@ class LinkedListTest {
     private int iterator = 10;
 
     @Test
-    public void testThatListIsEmpty() {
+    public void listIsEmptyTest() {
         assertTrue(linkedList.isEmpty());
         assertEquals(0, linkedList.getSize());
     }
 
     @Test
-    public void testInsertionInEmptyList() {
+    public void insertionInEmptyListTest() {
         for (int i = 0; i < iterator; i++) {
             linkedList.insert(30);
         }
@@ -24,7 +24,7 @@ class LinkedListTest {
     }
 
     @Test
-    public void testNodeInsertionAndDeletion() {
+    public void nodeInsertionAndDeletionTest() {
         for (int i = 0; i < iterator; i++) {
             linkedList.insert(30);
         }
@@ -33,7 +33,7 @@ class LinkedListTest {
     }
 
     @Test
-    public void testTenInsertAndThenDelete() {
+    public void tenInsertAndThenDeleteTest() {
         for (int i = 0; i < iterator; i++) {
             linkedList.insert(iterator);
         }
@@ -46,7 +46,7 @@ class LinkedListTest {
     }
 
     @Test
-    public void testEqualsToZero() {
+    public void equalsToZeroTest() {
         for (int i = 0; i < iterator; i++) {
             linkedList.insert(0);
         }
