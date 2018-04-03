@@ -34,39 +34,6 @@ public class LinkedQueue implements IQueue {
         return head == null;
     }
 
-    private void insertAtBeginning(int element) {
-        NodeA nodeA = new NodeA(element, null);
-        nodeA.next = head;
-        tail.next = nodeA;
-        head = nodeA;
-    }
-
-    private void insertInTheMiddle(int element) {
-        NodeA nodeA, temp, ptr;
-        nodeA = new NodeA(element, null);
-        temp = head;
-        ptr = head.next;
-
-        while (temp != tail) {
-            if (element >= (int) temp.data &&
-                    element <= (int) ptr.data) {
-                temp.next = nodeA;
-                nodeA.next = ptr;
-                break;
-            } else {
-                temp = ptr;
-                ptr = ptr.next;
-            }
-        }
-    }
-
-    private void insertAtTheEnd(int element) {
-        NodeA nodeA = new NodeA(element, null);
-        tail.next = nodeA;
-        nodeA.next = head;
-        tail = nodeA;
-    }
-
     @Override
     public void enQueue(Object element) {
         NodeA nodeA = new NodeA(element, null);
