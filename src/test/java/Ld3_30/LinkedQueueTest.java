@@ -39,6 +39,7 @@ class LinkedQueueTest {
         int number = 80;
         linkedQueue.enQueue(number);
         assertEquals(number, linkedQueue.deQueue());
+        assertTrue(linkedQueue.isEmpty());
     }
 
     @Test

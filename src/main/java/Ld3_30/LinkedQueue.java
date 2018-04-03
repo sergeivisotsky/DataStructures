@@ -74,12 +74,10 @@ public class LinkedQueue implements IQueue {
             head = nodeA;
             nodeA.next = head;
             tail = head;
-        } else if ((int) element <= (int) head.data) {
-            insertAtBeginning((int) element);
-        } else if ((int) element >= (int) tail.data) {
-            insertAtTheEnd((int) element);
         } else {
-            insertInTheMiddle((int) element);
+            nodeA.next = head;
+            head = nodeA;
+            tail.next = nodeA;
         }
         size++;
     }
@@ -167,17 +165,38 @@ public class LinkedQueue implements IQueue {
                     linkedQueue.enQueue(element);
                     break;
                 case 2:
-                    linkedQueue.outputQueue();
+                    if (!linkedQueue.isEmpty()) {
+                        linkedQueue.outputQueue();
+                    } else {
+                        throw new IllegalStateException("Queue is empty!");
+                    }
                     break;
                 case 3:
-                    linkedQueue.deQueue();
+                    if (!linkedQueue.isEmpty()) {
+                        System.out.print("Element to be deleted: " +
+                                linkedQueue.deQueue());
+                    } else {
+                        throw new IllegalStateException("Queue is empty!");
+                    }
                     break;
                 case 4:
-                    System.out.println(linkedQueue.peek());
+                    if (!linkedQueue.isEmpty()) {
+                        System.out.println(linkedQueue.peek());
+                    } else {
+                        throw new IllegalStateException("Queue is empty!");
+                    }
                     break;
                 case 5:
+                    if (!linkedQueue.isEmpty()) {
+                        System.out.println("Queue size: " +
+                                linkedQueue.getSize());
+                    } else {
+                        throw new IllegalStateException("Queue is empty!");
+                    }
                     break;
                 case 6:
+                    System.out.println("Empty status: " +
+                            linkedQueue.isEmpty());
                     break;
                 default:
                     throw new IllegalStateException("Illegal state!");
