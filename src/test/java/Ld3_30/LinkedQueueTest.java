@@ -32,6 +32,16 @@ class LinkedQueueTest {
         }
 
         linkedQueue.outputQueue();
+        assertTrue(!linkedQueue.isEmpty());
+        assertEquals(10, linkedQueue.getSize());
+    }
+
+    @Test
+    public void enEnqueueOneAndOutputTest() {
+        linkedQueue.enQueue(80);
+        linkedQueue.outputQueue();
+        assertTrue(!linkedQueue.isEmpty());
+        assertEquals(1, linkedQueue.getSize());
     }
 
     @Test
