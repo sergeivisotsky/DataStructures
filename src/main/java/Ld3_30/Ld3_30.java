@@ -63,16 +63,19 @@ class VectorQueue implements IQueue {
     @Override
     public Object deQueue() {
         Object temp = queue[head];
-        queue[head] = null;
-        head = (head + 1) % queue.length;
+        System.arraycopy(queue, 1, queue, 0, size - 1);
         size--;
         return temp;
     }
 
     @Override
     public void outputQueue() {
-        for (Object queueElement : queue) {
-            System.out.print(queueElement + "\t");
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                System.out.print(queue[i] + "\t");
+            }
+        } else {
+            System.out.println("Rinda ir tukša!");
         }
     }
 
