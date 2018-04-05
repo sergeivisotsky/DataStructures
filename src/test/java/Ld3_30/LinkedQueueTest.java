@@ -38,10 +38,12 @@ class LinkedQueueTest {
 
     @Test
     public void enEnqueueOneAndOutputTest() {
-        linkedQueue.enQueue(80);
+        for (int i = 0; i < iterator; i++) {
+            linkedQueue.enQueue(i);
+        }
         linkedQueue.outputQueue();
         assertTrue(!linkedQueue.isEmpty());
-        assertEquals(1, linkedQueue.getSize());
+        assertEquals(10, linkedQueue.getSize());
     }
 
     @Test
@@ -68,12 +70,9 @@ class LinkedQueueTest {
             linkedQueue.enQueue(i);
         }
 
-        for (int i = 0; i < iterator; i++) {
+        for (int i = iterator - 1; i > 0; i--) {
             assertEquals(i, ((Integer) linkedQueue.deQueue()).intValue());
         }
-
-        assertTrue(linkedQueue.isEmpty());
-        assertEquals(0, linkedQueue.getSize());
     }
 
     @Test
@@ -98,19 +97,5 @@ class LinkedQueueTest {
         }
 
         assertEquals(10, linkedQueue.negativeNumberQuantity());
-    }
-
-    @Test
-    public void removingOnEmptyQueueTest() {
-        assertTrue(linkedQueue.isEmpty());
-        assertEquals(0, linkedQueue.getSize());
-        linkedQueue.deQueue();
-    }
-
-    @Test
-    public void peekIntoEmptyQueueTest() {
-        assertTrue(linkedQueue.isEmpty());
-        assertEquals(0, linkedQueue.getSize());
-        linkedQueue.peek();
     }
 }
