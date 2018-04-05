@@ -38,12 +38,10 @@ class LinkedQueueTest {
 
     @Test
     public void enEnqueueOneAndOutputTest() {
-        for (int i = 0; i < iterator; i++) {
-            linkedQueue.enQueue(i);
-        }
+        linkedQueue.enQueue(80);
         linkedQueue.outputQueue();
         assertTrue(!linkedQueue.isEmpty());
-        assertEquals(10, linkedQueue.getSize());
+        assertEquals(1, linkedQueue.getSize());
     }
 
     @Test

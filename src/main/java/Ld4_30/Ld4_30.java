@@ -6,18 +6,25 @@ import java.io.InputStreamReader;
 
 interface IBinarySearchTree {
     void insert(int element);
+
     void outputVertexes();
+
     void findTwoChildes();
+
     void evenElementQuantity();
 }
 
 class Node {
     int data;
+//    Node root;
+    //    Node parent;
     Node left;
     Node right;
 
     public Node(int data) {
         this.data = data;
+//        root = null;
+//        parent = null;
         left = null;
         right = null;
     }
@@ -27,7 +34,10 @@ class BinarySearchTree implements IBinarySearchTree {
 
     @Override
     public void insert(int element) {
-
+        /*Node node = new Node(element);
+        if (node.root == null) {
+            node.root = new Node(element);
+        }*/
     }
 
     @Override
