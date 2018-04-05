@@ -2,9 +2,8 @@ package Ld4_30;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Vector;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Ld4_30Test {
     private int iterator = 15;
