@@ -12,25 +12,38 @@ interface IBinarySearchTree {
     void findTwoChildes();
 
     void evenElementQuantity();
+
+    int getSize();
+
+    boolean isEmpty();
 }
 
 class Node {
     int data;
-//    Node root;
-    //    Node parent;
     Node left;
     Node right;
 
     public Node(int data) {
         this.data = data;
-//        root = null;
-//        parent = null;
         left = null;
         right = null;
     }
 }
 
 class BinarySearchTree implements IBinarySearchTree {
+    private Node root = null;
+    private Node parent = null;
+    private int size = 0;
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return root == null;
+    }
 
     @Override
     public void insert(int element) {
