@@ -5,13 +5,23 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Ld4_30Test {
-    private BinarySearchTree tree = new BinarySearchTree();
     private int iterator = 15;
+    private BinarySearchTree tree = new BinarySearchTree(iterator);
 
     @Test
     public void treeIsEmptyTest() {
         assertTrue(tree.isEmpty());
         assertEquals(0, tree.getSize());
+    }
+
+    @Test
+    public void treeIsFullTest() {
+        for (int i = 0; i < iterator; i++) {
+            tree.insert(i);
+        }
+
+        assertTrue(tree.isFull());
+        assertEquals(iterator, tree.getSize());
     }
 
     @Test
@@ -21,7 +31,7 @@ class Ld4_30Test {
         }
 
         assertTrue(!tree.isEmpty());
-        assertEquals(10, tree.getSize());
+        assertEquals(iterator, tree.getSize());
     }
 
     @Test

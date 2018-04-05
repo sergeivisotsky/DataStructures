@@ -101,13 +101,13 @@ public class Ld3_30 {
         try {
             int queueSize; // Queue size
             System.out.println("Sergejs Visockis IRDBD12 171RDB043");
-                System.out.print("Rindas garums (max 10): ");
-                queueSize =
-                        Integer.parseInt(
-                                br.readLine());
-                if (queueSize > 10) {
-                    throw new IllegalStateException("Rindas garums nevar būt lielāks par 10!");
-                }
+            System.out.print("Rindas garums (max 10): ");
+            queueSize =
+                    Integer.parseInt(
+                            br.readLine());
+            if (queueSize > 10) {
+                throw new IllegalStateException("Rindas garums nevar būt lielāks par 10!");
+            }
 
             VectorQueue queue =
                     new VectorQueue(queueSize);

@@ -16,6 +16,8 @@ interface IBinarySearchTree {
     int getSize();
 
     boolean isEmpty();
+
+    boolean isFull();
 }
 
 class Node {
@@ -31,9 +33,16 @@ class Node {
 }
 
 class BinarySearchTree implements IBinarySearchTree {
-    private Node root = null;
-    private Node parent = null;
-    private int size = 0;
+    public Node root;
+    public Node parent;
+    public int size;
+    public int maxSize;
+
+    BinarySearchTree(int maxSize) {
+        this.maxSize = maxSize;
+        root = null;
+        parent = null;
+    }
 
     @Override
     public int getSize() {
@@ -42,15 +51,24 @@ class BinarySearchTree implements IBinarySearchTree {
 
     @Override
     public boolean isEmpty() {
-        return root == null;
+        return size == 0;
+    }
+
+    @Override
+    public boolean isFull() {
+        return size == maxSize;
     }
 
     @Override
     public void insert(int element) {
-        /*Node node = new Node(element);
-        if (node.root == null) {
+        Node node = new Node(element);
+        /*if (node.root == null) {
             node.root = new Node(element);
         }*/
+        if (!isFull()) {
+            node = root;
+        }
+        size++;
     }
 
     @Override
@@ -76,14 +94,23 @@ public class Ld4_30 {
         BufferedReader input =
                 new BufferedReader(
                         new InputStreamReader(System.in));
-        BinarySearchTree tree = new BinarySearchTree();
+
         int answer;
         String yesNoAnswer;
         int element;
 
         try {
+            int treeSize;
+            System.out.println("Sergejs Visockis IRDBD12 171RDB043");
+            System.out.print("Koka garums (max 15): ");
+            treeSize = Integer.parseInt(input.readLine());
+            if (treeSize > 15) {
+                throw new IllegalStateException("Koka garums nevar saturēt vairāk nekā 15 elementu!");
+            }
+            BinarySearchTree tree = new BinarySearchTree(treeSize);
+
             do {
-                System.out.println("1: Aizpildīt koku");
+                System.out.println("1: Pievenot elementu");
                 System.out.println("2: Parādīt koku");
                 System.out.println("3: Atrast cik kokā ir virsotņu ar diviem bērniem");
                 System.out.println("4: Saskaitīt cik kokā ir pāra elementu");
