@@ -2,6 +2,8 @@ package Ld3_30;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorQueueTest {
@@ -65,11 +67,10 @@ class VectorQueueTest {
 
     @Test
     public void removingDownToEmptyTest() {
-        int numberOfRemoves = (int) (Math.random() * 20 + 1);
-        for (int i = 0; i < numberOfRemoves; i++) {
-            queue.enQueue(19);
+        for (int i = 0; i < iterator; i++) {
+            queue.enQueue(i);
         }
-        for (int i = 0; i < numberOfRemoves; i++) {
+        for (int i = 0; i < iterator; i++) {
             queue.deQueue();
         }
         assertTrue(queue.isEmpty());
