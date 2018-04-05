@@ -33,10 +33,10 @@ class Node {
 }
 
 class BinarySearchTree implements IBinarySearchTree {
-    public Node root;
-    public Node parent;
-    public int size;
-    public int maxSize;
+    private Node root;
+    private Node parent;
+    private int size;
+    private int maxSize;
 
     BinarySearchTree(int maxSize) {
         this.maxSize = maxSize;
