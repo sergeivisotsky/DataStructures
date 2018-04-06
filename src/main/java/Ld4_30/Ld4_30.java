@@ -25,7 +25,7 @@ class Node {
     Node left;
     Node right;
 
-    public Node(int data) {
+    Node(int data) {
         this.data = data;
         left = null;
         right = null;
@@ -33,15 +33,15 @@ class Node {
 }
 
 class BinarySearchTree implements IBinarySearchTree {
-    private Node root;
-    private Node parent;
+//    private Node root;
+//    private Node parent;
     private int size;
     private int maxSize;
 
     BinarySearchTree(int maxSize) {
         this.maxSize = maxSize;
-        root = null;
-        parent = null;
+//        root = null;
+//        parent = null;
     }
 
     @Override
@@ -66,7 +66,19 @@ class BinarySearchTree implements IBinarySearchTree {
             node.root = new Node(element);
         }*/
         if (!isFull()) {
-            node = root;
+            if (element <= node.data) {
+                if (node.left == null) {
+                    node.left = new Node(element);
+                } else {
+                    insert(element);
+                }
+            } else {
+                if (node.right == null) {
+                    node.right = new Node(element);
+                } else {
+                    insert(element);
+                }
+            }
         }
         size++;
     }
