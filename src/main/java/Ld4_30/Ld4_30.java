@@ -85,13 +85,7 @@ class BinarySearchTree implements IBinarySearchTree {
 
     @Override
     public void postorderOutput(Node node) {
-        if (isEmpty()) {
-            return;
-        }
-        postorderOutput(node.left);
-        postorderOutput(node.right);
-        System.out.println(node.data + "\t");
-
+        
     }
 
     @Override
