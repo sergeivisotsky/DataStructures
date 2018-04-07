@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 interface IBinarySearchTree {
     void insert(int element);
 
-    void postorderOutput(Node node);
+    void postorderOutput();
 
     void findTwoChildes();
 
@@ -84,8 +84,8 @@ class BinarySearchTree implements IBinarySearchTree {
     }
 
     @Override
-    public void postorderOutput(Node node) {
-        
+    public void postorderOutput() {
+
     }
 
     @Override
