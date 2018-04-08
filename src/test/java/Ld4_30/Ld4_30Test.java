@@ -10,13 +10,13 @@ class Ld4_30Test {
     private BinarySearchTree tree = new BinarySearchTree(iterator);
 
     @Test
-    public void treeIsEmptyTest() {
+    void treeIsEmptyTest() {
         assertTrue(tree.isEmpty());
         assertEquals(0, tree.getSize());
     }
 
     @Test
-    public void treeIsFullTest() {
+    void treeIsFullTest() {
         for (int i = 0; i < iterator; i++) {
             tree.insert(i);
         }
@@ -26,7 +26,7 @@ class Ld4_30Test {
     }
 
     @Test
-    public void insertElementTest() {
+    void insertElementTest() {
         for (int i = 0; i < iterator; i++) {
             tree.insert(iterator);
         }
@@ -36,17 +36,21 @@ class Ld4_30Test {
     }
 
     @Test
-    public void insertAndOutputVertexesTest() {
+    void createTreeAndPostorderOutputTest() {
+        for (int i = 0; i < iterator; i++) {
+            tree.insert(iterator);
+        }
+
+        tree.postorderOutput();
+    }
+
+    @Test
+    void findTwoChildesTest() {
 
     }
 
     @Test
-    public void findTwoChildesTest() {
-
-    }
-
-    @Test
-    public void EvenElementQuantity() {
+    void EvenElementQuantity() {
 
     }
 }

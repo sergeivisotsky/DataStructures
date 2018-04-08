@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 interface IBinarySearchTree {
-    void insert(int element);
+    Node insert(int element);
 
     void postorderOutput();
 
@@ -33,8 +33,10 @@ class Node {
 }
 
 class BinarySearchTree implements IBinarySearchTree {
-//    private Node root;
-//    private Node parent;
+
+
+    private Node root = null;
+    //    private Node parent;
     private int size;
     private int maxSize;
 
@@ -60,32 +62,37 @@ class BinarySearchTree implements IBinarySearchTree {
     }
 
     @Override
-    public void insert(int element) {
+    public Node insert(int element) {
         Node node = new Node(element);
-        /*if (node.root == null) {
-            node.root = new Node(element);
-        }*/
         if (!isFull()) {
             if (element <= node.data) {
                 if (node.left == null) {
                     node.left = new Node(element);
                 } else {
-                    insert(element);
+                    node.left = insert(element);
                 }
             } else {
                 if (node.right == null) {
                     node.right = new Node(element);
                 } else {
-                    insert(element);
+                    node.right = insert(element);
                 }
             }
         }
         size++;
+        return node;
     }
 
     @Override
     public void postorderOutput() {
+        Node node = root;
+        if (isEmpty()) {
+            throw new IllegalStateException("Koks ir tukšs!");
+        }
 
+        postorderOutput();
+        System.out.print(node.left + "\t");
+        postorderOutput();
     }
 
     @Override
@@ -130,13 +137,20 @@ public class Ld4_30 {
                 answer = Integer.parseInt(input.readLine());
                 switch (answer) {
                     case 1:
-                        System.out.print("Pievienot elementu: ");
-                        element = Integer.parseInt(input.readLine());
-                        tree.insert(element);
+                        if (!tree.isFull()) {
+                            System.out.print("Pievienot elementu: ");
+                            element = Integer.parseInt(input.readLine());
+                            tree.insert(element);
+                        } else {
+                            System.out.println("Koks ir pilns!");
+                        }
                         treeCreated = true;
                         break;
                     case 2:
                         treeIsNotCreated();
+                        if (!tree.isFull()) {
+                            tree.postorderOutput();
+                        }
                         break;
                     case 3:
                         treeIsNotCreated();
@@ -155,9 +169,10 @@ public class Ld4_30 {
         }
     }
 
-    public static void treeIsNotCreated() {
+    private static void treeIsNotCreated() {
         if (!treeCreated) {
-            System.out.println("Koks pagaidam nav izveidots!");
+            System.out.println("Citas funkcijas nav pieejamas " +
+                    "kāmēr koks nav izveidots!");
         }
     }
 }
