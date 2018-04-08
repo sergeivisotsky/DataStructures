@@ -135,6 +135,7 @@ class BinarySearchTree implements IBinarySearchTree {
             value = node.data;
         }
 
+        // FIXME: Returns a huge amount of even element!!!!!!!!!!
         return value +
                 evenElementQuantityWrapper(node.left) +
                 evenElementQuantityWrapper(node.right);
