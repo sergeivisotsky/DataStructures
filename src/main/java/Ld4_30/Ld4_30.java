@@ -102,20 +102,20 @@ class BinarySearchTree implements IBinarySearchTree {
     @Override
     public void countNodesWithTwoChildren() {
         System.out.print(
-                countTwoChildesWrapper(root));
+                countNodesWithTwoChildrenWrapper(root));
     }
 
-    private int countTwoChildesWrapper(Node node) {
+    private int countNodesWithTwoChildrenWrapper(Node node) {
         if (node == null) {
             return 0;
         }
 
         if (node.left != null && node.right != null) {
-            return 1 + countTwoChildesWrapper(node.left) +
-                    countTwoChildesWrapper(node.right);
+            return 1 + countNodesWithTwoChildrenWrapper(node.left) +
+                    countNodesWithTwoChildrenWrapper(node.right);
         }
-        return countTwoChildesWrapper(node.left) +
-                countTwoChildesWrapper(node.right);
+        return countNodesWithTwoChildrenWrapper(node.left) +
+                countNodesWithTwoChildrenWrapper(node.right);
     }
 
     @Override
