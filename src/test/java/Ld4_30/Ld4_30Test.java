@@ -41,7 +41,7 @@ class Ld4_30Test {
     void createTreeAndPostorderOutputTest() {
         Random rd = new Random();
         for (int i = 0; i < iterator; i++) {
-            tree.insert(rd.nextInt(15) + 1);
+            tree.insert(rd.nextInt(15));
         }
 
         tree.postorderOutput();
