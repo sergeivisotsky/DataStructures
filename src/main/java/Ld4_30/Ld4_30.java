@@ -107,7 +107,7 @@ class BinarySearchTree implements IBinarySearchTree {
 
     private int findTwoChildesWrapper(Node root) {
         counter = 0;
-        
+
         return counter;
     }
 
