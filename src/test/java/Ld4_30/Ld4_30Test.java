@@ -50,15 +50,18 @@ class Ld4_30Test {
     }
 
     @Test
-    void findTwoChildesTest() {
+    void countNodesWithTwoChildrenTest() {
         for (int i = 0; i < iterator; i++) {
             tree.insert(random.nextInt(50));
         }
-        tree.findTwoChildes();
+        tree.countNodesWithTwoChildren();
     }
 
     @Test
-    void EvenElementQuantity() {
-
+    void evenElementQuantity() {
+        for (int i = 0; i < iterator; i++) {
+            tree.insert(random.nextInt(50));
+        }
+        tree.evenElementQuantity();
     }
 }

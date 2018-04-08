@@ -9,7 +9,7 @@ interface IBinarySearchTree {
 
     void postorderOutput();
 
-    void findTwoChildes();
+    void countNodesWithTwoChildren();
 
     void evenElementQuantity();
 
@@ -37,7 +37,6 @@ class BinarySearchTree implements IBinarySearchTree {
     private Node root;
     private int size;
     private int maxSize;
-    private int counter = 0;
 
     BinarySearchTree(int maxSize) {
         this.maxSize = maxSize;
@@ -101,19 +100,44 @@ class BinarySearchTree implements IBinarySearchTree {
     }
 
     @Override
-    public void findTwoChildes() {
-        System.out.print(findTwoChildesWrapper(root));
+    public void countNodesWithTwoChildren() {
+        System.out.print(
+                countTwoChildesWrapper(root));
     }
 
-    private int findTwoChildesWrapper(Node root) {
-        counter = 0;
+    private int countTwoChildesWrapper(Node node) {
+        if (node == null) {
+            return 0;
+        }
 
-        return counter;
+        if (node.left != null && node.right != null) {
+            return 1 + countTwoChildesWrapper(node.left) +
+                    countTwoChildesWrapper(node.right);
+        }
+        return countTwoChildesWrapper(node.left) +
+                countTwoChildesWrapper(node.right);
     }
 
     @Override
     public void evenElementQuantity() {
+        System.out.print(
+                evenElementQuantityWrapper(root));
+    }
 
+    private int evenElementQuantityWrapper(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int value = 0;
+
+        if (node.data % 2 == 0) {
+            value = node.data;
+        }
+
+        return value +
+                evenElementQuantityWrapper(node.left) +
+                evenElementQuantityWrapper(node.right);
     }
 }
 
@@ -167,10 +191,11 @@ public class Ld4_30 {
                         break;
                     case 3:
                         treeIsNotCreated();
-                        tree.findTwoChildes();
+                        tree.countNodesWithTwoChildren();
                         break;
                     case 4:
                         treeIsNotCreated();
+                        tree.evenElementQuantity();
                         break;
                     default:
                         throw new IllegalStateException("Ievadīta nepieņēmama vērtība!");
