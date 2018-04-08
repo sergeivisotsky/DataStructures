@@ -37,6 +37,7 @@ class BinarySearchTree implements IBinarySearchTree {
     private Node root;
     private int size;
     private int maxSize;
+    private int counter = 0;
 
     BinarySearchTree(int maxSize) {
         this.maxSize = maxSize;
@@ -101,7 +102,13 @@ class BinarySearchTree implements IBinarySearchTree {
 
     @Override
     public void findTwoChildes() {
+        System.out.print(findTwoChildesWrapper(root));
+    }
 
+    private int findTwoChildesWrapper(Node root) {
+        counter = 0;
+        
+        return counter;
     }
 
     @Override
@@ -134,7 +141,7 @@ public class Ld4_30 {
 
             do {
                 System.out.println("1: Pievenot elementu");
-                System.out.println("2: Parādīt koku");
+                System.out.println("2: Parādīt koku (Postorderālais apgaits)");
                 System.out.println("3: Atrast cik kokā ir virsotņu ar diviem bērniem");
                 System.out.println("4: Saskaitīt cik kokā ir pāra elementu");
                 System.out.print("\nIzvēlēties saskarnes vērtību: ");
@@ -160,6 +167,7 @@ public class Ld4_30 {
                         break;
                     case 3:
                         treeIsNotCreated();
+                        tree.findTwoChildes();
                         break;
                     case 4:
                         treeIsNotCreated();

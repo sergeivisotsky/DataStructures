@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Ld4_30Test {
+    private Random random = new Random();
     private int iterator = 15;
     private BinarySearchTree tree = new BinarySearchTree(iterator);
 
@@ -20,7 +21,7 @@ class Ld4_30Test {
     @Test
     void treeIsFullTest() {
         for (int i = 0; i < iterator; i++) {
-            tree.insert(i);
+            tree.insert(random.nextInt(99) + 1);
         }
 
         assertTrue(tree.isFull());
@@ -39,9 +40,8 @@ class Ld4_30Test {
 
     @Test
     void createTreeAndPostorderOutputTest() {
-        Random rd = new Random();
         for (int i = 0; i < iterator; i++) {
-            tree.insert(rd.nextInt(15));
+            tree.insert(random.nextInt(99) + 1);
         }
 
         tree.postorderOutput();
@@ -51,7 +51,10 @@ class Ld4_30Test {
 
     @Test
     void findTwoChildesTest() {
-
+        for (int i = 0; i < iterator; i++) {
+            tree.insert(random.nextInt(50));
+        }
+        tree.findTwoChildes();
     }
 
     @Test
