@@ -2,6 +2,8 @@ package Ld4_30;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,11 +39,14 @@ class Ld4_30Test {
 
     @Test
     void createTreeAndPostorderOutputTest() {
+        Random rd = new Random();
         for (int i = 0; i < iterator; i++) {
-            tree.insert(iterator);
+            tree.insert(rd.nextInt(15) + 1);
         }
 
         tree.postorderOutput();
+        assertTrue(!tree.isEmpty());
+        assertEquals(iterator, tree.getSize());
     }
 
     @Test
