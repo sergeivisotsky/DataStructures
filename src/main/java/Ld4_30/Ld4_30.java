@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 interface IBinarySearchTree {
-    Node insert(int element);
+    void insert(int element);
 
     void postorderOutput();
 
@@ -20,30 +20,26 @@ interface IBinarySearchTree {
     boolean isFull();
 }
 
-class Node {
-    int data;
-    Node left;
-    Node right;
-
-    Node(int data) {
-        this.data = data;
-        left = null;
-        right = null;
-    }
-}
 
 class BinarySearchTree implements IBinarySearchTree {
+    class Node {
+        int data;
+        Node left;
+        Node right;
 
+        Node(int data) {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+    }
 
-    private Node root = null;
-    //    private Node parent;
+    private Node root;
     private int size;
     private int maxSize;
 
     BinarySearchTree(int maxSize) {
         this.maxSize = maxSize;
-//        root = null;
-//        parent = null;
     }
 
     @Override
@@ -62,37 +58,45 @@ class BinarySearchTree implements IBinarySearchTree {
     }
 
     @Override
-    public Node insert(int element) {
-        Node node = new Node(element);
-        if (!isFull()) {
-            if (element <= node.data) {
-                if (node.left == null) {
-                    node.left = new Node(element);
-                } else {
-                    node.left = insert(element);
-                }
-            } else {
-                if (node.right == null) {
-                    node.right = new Node(element);
-                } else {
-                    node.right = insert(element);
-                }
-            }
-        }
+    public void insert(int element) {
+        root = insertWrapper(root, element);
         size++;
+    }
+
+    private Node insertWrapper(Node node, int element) {
+        if (node == null) {
+            return new Node(element);
+        }
+
+        Node newSubtree;
+        if (element < node.data) {
+            newSubtree = insertWrapper(node.left, element);
+            node.left = newSubtree;
+            return node;
+        } else if (element > node.data) {
+            newSubtree = insertWrapper(node.right, element);
+            node.right = newSubtree;
+            return node;
+        }
         return node;
     }
 
     @Override
     public void postorderOutput() {
-        Node node = root;
-        if (isEmpty()) {
-            throw new IllegalStateException("Koks ir tukšs!");
-        }
+        postorderWrapper(root);
+    }
 
-        postorderOutput();
-        System.out.print(node.left + "\t");
-        postorderOutput();
+    private void postorderWrapper(Node root) {
+        if (root != null) {
+            if (isEmpty()) {
+                throw new IllegalStateException("Koks ir tukšs!");
+            }
+
+            postorderWrapper(root.left);
+            postorderWrapper(root.right);
+            System.out.print(root.data + "\t");
+
+        }
     }
 
     @Override
@@ -148,8 +152,10 @@ public class Ld4_30 {
                         break;
                     case 2:
                         treeIsNotCreated();
-                        if (!tree.isFull()) {
+                        if (!tree.isEmpty()) {
                             tree.postorderOutput();
+                        } else {
+                            System.out.println("Kokā nav neviena elementa!");
                         }
                         break;
                     case 3:
