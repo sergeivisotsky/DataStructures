@@ -51,17 +51,26 @@ class Ld4_30Test {
 
     @Test
     void countNodesWithTwoChildrenTest() {
-        for (int i = 0; i < iterator; i++) {
-            tree.insert(random.nextInt(50));
-        }
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(15);
+        tree.insert(25);
+        tree.insert(50);
+        tree.insert(28);
+
         tree.countNodesWithTwoChildren();
     }
 
     @Test
     void evenElementQuantity() {
-        for (int i = 0; i < iterator; i++) {
-            tree.insert(random.nextInt(50));
-        }
+        tree.insert(5);
+        tree.insert(4);
+        tree.insert(2);
+        tree.insert(3);
+        tree.insert(6);
+        tree.insert(9);
+        tree.insert(8);
         tree.evenElementQuantity();
     }
 }

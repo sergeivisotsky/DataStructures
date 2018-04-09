@@ -105,7 +105,7 @@ class BinarySearchTree implements IBinarySearchTree {
                 countNodesWithTwoChildrenWrapper(root));
     }
 
-    private int countNodesWithTwoChildrenWrapper(Node node) {
+    public int countNodesWithTwoChildrenWrapper(Node node) {
         if (node == null) {
             return 0;
         }
@@ -123,7 +123,7 @@ class BinarySearchTree implements IBinarySearchTree {
         System.out.print(
                 evenElementQuantityWrapper(root));
     }
-
+    
     private int evenElementQuantityWrapper(Node root) {
         if (root == null) {
             return 0;
