@@ -124,21 +124,19 @@ class BinarySearchTree implements IBinarySearchTree {
                 evenElementQuantityWrapper(root));
     }
 
-    private int evenElementQuantityWrapper(Node node) {
-        if (node == null) {
+    private int evenElementQuantityWrapper(Node root) {
+        if (root == null) {
             return 0;
         }
 
-        int value = 0;
+        int value = evenElementQuantityWrapper(root.left) +
+                evenElementQuantityWrapper(root.right);
 
-        if (node.data % 2 == 0) {
-            value = node.data;
+        if (root.data % 2 == 0) {
+            return value + 1;
+        } else {
+            return value;
         }
-
-        // FIXME: Returns a huge amount of even element!!!!!!!!!!
-        return value +
-                evenElementQuantityWrapper(node.left) +
-                evenElementQuantityWrapper(node.right);
     }
 }
 
