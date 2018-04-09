@@ -58,9 +58,18 @@ class Ld4_30Test {
         tree.insert(25);
         tree.insert(50);
         tree.insert(28);
-
-        tree.countNodesWithTwoChildren();
+        assertEquals(2, tree.countNodesWithTwoChildren());
     }
+
+    /**
+     *            20
+     *        /       \
+     *       10       30
+     *     /   \     /  \
+     *    5     15  25   50
+     *                \
+     *                 28
+     */
 
     @Test
     void evenElementQuantity() {
@@ -72,5 +81,6 @@ class Ld4_30Test {
         tree.insert(9);
         tree.insert(8);
         tree.evenElementQuantity();
+        assertEquals(4, tree.evenElementQuantity());
     }
 }

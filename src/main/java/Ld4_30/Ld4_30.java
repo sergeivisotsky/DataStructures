@@ -9,9 +9,9 @@ interface IBinarySearchTree {
 
     void postorderOutput();
 
-    void countNodesWithTwoChildren();
+    int countNodesWithTwoChildren();
 
-    void evenElementQuantity();
+    int evenElementQuantity();
 
     int getSize();
 
@@ -100,12 +100,11 @@ class BinarySearchTree implements IBinarySearchTree {
     }
 
     @Override
-    public void countNodesWithTwoChildren() {
-        System.out.print(
-                countNodesWithTwoChildrenWrapper(root));
+    public int countNodesWithTwoChildren() {
+        return countNodesWithTwoChildrenWrapper(root);
     }
 
-    public int countNodesWithTwoChildrenWrapper(Node node) {
+    private int countNodesWithTwoChildrenWrapper(Node node) {
         if (node == null) {
             return 0;
         }
@@ -114,16 +113,16 @@ class BinarySearchTree implements IBinarySearchTree {
             return 1 + countNodesWithTwoChildrenWrapper(node.left) +
                     countNodesWithTwoChildrenWrapper(node.right);
         }
+
         return countNodesWithTwoChildrenWrapper(node.left) +
                 countNodesWithTwoChildrenWrapper(node.right);
     }
 
     @Override
-    public void evenElementQuantity() {
-        System.out.print(
-                evenElementQuantityWrapper(root));
+    public int evenElementQuantity() {
+        return evenElementQuantityWrapper(root);
     }
-    
+
     private int evenElementQuantityWrapper(Node root) {
         if (root == null) {
             return 0;
@@ -190,11 +189,13 @@ public class Ld4_30 {
                         break;
                     case 3:
                         treeIsNotCreated();
-                        tree.countNodesWithTwoChildren();
+                        System.out.println(
+                                tree.countNodesWithTwoChildren());
                         break;
                     case 4:
                         treeIsNotCreated();
-                        tree.evenElementQuantity();
+                        System.out.println(
+                                tree.evenElementQuantity());
                         break;
                     default:
                         throw new IllegalStateException("Ievadīta nepieņēmama vērtība!");
