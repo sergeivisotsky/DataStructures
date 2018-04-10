@@ -55,22 +55,22 @@ class Ld4_30Test {
         tree.insert(10);
         tree.insert(5);
         tree.insert(15);
+        tree.insert(30);
         tree.insert(25);
         tree.insert(50);
         tree.insert(28);
-        assertEquals(2, tree.countNodesWithTwoChildren());
+        assertEquals(3, tree.countNodesWithTwoChildren());
     }
 
     /**
-     *                20
-     *             /     \
-     *           /        \
-     *         /           \
-     *       10            50
-     *     /   \          /
-     *    5     15      25
-     *                 /
-     *               28
+     *              20
+     *           /     \
+     *         /        \
+     *       10         30
+     *     /   \       /  \
+     *    5     15   25    28
+     *                      \
+     *                      50
      */
 
     @Test
