@@ -181,29 +181,17 @@ public class Ld4_30 {
                         break;
                     case 2:
                         treeIsNotCreated();
-                        if (!tree.isEmpty()) {
-                            tree.postorderOutput();
-                        } else {
-                            System.out.println("Kokā nav neviena elementa!");
-                        }
+                        tree.postorderOutput();
                         break;
                     case 3:
                         treeIsNotCreated();
-                        if (!tree.isEmpty()) {
-                            System.out.println(
-                                    tree.countNodesWithTwoChildren());
-                        } else {
-                            System.out.println("Kokā nav neviena elementa!");
-                        }
+                        System.out.println(
+                                tree.countNodesWithTwoChildren());
                         break;
                     case 4:
                         treeIsNotCreated();
-                        if (!tree.isEmpty()) {
-                            System.out.println(
-                                    tree.evenElementQuantity());
-                        } else {
-                            System.out.println("Kokā nav neviena elementa!");
-                        }
+                        System.out.println(
+                                tree.evenElementQuantity());
                         break;
                     default:
                         throw new IllegalStateException("Ievadīta nepieņēmama vērtība!");
