@@ -104,18 +104,18 @@ class BinarySearchTree implements IBinarySearchTree {
         return countNodesWithTwoChildrenWrapper(root);
     }
 
-    private int countNodesWithTwoChildrenWrapper(Node node) {
-        if (node == null) {
+    private int countNodesWithTwoChildrenWrapper(Node root) {
+        if (root == null) {
             return 0;
         }
 
-        if (node.left != null && node.right != null) {
-            return 1 + countNodesWithTwoChildrenWrapper(node.left) +
-                    countNodesWithTwoChildrenWrapper(node.right);
+        if (root.left != null && root.right != null) {
+            return 1 + countNodesWithTwoChildrenWrapper(root.left) +
+                    countNodesWithTwoChildrenWrapper(root.right);
         }
 
-        return countNodesWithTwoChildrenWrapper(node.left) +
-                countNodesWithTwoChildrenWrapper(node.right);
+        return countNodesWithTwoChildrenWrapper(root.left) +
+                countNodesWithTwoChildrenWrapper(root.right);
     }
 
     @Override
