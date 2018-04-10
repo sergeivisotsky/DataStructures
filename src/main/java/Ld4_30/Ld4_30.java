@@ -157,7 +157,8 @@ public class Ld4_30 {
             System.out.print("Koka garums (max 15): ");
             treeSize = Integer.parseInt(input.readLine());
             if (treeSize > 15) {
-                throw new IllegalStateException("Koka garums nevar saturēt vairāk nekā 15 elementu!");
+                throw new IllegalStateException("Koka garums nevar " +
+                        "saturēt vairāk nekā 15 elementu!");
             }
             BinarySearchTree tree = new BinarySearchTree(treeSize);
 
