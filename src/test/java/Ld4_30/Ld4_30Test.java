@@ -73,7 +73,7 @@ class Ld4_30Test {
         insertableElements();
         assertEquals(3, tree.countNodesWithTwoChildren());
     }
-    
+
     @Test
     void evenElementQuantity() {
         insertableElements();
