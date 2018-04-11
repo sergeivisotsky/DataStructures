@@ -168,7 +168,7 @@ public class Ld4_30 {
                 System.out.println("3: Atrast cik kokā ir virsotņu ar diviem bērniem");
                 System.out.println("4: Saskaitīt cik kokā ir pāra elementu");
                 System.out.print("\nIzvēlēties saskarnes vērtību: ");
-                 answer = Integer.parseInt(input.readLine());
+                answer = Integer.parseInt(input.readLine());
                 switch (answer) {
                     case 1:
                         if (!tree.isFull()) {
