@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleLinkedListTest {
-    DoubleLinkedList linkedList = new DoubleLinkedList();
+    private DoubleLinkedList linkedList = new DoubleLinkedList();
 
     @Test
     void isEmptyTest() {
