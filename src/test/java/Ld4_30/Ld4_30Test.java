@@ -28,6 +28,17 @@ class Ld4_30Test {
         assertEquals(iterator, tree.getSize());
     }
 
+    private void insertableElements() {
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(15);
+        tree.insert(30);
+        tree.insert(25);
+        tree.insert(50);
+        tree.insert(28);
+    }
+
     @Test
     void insertElementTest() {
         for (int i = 0; i < iterator; i++) {
@@ -40,49 +51,33 @@ class Ld4_30Test {
 
     @Test
     void createTreeAndPostorderOutputTest() {
-        for (int i = 0; i < iterator; i++) {
-            tree.insert(random.nextInt(99) + 1);
-        }
-
+        insertableElements();
         tree.postorderOutput();
         assertTrue(!tree.isEmpty());
-        assertEquals(iterator, tree.getSize());
+        assertEquals(8, tree.getSize());
     }
 
     @Test
     void countNodesWithTwoChildrenTest() {
-        tree.insert(20);
-        tree.insert(10);
-        tree.insert(5);
-        tree.insert(15);
-        tree.insert(30);
-        tree.insert(25);
-        tree.insert(50);
-        tree.insert(28);
+        insertableElements();
         assertEquals(3, tree.countNodesWithTwoChildren());
     }
 
     /**
-     *              20
-     *           /     \
-     *         /        \
-     *       10         30
-     *     /   \       /  \
-     *    5     15   25    28
-     *                      \
-     *                      50
+     * 20
+     * /     \
+     * /        \
+     * 10         30
+     * /   \       /  \
+     * 5     15   25    28
+     * \
+     * 50
      */
 
     @Test
     void evenElementQuantity() {
-        tree.insert(5);
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(3);
-        tree.insert(6);
-        tree.insert(9);
-        tree.insert(8);
+        insertableElements();
         tree.evenElementQuantity();
-        assertEquals(4, tree.evenElementQuantity());
+        assertEquals(5, tree.evenElementQuantity());
     }
 }
