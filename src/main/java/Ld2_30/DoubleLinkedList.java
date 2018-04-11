@@ -122,8 +122,7 @@ public class DoubleLinkedList<E> implements IList<E> {
                         }
                         break;
                     case 6:
-                        System.out.print("Empty status: ");
-                        linkedList.isEmpty();
+                        System.out.print("Empty status: " + linkedList.isEmpty());
                         break;
                     default:
                         throw new IllegalStateException("Illegal state!");
