@@ -120,7 +120,7 @@ public class Ld1_Example {
                         st = br.readLine();
                         searchKey = Integer.parseInt(st);
                     } catch (Exception e) {
-                        System.out.println("input-output error");
+                        System.out.println("input-display error");
                         return;
                     }
                     for (i = 0; i < B.length; i++) {
@@ -154,7 +154,7 @@ public class Ld1_Example {
                         st = br.readLine();
                         searchKey = Integer.parseInt(st);
                     } catch (Exception e) {
-                        System.out.println("input-output error");
+                        System.out.println("input-display error");
                         return;
                     }
 

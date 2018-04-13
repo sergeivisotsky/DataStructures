@@ -12,7 +12,7 @@ public class Ld1_30_WithUtilVector {
     private static Vector<Integer> vector = new Vector<>();
 
     /**
-     * Array creation and output method
+     * Array creation and display method
      */
     private static void arrayCreationAndOutput() {
         Random rd = new Random();
@@ -24,7 +24,7 @@ public class Ld1_30_WithUtilVector {
             }
         }
 
-        // Array output
+        // Array display
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j <= array.length - 1; j++) {
                 System.out.print(array[i][j] + "\t");
@@ -35,7 +35,7 @@ public class Ld1_30_WithUtilVector {
     }
 
     /**
-     * Vector with non homagen creation and output
+     * Vector with non homagen creation and display
      */
     private static void vectorCreationAndOutput() {
         vector.setSize((array.length *
@@ -125,7 +125,7 @@ public class Ld1_30_WithUtilVector {
                         Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        arrayCreationAndOutput(); // Create and output array
+                        arrayCreationAndOutput(); // Create and display array
                         inputValueChecker = true;
                         break;
                     case 2:
@@ -134,7 +134,7 @@ public class Ld1_30_WithUtilVector {
                             System.out.println("Sākuma nepieciešams izveidot masīvu");
                             continue;
                         }
-                        vectorCreationAndOutput(); // Create and output vector
+                        vectorCreationAndOutput(); // Create and display vector
                         vectorCreated = true;
                         break;
                     case 3:

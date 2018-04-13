@@ -12,7 +12,7 @@ public class Ld1_30_WithoutUtilsVector {
             new int[(array.length * (array.length + 1)) / 2];
 
     /**
-     * Array creation and output method
+     * Array creation and display method
      */
     protected void arrayCreationAndOutput() {
         Random rd = new Random();
@@ -24,7 +24,7 @@ public class Ld1_30_WithoutUtilsVector {
             }
         }
 
-        // Array output
+        // Array display
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j <= array.length - 1; j++) {
                 System.out.print(array[i][j] + "\t");
@@ -35,7 +35,7 @@ public class Ld1_30_WithoutUtilsVector {
     }
 
     /**
-     * Vector with non homagen creation and output
+     * Vector with non homagen creation and display
      */
     protected void vectorCreationAndOutput() {
 
@@ -129,7 +129,7 @@ public class Ld1_30_WithoutUtilsVector {
                 switch (choiceAnswer) {
                     case 1:
                         ld1_30_withoutUtilsVector
-                                .arrayCreationAndOutput(); // Create and output array
+                                .arrayCreationAndOutput(); // Create and display array
                         inputValueChecker = true;
                         break;
                     case 2:
@@ -139,7 +139,7 @@ public class Ld1_30_WithoutUtilsVector {
                             continue;
                         }
                         ld1_30_withoutUtilsVector
-                                .vectorCreationAndOutput(); // Create and output vector
+                                .vectorCreationAndOutput(); // Create and display vector
                         vectorCreated = true;
                         break;
                     case 3:

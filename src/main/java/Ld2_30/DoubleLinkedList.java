@@ -1,8 +1,11 @@
 package Ld2_30;
 
+import Ld3_30.LinkedQueue;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 
 interface IList<E> {
     boolean isEmpty();
@@ -13,17 +16,17 @@ interface IList<E> {
 
     void insert(E element);
 
-    void output();
+    void display();
 
     void delete(E element, E position);
 }
 
 class NodeD<E> {
-    private E data;
+    E data;
     NodeD prev;
     NodeD next;
 
-    public NodeD(E data) {
+    NodeD(E data) {
         this.data = data;
     }
 }
@@ -52,20 +55,33 @@ public class DoubleLinkedList<E> implements IList<E> {
     @Override
     public void insert(E element) {
         NodeD<E> node = new NodeD<>(element);
-        if (head == null) {
+        // TODO: Insert function up to the end!!!!!!!
+        if (isEmpty()) {
             head = node;
-            node.next = head;
             node.prev = head;
+            node.next = node;
             tail = head;
+        } else {
+            node.next = head;
+            node.next = node.prev;
+            node.next = node;
+            tail = node;
         }
-
-
         size++;
     }
 
     @Override
-    public void output() {
+    public void display() {
+        NodeD<E> node = head;
+        // TODO: Display function up to the end!!!!!!!!
+        if (!isEmpty()) {
+            throw new IllegalStateException("List is empty!");
+        }
 
+        if (head.next == head) {
+            System.out.print(head.data + "\t" +
+                    node.prev + "\t" + node.next);
+        }
     }
 
     @Override
@@ -80,7 +96,7 @@ public class DoubleLinkedList<E> implements IList<E> {
                 new BufferedReader(
                         new InputStreamReader(System.in));
         try {
-            DoubleLinkedList<String> linkedList =
+            DoubleLinkedList<String> list =
                     new DoubleLinkedList<String>();
             int answer;
             String yesNoAnswer;
@@ -97,32 +113,38 @@ public class DoubleLinkedList<E> implements IList<E> {
                 answer = Integer.parseInt(input.readLine());
                 switch (answer) {
                     case 1:
-                        System.out.print("Add element: ");
-                        element = input.readLine();
-                        linkedList.insert(element);
-                        linkedList.listCreated = true;
+                        if (!list.isFull()) {
+                            System.out.print("Add element: ");
+                            element = input.readLine();
+                            list.insert(element);
+                        } else {
+                            System.out.println("List is empty!");
+                        }
+                        list.listCreated = true;
                         break;
                     case 2:
-                        linkedList.listCreated();
-
+                        list.listCreated();
+                        if (!list.isEmpty()) {
+                            list.display();
+                        }
                         break;
                     case 3:
-                        linkedList.listCreated();
+                        list.listCreated();
                         break;
                     case 4:
-                        linkedList.listCreated();
+                        list.listCreated();
                         break;
                     case 5:
-                        linkedList.listCreated();
-                        if (!linkedList.isEmpty()) {
+                        list.listCreated();
+                        if (!list.isEmpty()) {
                             System.out.print("List size: " +
-                                    linkedList.getSize());
+                                    list.getSize());
                         } else {
                             throw new IllegalStateException("List is empty!");
                         }
                         break;
                     case 6:
-                        System.out.print("Empty status: " + linkedList.isEmpty());
+                        System.out.print("Empty status: " + list.isEmpty());
                         break;
                     default:
                         throw new IllegalStateException("Illegal state!");
