@@ -3,6 +3,8 @@
 *.classpath
 *.project
 
+DoublyLinkedList_example.java
+
 # Package Files #
 *.jar
 *.war
