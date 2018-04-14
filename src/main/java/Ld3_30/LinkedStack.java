@@ -18,7 +18,7 @@ interface IStack {
 
     void pop();
 
-    void intervalNumbers();
+    int intervalNumbers();
 }
 
 public class LinkedStack implements IStack {
@@ -73,17 +73,49 @@ public class LinkedStack implements IStack {
 
     @Override
     public void displayStack() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty!");
+        }
+        if (head.next == null) {
+            System.out.print(head.data);
+            return;
+        }
+        Node node;
+        System.out.print(head.data + "\t");
+        node = head.next;
 
+        while (node.next != null) {
+            System.out.print(node.data + "\t");
+            node = node.next;
+        }
     }
 
     @Override
     public void pop() {
+        if (size == 1) {
+            head = null;
+            tail = null;
+            size = 0;
+            return;
+        }
 
+        head = head.next;
+        head.prev = null;
+        size--;
     }
 
     @Override
-    public void intervalNumbers() {
-
+    public int intervalNumbers() {
+        int counter = 0;
+        Node node;
+        for (node = head;
+             node != tail;
+             node = node.next) {
+            if (node.data >= -10 && node.data <= 10) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     private static boolean stackCreated = false; // Checks if queue was created
@@ -107,9 +139,9 @@ public class LinkedStack implements IStack {
             System.out.println("1: push");
             System.out.println("2: pop");
             System.out.println("3: getSize");
-            System.out.println("5: isEmpty?");
-            System.out.println("6: isFull?");
-            System.out.println("7: intervalNumbers");
+            System.out.println("4: isEmpty?");
+            System.out.println("5: isFull?");
+            System.out.println("6: intervalNumbers");
 
             boolean endSession = false; // checks whether user closed session
             int choiceAnswer; // Operation to be performed
@@ -140,7 +172,11 @@ public class LinkedStack implements IStack {
                         break;
                     case 2:
                         stackCreated();
-
+                        if (!stack.isEmpty()) {
+                            stack.pop();
+                        } else {
+                            System.out.println("Stack is empty!");
+                        }
                         break;
                     case 3:
                         stackCreated();
@@ -148,14 +184,10 @@ public class LinkedStack implements IStack {
                                 stack.getSize());
                         break;
                     case 4:
-                        stackCreated();
-
-                        break;
-                    case 5:
                         System.out.println("Empty status: " +
                                 stack.isEmpty());
                         break;
-                    case 6:
+                    case 5:
                         stackCreated();
                         if (stack.isFull()) {
                             System.out.println("Stack is full!");
@@ -163,9 +195,14 @@ public class LinkedStack implements IStack {
                             System.out.println("Stack is not full!");
                         }
                         break;
-                    case 7:
+                    case 6:
                         stackCreated();
-
+                        if (!stack.isEmpty()) {
+                            System.out.println("Number of elements in interval [-10; 10]: " +
+                                    stack.intervalNumbers());
+                        } else {
+                            System.out.println("Stack is empty!");
+                        }
                         break;
                     default:
                         throw new IllegalStateException("Number is not allowed!");

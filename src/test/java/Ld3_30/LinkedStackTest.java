@@ -13,8 +13,7 @@ class LinkedStackTest {
         assertEquals(0, stack.getSize());
     }
 
-    @Test
-    void pushTest() {
+    private void pushableElements() {
         stack.push(90);
         stack.push(7);
         stack.push(3);
@@ -22,7 +21,33 @@ class LinkedStackTest {
         stack.push(4);
         stack.push(56);
         stack.push(7);
+        stack.push(5);
+        stack.push(78);
+        stack.push(36);
+    }
 
+    @Test
+    void pushTest() {
+        pushableElements();
+        assertTrue(!stack.isEmpty() && !stack.isFull());
+        assertEquals(7, stack.getSize());
+        stack.displayStack();
+    }
 
+    @Test
+    void popTest() {
+        pushableElements();
+        System.out.println("Before: ");
+        stack.displayStack();
+        stack.pop();
+        System.out.println("\nAfter: ");
+        stack.displayStack();
+        assertEquals(9, stack.getSize());
+    }
+
+    @Test
+    void intervalNumbersTest() {
+        pushableElements();
+        assertEquals(5, stack.intervalNumbers());
     }
 }
