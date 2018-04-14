@@ -2,8 +2,6 @@ package Ld3_30;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorQueueTest {
@@ -31,7 +29,7 @@ class VectorQueueTest {
             queue.enQueue(i);
         }
 
-        queue.outputQueue();
+        queue.displayStack();
     }
 
     @Test
@@ -40,10 +38,10 @@ class VectorQueueTest {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
-        queue.outputQueue();
+        queue.displayStack();
         assertEquals(number, queue.deQueue());
         System.out.println();
-        queue.outputQueue();
+        queue.displayStack();
     }
 
     @Test

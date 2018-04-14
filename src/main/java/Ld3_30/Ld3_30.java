@@ -16,7 +16,7 @@ interface IQueue {
 
     Object deQueue();
 
-    void outputQueue();
+    void displayStack();
 
     Object peek();
 
@@ -69,7 +69,7 @@ class VectorQueue implements IQueue {
     }
 
     @Override
-    public void outputQueue() {
+    public void displayStack() {
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
                 System.out.print(queue[i] + "\t");
@@ -152,7 +152,7 @@ public class Ld3_30 {
                                     "Ievietot elementu vairs nav iespējams!");
                         }
                         System.out.println("\nIzveidota rinda:");
-                        queue.outputQueue();
+                        queue.displayStack();
                         queueCreated = true;
                         break;
                     case 2:
@@ -165,7 +165,7 @@ public class Ld3_30 {
                             System.out.print("Izejas elements: " +
                                     queue.deQueue());
                             System.out.println("\nIzveidota rinda:");
-                            queue.outputQueue();
+                            queue.displayStack();
                         } else {
                             System.out.println("Rinda ir tukša!");
                             continue;

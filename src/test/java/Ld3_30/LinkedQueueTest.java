@@ -31,7 +31,7 @@ class LinkedQueueTest {
             linkedQueue.enQueue((int) (Math.random() * 100));
         }
 
-        linkedQueue.outputQueue();
+        linkedQueue.displayStack();
         assertTrue(!linkedQueue.isEmpty());
         assertEquals(10, linkedQueue.getSize());
     }
@@ -39,7 +39,7 @@ class LinkedQueueTest {
     @Test
     public void enEnqueueOneAndOutputTest() {
         linkedQueue.enQueue(80);
-        linkedQueue.outputQueue();
+        linkedQueue.displayStack();
         assertTrue(!linkedQueue.isEmpty());
         assertEquals(1, linkedQueue.getSize());
     }

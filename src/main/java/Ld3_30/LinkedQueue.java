@@ -66,7 +66,7 @@ public class LinkedQueue implements IQueue {
     }
 
     @Override
-    public void outputQueue() {
+    public void displayStack() {
         NodeA nodeA = head;
         if (isEmpty()) {
             System.out.println("Saraksts ir tukšs!");
@@ -137,7 +137,7 @@ public class LinkedQueue implements IQueue {
                     break;
                 case 2:
                     if (!linkedQueue.isEmpty()) {
-                        linkedQueue.outputQueue();
+                        linkedQueue.displayStack();
                     } else {
                         throw new IllegalStateException("Queue is empty!");
                     }
