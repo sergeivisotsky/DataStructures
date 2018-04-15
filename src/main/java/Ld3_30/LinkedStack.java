@@ -128,7 +128,6 @@ public class LinkedStack implements IStack {
             System.out.println("5: isFull?");
             System.out.println("6: intervalNumbers");
 
-            boolean endSession = false; // checks whether user closed session
             int choiceAnswer; // Operation to be performed
 
             int elementToBeAdded; // Element to be added to the list

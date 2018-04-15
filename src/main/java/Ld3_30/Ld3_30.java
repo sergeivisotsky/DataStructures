@@ -66,7 +66,6 @@ class VectorQueue implements IQueue {
         return queue[0];
     }
 
-    @Override
     public int negativeNumberQuantity() {
         int counter = 0;
         for (int i = 0; i < size; i++) {
