@@ -165,8 +165,7 @@ public class LinkedStack implements IStack {
                         }
 
                         if (stack.isFull()) {
-                            System.out.println("\nRinda ir pilna!" + "\n" +
-                                    "Ievietot elementu vairs nav iespējams!");
+                            System.out.println("\nStack if full!");
                         }
                         stackCreated = true;
                         break;
