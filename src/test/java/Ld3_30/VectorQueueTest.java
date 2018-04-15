@@ -88,12 +88,6 @@ class VectorQueueTest {
     }
 
     @Test
-    void removeOnEmptyQueueTest() {
-        assertTrue(queue.isEmpty());
-        queue.deQueue();
-    }
-
-    @Test
     void peekIntoEmptyQueueTest() {
         assertTrue(queue.isEmpty());
         queue.peek();
