@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorQueueTest {
-    protected VectorQueue queue = new VectorQueue(10);
+    private VectorQueue queue = new VectorQueue(10);
     private int iterator = 10;
 
     @Test
-    public void newQueueIsEmptyTest() {
+    void newQueueIsEmptyTest() {
         assertTrue(queue.isEmpty());
         assertEquals(0, queue.getSize());
     }
 
     @Test
-    public void insertsToEmptyQueueTest() {
+    void insertsToEmptyQueueTest() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
@@ -24,28 +24,28 @@ class VectorQueueTest {
     }
 
     @Test
-    public void enQueueAndOutput() {
+    void enQueueAndOutput() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
 
-        queue.displayStack();
+        queue.displayQueue();
     }
 
     @Test
-    public void enQueueThenDequeueTest() {
+    void enQueueThenDequeueTest() {
         int number = 0;
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
-        queue.displayStack();
+        queue.displayQueue();
         assertEquals(number, queue.deQueue());
         System.out.println();
-        queue.displayStack();
+        queue.displayQueue();
     }
 
     @Test
-    public void enQueueThenPeekTest() {
+    void enQueueThenPeekTest() {
         int number = 19;
         queue.enQueue(number);
         int size = queue.getSize();
@@ -54,7 +54,7 @@ class VectorQueueTest {
     }
 
     @Test
-    public void tenInThenTenOutTest() {
+    void tenInThenTenOutTest() {
         for (int i = 0; i < 10; i++) {
             queue.enQueue(i);
         }
@@ -64,7 +64,7 @@ class VectorQueueTest {
     }
 
     @Test
-    public void removingDownToEmptyTest() {
+    void removingDownToEmptyTest() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
@@ -76,19 +76,31 @@ class VectorQueueTest {
     }
 
     @Test
-    public void removeOnEmptyQueueTest() {
+    void enQueueDequeueOutputTest() {
+        for (int i = 0; i < iterator; i++) {
+            queue.enQueue(i);
+        }
+        System.out.println("Before: ");
+        queue.displayQueue();
+        queue.deQueue();
+        System.out.println("\nAfter: ");
+        queue.displayQueue();
+    }
+
+    @Test
+    void removeOnEmptyQueueTest() {
         assertTrue(queue.isEmpty());
         queue.deQueue();
     }
 
     @Test
-    public void peekIntoEmptyQueueTest() {
+    void peekIntoEmptyQueueTest() {
         assertTrue(queue.isEmpty());
         queue.peek();
     }
 
     @Test
-    public void negativeElementQuantityTest() {
+    void negativeElementQuantityTest() {
         int element = -1;
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(element);

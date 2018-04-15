@@ -51,25 +51,26 @@ public class LinkedQueue implements IQueue {
 
     @Override
     public Object deQueue() {
-        NodeA temp = head;
+        NodeA temp = tail;
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty!");
         } else if (size == 1) {
             head = null;
             tail = null;
         } else {
-            head = head.next;
-            tail.next = head;
+//            head = head.next;
+            tail = null;
+            tail = head.next;
         }
         size--;
         return temp.data;
     }
 
     @Override
-    public void displayStack() {
+    public void displayQueue() {
         NodeA nodeA = head;
         if (isEmpty()) {
-            System.out.println("Saraksts ir tukšs!");
+            System.out.println("Queue is empty!");
             return;
         }
 
@@ -137,7 +138,7 @@ public class LinkedQueue implements IQueue {
                     break;
                 case 2:
                     if (!linkedQueue.isEmpty()) {
-                        linkedQueue.displayStack();
+                        linkedQueue.displayQueue();
                     } else {
                         throw new IllegalStateException("Queue is empty!");
                     }

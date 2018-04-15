@@ -16,41 +16,26 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void enQueueEmptyQueueTest() {
+    public void enQueueAndOutputTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
 
-        assertTrue(!linkedQueue.isEmpty());
-        assertEquals(iterator, linkedQueue.getSize());
-    }
-
-    @Test
-    public void enQueueAndOutputTest() {
-        for (int i = 0; i < iterator; i++) {
-            linkedQueue.enQueue((int) (Math.random() * 100));
-        }
-
-        linkedQueue.displayStack();
+        linkedQueue.displayQueue();
         assertTrue(!linkedQueue.isEmpty());
         assertEquals(10, linkedQueue.getSize());
     }
 
     @Test
-    public void enEnqueueOneAndOutputTest() {
-        linkedQueue.enQueue(80);
-        linkedQueue.displayStack();
-        assertTrue(!linkedQueue.isEmpty());
-        assertEquals(1, linkedQueue.getSize());
-    }
-
-    @Test
     public void enqueueThanDequeueTest() {
-        int number = 80;
-        linkedQueue.enQueue(number);
-        assertEquals(number, linkedQueue.deQueue());
-        assertTrue(linkedQueue.isEmpty());
-        assertEquals(0, linkedQueue.getSize());
+        for (int i = 0; i < iterator; i++) {
+            linkedQueue.enQueue(i);
+        }
+        System.out.println("Before: ");
+        linkedQueue.displayQueue();
+        linkedQueue.deQueue();
+        System.out.println("\nAfter: ");
+        linkedQueue.displayQueue();
     }
 
     @Test
@@ -60,17 +45,6 @@ class LinkedQueueTest {
         int size = linkedQueue.getSize();
         assertEquals(number, linkedQueue.peek());
         assertEquals(size, linkedQueue.getSize());
-    }
-
-    @Test
-    public void tenInAndThenTenOutTest() {
-        for (int i = 0; i < iterator; i++) {
-            linkedQueue.enQueue(i);
-        }
-
-        for (int i = iterator - 1; i > 0; i--) {
-            assertEquals(i, ((Integer) linkedQueue.deQueue()).intValue());
-        }
     }
 
     @Test
