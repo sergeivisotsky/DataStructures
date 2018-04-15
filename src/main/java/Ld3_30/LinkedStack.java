@@ -5,22 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-interface IStack {
-    boolean isFull();
-
-    int getSize();
-
-    boolean isEmpty();
-
-    void push(int element);
-
-    void displayStack();
-
-    void pop();
-
-    int intervalNumbers();
-}
-
 public class LinkedStack implements IStack {
 
     class Node {
