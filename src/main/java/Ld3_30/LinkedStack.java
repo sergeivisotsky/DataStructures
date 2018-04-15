@@ -156,7 +156,7 @@ public class LinkedStack implements IStack {
                                 br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        while (!stack.isFull()) {
+                        if (!stack.isFull()) {
                             System.out.print("Number: ");
                             elementToBeAdded =
                                     Integer.parseInt(
