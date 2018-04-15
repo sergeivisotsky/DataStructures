@@ -20,9 +20,9 @@ public class LinkedStack implements IStack {
     private int size = 0;
     private Node head = null;
     private Node tail = null;
-    public int maxSize;
+    private int maxSize;
 
-    public LinkedStack(int maxSize) {
+    LinkedStack(int maxSize) {
         this.maxSize = maxSize;
     }
 
