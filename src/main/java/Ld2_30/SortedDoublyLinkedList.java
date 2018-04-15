@@ -1,13 +1,16 @@
 package Ld2_30;
 
-import Ld3_30.LinkedStack;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-public class SortedDoublyLinkedList implements IList {
+interface ISortedList extends IList {
+    void insert();
+}
+
+public class SortedDoublyLinkedList implements ISortedList {
+    
     class Node {
         int data;
         Node prev;
@@ -58,6 +61,11 @@ public class SortedDoublyLinkedList implements IList {
     }
 
     @Override
+    public void insert() {
+
+    }
+
+    @Override
     public void display() {
 
     }
@@ -73,6 +81,7 @@ public class SortedDoublyLinkedList implements IList {
     }
 
     private static boolean listCreated = false; // Checks if queue was created
+
     public static void main(String[] args) {
         BufferedReader br =
                 new BufferedReader(
