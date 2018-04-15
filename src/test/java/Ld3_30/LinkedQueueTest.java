@@ -10,13 +10,13 @@ class LinkedQueueTest {
     private int iterator = 10;
 
     @Test
-    public void QueueIsEmptyTest() {
+    void QueueIsEmptyTest() {
         assertTrue(linkedQueue.isEmpty());
         assertEquals(0, linkedQueue.getSize());
     }
 
     @Test
-    public void enQueueAndOutputTest() {
+    void enQueueAndOutputTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
@@ -28,7 +28,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void enqueueThanDequeueTest() {
+    void enqueueThanDequeueTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
@@ -40,7 +40,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void enqueueThanPeekTest() {
+    void enqueueThanPeekTest() {
         int number = 90;
         linkedQueue.enQueue(number);
         int size = linkedQueue.getSize();
@@ -49,7 +49,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void removingDownToEmpty() {
+    void removingDownToEmpty() {
         int numberOfRemoves = 10;
         for (int i = 0; i < numberOfRemoves; i++) {
             linkedQueue.enQueue(i);
@@ -63,7 +63,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    public void negativeNumberQuantityTest() {
+    void negativeNumberQuantityTest() {
         int element = -1;
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(element);
