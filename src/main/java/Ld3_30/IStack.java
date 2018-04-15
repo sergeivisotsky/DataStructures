@@ -12,6 +12,4 @@ public interface IStack {
     void displayStack();
 
     void pop();
-
-    int intervalNumbers();
 }

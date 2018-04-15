@@ -63,7 +63,7 @@ class linkedListEx {
         return size;
     }
 
-    /*  Function to insert an element  */
+    /*  Function to insert an data  */
     public void insert(int val) {
         NodeEx nptr, ptr, tmp = null;
         nptr = new NodeEx(val, null);
@@ -103,7 +103,7 @@ class linkedListEx {
         size++;
     }
 
-    /*  Function to delete an element at position  */
+    /*  Function to delete an data at position  */
     public void deleteAtPos(int pos) {
         if (pos == 1 && size == 1) {
             start = null;
@@ -182,7 +182,7 @@ public class Ld2_30_example {
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Enter integer element to insert");
+                    System.out.println("Enter integer data to insert");
                     list.insert(scan.nextInt());
                     break;
                 case 2:

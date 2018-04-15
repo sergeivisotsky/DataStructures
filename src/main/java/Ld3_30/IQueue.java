@@ -14,6 +14,4 @@ public interface IQueue {
     void displayQueue();
 
     Object peek();
-
-    int negativeNumberQuantity();
 }

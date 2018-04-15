@@ -90,7 +90,6 @@ public class LinkedStack implements IStack {
         size--;
     }
 
-    @Override
     public int intervalNumbers() {
         int counter = 0;
         Node node;

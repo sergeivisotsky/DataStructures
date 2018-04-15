@@ -200,7 +200,7 @@ public class DoublyLinkedList implements IList {
                 System.out.println("1: insertElementAtBeginning");
                 System.out.println("2: insertAtPosition");
                 System.out.println("3: insertAtEnd");
-                System.out.println("4: Delete element");
+                System.out.println("4: Delete data");
                 System.out.println("5: negativeElementQuantity");
                 System.out.println("6: Size");
                 System.out.println("7: Empty?");
@@ -209,7 +209,7 @@ public class DoublyLinkedList implements IList {
                 switch (answer) {
                     case 1:
                         if (!list.isFull()) {
-                            System.out.print("Add element: ");
+                            System.out.print("Add data: ");
                             element = Integer.parseInt(input.readLine());
                             list.insertAtBeginning(element);
                         } else {
@@ -230,7 +230,7 @@ public class DoublyLinkedList implements IList {
                         break;
                     case 3:
                         if (!list.isFull()) {
-                            System.out.print("Add element: ");
+                            System.out.print("Add data: ");
                             element = Integer.parseInt(input.readLine());
                             list.insertAtEnd(element);
                         } else {
@@ -250,7 +250,7 @@ public class DoublyLinkedList implements IList {
                     case 5:
                         list.listCreated();
                         if (!list.isEmpty()) {
-                            System.out.print("Negative element quantity: ");
+                            System.out.print("Negative data quantity: ");
                             list.negativeElementQuantity();
                         } else {
                             throw new IllegalStateException("List is empty!");

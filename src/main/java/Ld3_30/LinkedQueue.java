@@ -92,7 +92,6 @@ public class LinkedQueue implements IQueue {
         return head.data;
     }
 
-    @Override
     public int negativeNumberQuantity() {
         NodeA nodeA;
         int counter = 0;
