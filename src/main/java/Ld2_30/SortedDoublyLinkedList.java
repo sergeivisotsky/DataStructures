@@ -6,11 +6,12 @@ import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
 interface ISortedList extends IList {
-    void insert();
+    void insertInTheMiddle(int current);
+    void insert(int current);
 }
 
 public class SortedDoublyLinkedList implements ISortedList {
-    
+
     class Node {
         int data;
         Node prev;
@@ -54,15 +55,31 @@ public class SortedDoublyLinkedList implements ISortedList {
     public void insertAtPosition(int element, int position) {
 
     }
+    @Override
+    public void insertInTheMiddle(int current) {
 
+    }
     @Override
     public void insertAtEnd(int element) {
 
     }
 
-    @Override
-    public void insert() {
 
+
+    @Override
+    public void insert(int current) {
+        Node node = new Node(current);
+        if (isEmpty()) {
+            head = node;
+            node.next = head;
+            tail = head;
+        } else if(current <= head.data) {
+            insertAtBeginning(current);
+        } else if (current >= tail.data) {
+            insertAtEnd(current);
+        } else {
+            insertInTheMiddle(current);
+        }
     }
 
     @Override
