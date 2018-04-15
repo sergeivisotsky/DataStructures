@@ -39,28 +39,24 @@ public class LinkedQueue implements IQueue {
         NodeA nodeA = new NodeA(element, null);
         if (isEmpty()) {
             head = nodeA;
-            nodeA.next = head;
             tail = head;
         } else {
-            nodeA.next = head;
-            head = nodeA;
             tail.next = nodeA;
+            tail = nodeA;
         }
         size++;
     }
 
     @Override
     public Object deQueue() {
-        NodeA temp = tail;
+        NodeA temp = head;
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty!");
         } else if (size == 1) {
             head = null;
             tail = null;
         } else {
-//            head = head.next;
-            tail = null;
-            tail = head.next;
+            head = head.next;
         }
         size--;
         return temp.data;
@@ -83,7 +79,7 @@ public class LinkedQueue implements IQueue {
         System.out.print(head.data + "\t");
         nodeA = head.next;
 
-        while (nodeA.next != head) {
+        while (nodeA.next != null) {
             System.out.print(nodeA.data + "\t");
             nodeA = nodeA.next;
         }
