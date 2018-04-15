@@ -21,6 +21,7 @@ class LinkedQueueTest {
             linkedQueue.enQueue(i);
         }
 
+        System.out.println("\nCreated queue:");
         linkedQueue.displayQueue();
         assertTrue(!linkedQueue.isEmpty());
         assertEquals(10, linkedQueue.getSize());
