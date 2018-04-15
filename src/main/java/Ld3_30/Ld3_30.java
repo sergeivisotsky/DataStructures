@@ -5,24 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-interface IQueue {
-    boolean isFull();
-
-    int getSize();
-
-    boolean isEmpty();
-
-    void enQueue(Object element);
-
-    Object deQueue();
-
-    void displayQueue();
-
-    Object peek();
-
-    int negativeNumberQuantity();
-}
-
 class VectorQueue implements IQueue {
     private Object queue[];
     private int maxSize;
