@@ -126,7 +126,7 @@ public class LinkedStack implements IStack {
                 new BufferedReader(
                         new InputStreamReader(System.in));
         try {
-            int stackSize; // Queue size
+            int stackSize; // Stack size
             System.out.print("Stack size (max 10): ");
             stackSize =
                     Integer.parseInt(
