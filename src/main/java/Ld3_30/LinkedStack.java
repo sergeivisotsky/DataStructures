@@ -88,6 +88,8 @@ public class LinkedStack implements IStack {
             System.out.print(node.data + "\t");
             node = node.next;
         }
+
+        System.out.print(node.data + "\t");
     }
 
     @Override
