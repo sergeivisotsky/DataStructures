@@ -127,7 +127,7 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
         }
 
         if (head.next == head) {
-            System.out.print(head.data + "\t" + node.data + "\n");
+            System.out.print(head.data + "\n");
             return;
         }
 
@@ -141,24 +141,76 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
         System.out.print(node.data + "\t");
     }
 
+    private void removeAtBeginning() {
+        head = head.next;
+        head.prev = tail;
+        tail.next = head;
+        size--;
+    }
+
+    private void removeInTheMiddle(int position) {
+        Node node = head.next;
+        for (int i = 2; i < size; i++) {
+            if (i == position) {
+                Node previous = node.prev;
+                Node nextElem = node.next;
+                previous.next = nextElem;
+                nextElem.prev = previous;
+                size--;
+                return;
+            }
+
+            node = node.next;
+        }
+    }
+
+    private void removeAtEnd() {
+        tail = tail.prev;
+        tail.next = head;
+        head.prev = tail;
+        size--;
+    }
+
     @Override
     public void deleteAtPosition(int position) {
+        if (position == 1) {
+            if (size == 1) {
+                head = null;
+                tail = null;
+                size = 0;
+                return;
+            }
 
+            removeAtBeginning();
+            return;
+        }
+
+        if (position == size) {
+            removeAtEnd();
+        }
+        removeInTheMiddle(position);
     }
 
     public int intervalNumbers() {
         int counter = 0;
-
+        Node node;
+        for (node = head;
+             node != tail;
+             node = node.next) {
+            if (node.data >= -10 &&
+                    node.data <= 10) {
+                counter++;
+            }
+        }
         return counter;
     }
 
     private static boolean listCreated = false; // Checks if queue was created
 
     public static void main(String[] args) {
-        BufferedReader br =
-                new BufferedReader(
-                        new InputStreamReader(System.in));
-        try {
+        try (BufferedReader br =
+                     new BufferedReader(
+                             new InputStreamReader(System.in))) {
             int stackSize; // Stack size
             System.out.print("List size (max 10): ");
             stackSize =
@@ -171,17 +223,18 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
             SortedDoublyLinkedList list =
                     new SortedDoublyLinkedList(stackSize);
             // User menu to choose answer variant
-            System.out.println("1: Insert");
-            System.out.println("2: DeleteAtPosition");
-            System.out.println("3: Interval [-10; 10]");
-            System.out.println("4: getSize");
-            System.out.println("5: isEmpty?");
-            System.out.println("6: isFull?");
+
 
             int choiceAnswer; // Operation to be performed
             int elementToBeAdded; // Element to be added to the list
 
             do {
+                System.out.println("1: Insert");
+                System.out.println("2: DeleteAtPosition");
+                System.out.println("3: Interval [-10; 10]");
+                System.out.println("4: getSize");
+                System.out.println("5: isEmpty?");
+                System.out.println("6: isFull?");
                 System.out.println();
                 System.out.print("Answer: ");
                 choiceAnswer =
@@ -215,7 +268,7 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
                     case 3:
                         if (!list.isEmpty()) {
                             System.out.print("Quantity: " +
-                                    list.intervalNumbers());
+                                    list.intervalNumbers() + "\n");
                         } else {
                             throw new IllegalStateException("List is empty!");
                         }
@@ -245,7 +298,7 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
                         throw new IllegalStateException("Number is not allowed!");
                 }
                 if (!list.isEmpty()) {
-                    System.out.println("Created list: ");
+                    System.out.println("\nCreated list: ");
                     list.display();
                 } else {
                     throw new IllegalStateException("List is empty!");

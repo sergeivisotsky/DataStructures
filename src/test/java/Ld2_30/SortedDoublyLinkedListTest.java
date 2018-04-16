@@ -28,4 +28,33 @@ class SortedDoublyLinkedListTest {
         assertTrue(!list.isEmpty());
         assertEquals(10, list.getSize());
     }
+
+    private void insertionScope() {
+        list.insert(20);
+        list.insert(1);
+        list.insert(18);
+        list.insert(19);
+        list.insert(56);
+        list.insert(-1);
+        list.insert(25);
+        list.insert(3);
+        list.insert(26);
+        list.insert(52);
+    }
+
+    @Test
+    void removeAtPositionTest() {
+        insertionScope();
+        System.out.println("Before: ");
+        list.display();
+        list.deleteAtPosition(3);
+        System.out.println("\nAfter: ");
+        list.display();
+    }
+
+    @Test
+    void intervalNumber() {
+        insertionScope();
+        assertEquals(3, list.intervalNumbers());
+    }
 }
