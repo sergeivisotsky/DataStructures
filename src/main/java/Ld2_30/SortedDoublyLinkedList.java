@@ -5,12 +5,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-interface ISortedList extends IList {
-    void insertInTheMiddle(int current);
+interface ISortedDoublyLinkedList {
+    boolean isEmpty();
+
+    boolean isFull();
+
+    int getSize();
+
     void insert(int current);
+
+    void display();
+
+    void deleteAtPosition(int position);
 }
 
-public class SortedDoublyLinkedList implements ISortedList {
+public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
 
     class Node {
         int data;
@@ -46,45 +55,92 @@ public class SortedDoublyLinkedList implements ISortedList {
         return size;
     }
 
-    @Override
-    public void insertAtBeginning(int element) {
-
+    private void insertAtBeginning(int current) {
+        Node node = new Node(current);
+        node.prev = tail;
+        tail.next = node;
+        head.prev = node;
+        node.next = head;
+        head = tail;
     }
 
-    @Override
-    public void insertAtPosition(int element, int position) {
-
+    private void insertInTheMiddle(int current) {
+        Node node = new Node(current);
+        Node temp, ptr;
+        boolean inserted = false;
+        temp = head;
+        ptr = head.next;
+        while (ptr != null) {
+            if (current >= temp.data && current <= ptr.data) {
+                temp.next = node;
+                node.prev = temp;
+                node.next = ptr;
+                ptr.prev = node;
+                inserted = true;
+                break;
+            } else {
+                temp = ptr;
+                ptr = ptr.next;
+            }
+        }
+        if (!inserted) {
+            temp.next = node;
+            node.prev = temp;
+        }
     }
-    @Override
-    public void insertInTheMiddle(int current) {
 
+    private void insertAtEnd(int current) {
+        Node node = new Node(current);
+        tail.next = node;
+        node.prev = tail;
+        node.next = head;
+        head.prev = node;
+        tail = node;
     }
-    @Override
-    public void insertAtEnd(int element) {
-
-    }
-
 
 
     @Override
     public void insert(int current) {
         Node node = new Node(current);
         if (isEmpty()) {
+            node.next = node;
+            node.prev = node;
             head = node;
-            node.next = head;
             tail = head;
-        } else if(current <= head.data) {
+        } else if (current <= head.data) {
             insertAtBeginning(current);
         } else if (current >= tail.data) {
             insertAtEnd(current);
         } else {
             insertInTheMiddle(current);
         }
+
+        size++;
     }
 
     @Override
     public void display() {
+        Node node = head;
+        if (size == 0) {
+            System.out.println("List is empty!");
+            return;
+        }
 
+        if (head.next == head) {
+            System.out.print(head.data + "\t" + node.data);
+            return;
+        }
+
+        System.out.print(head.data + "\t");
+
+        node = head.next;
+        while (node.next != head) {
+            System.out.print(head.data + "\t");
+            head = head.next;
+        }
+        System.out.print(node.data + "\t");
+        node = node.next;
+        System.out.print(node.data + "\n");
     }
 
     @Override
@@ -92,7 +148,6 @@ public class SortedDoublyLinkedList implements ISortedList {
 
     }
 
-    @Override
     public int negativeElementQuantity() {
         return 0;
     }
