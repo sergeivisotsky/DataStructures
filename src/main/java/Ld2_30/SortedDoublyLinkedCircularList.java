@@ -19,7 +19,8 @@ interface ISortedDoublyLinkedList {
     void deleteAtPosition(int position);
 }
 
-public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
+public class SortedDoublyLinkedCircularList
+        implements ISortedDoublyLinkedList {
 
     class Node {
         int data;
@@ -36,7 +37,7 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
     private int maxSize;
     private int size = 0;
 
-    public SortedDoublyLinkedList(int maxSize) {
+    public SortedDoublyLinkedCircularList(int maxSize) {
         this.maxSize = maxSize;
     }
 
@@ -220,8 +221,8 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
                 throw new IllegalStateException("List size should not be greater than 10!");
             }
             String yesNoAnswer;
-            SortedDoublyLinkedList list =
-                    new SortedDoublyLinkedList(stackSize);
+            SortedDoublyLinkedCircularList list =
+                    new SortedDoublyLinkedCircularList(stackSize);
             // User menu to choose answer variant
 
 

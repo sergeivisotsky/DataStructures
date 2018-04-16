@@ -6,10 +6,10 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SortedDoublyLinkedListTest {
+class SortedDoublyLinkedCircularListTest {
     private int maxSize = 10;
-    private SortedDoublyLinkedList list =
-            new SortedDoublyLinkedList(maxSize);
+    private SortedDoublyLinkedCircularList list =
+            new SortedDoublyLinkedCircularList(maxSize);
     private int iterator = maxSize;
 
     @Test
