@@ -143,15 +143,13 @@ public class Ld4_30 {
     private static boolean treeCreated = false;
 
     public static void main(String[] args) {
-        BufferedReader input =
-                new BufferedReader(
-                        new InputStreamReader(System.in));
-
         int answer;
         String yesNoAnswer;
         int element;
 
-        try {
+        try (BufferedReader input =
+                     new BufferedReader(
+                             new InputStreamReader(System.in))) {
             int treeSize;
             System.out.println("Sergejs Visockis IRDBD12 171RDB043");
             System.out.print("Koka garums (max 15): ");
