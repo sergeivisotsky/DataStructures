@@ -61,7 +61,7 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
         tail.next = node;
         head.prev = node;
         node.next = head;
-        head = tail;
+        head = node;
     }
 
     private void insertInTheMiddle(int current) {
@@ -71,7 +71,8 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
         temp = head;
         ptr = head.next;
         while (ptr != null) {
-            if (current >= temp.data && current <= ptr.data) {
+            if (current >= temp.data &&
+                    current <= ptr.data) {
                 temp.next = node;
                 node.prev = temp;
                 node.next = ptr;
@@ -114,33 +115,30 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
         } else {
             insertInTheMiddle(current);
         }
-
         size++;
     }
 
     @Override
     public void display() {
         Node node = head;
-        if (size == 0) {
+        if (isEmpty()) {
             System.out.println("List is empty!");
             return;
         }
 
         if (head.next == head) {
-            System.out.print(head.data + "\t" + node.data);
+            System.out.print(head.data + "\t" + node.data + "\n");
             return;
         }
 
         System.out.print(head.data + "\t");
-
         node = head.next;
+
         while (node.next != head) {
-            System.out.print(head.data + "\t");
-            head = head.next;
+            System.out.print(node.data + "\t");
+            node = node.next;
         }
         System.out.print(node.data + "\t");
-        node = node.next;
-        System.out.print(node.data + "\n");
     }
 
     @Override
@@ -148,8 +146,10 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
 
     }
 
-    public int negativeElementQuantity() {
-        return 0;
+    public int intervalNumbers() {
+        int counter = 0;
+
+        return counter;
     }
 
     private static boolean listCreated = false; // Checks if queue was created
@@ -172,11 +172,11 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
                     new SortedDoublyLinkedList(stackSize);
             // User menu to choose answer variant
             System.out.println("1: Insert");
-            System.out.println("2: delete");
-            System.out.println("3: getSize");
-            System.out.println("4: isEmpty?");
-            System.out.println("5: isFull?");
-            System.out.println("");
+            System.out.println("2: DeleteAtPosition");
+            System.out.println("3: Interval [-10; 10]");
+            System.out.println("4: getSize");
+            System.out.println("5: isEmpty?");
+            System.out.println("6: isFull?");
 
             int choiceAnswer; // Operation to be performed
             int elementToBeAdded; // Element to be added to the list
@@ -194,6 +194,7 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
                             elementToBeAdded =
                                     Integer.parseInt(
                                             br.readLine());
+                            list.insert(elementToBeAdded);
                         }
 
                         if (list.isFull()) {
@@ -202,35 +203,42 @@ public class SortedDoublyLinkedList implements ISortedDoublyLinkedList {
                         listCreated = true;
                         break;
                     case 2:
+                        if (!list.isEmpty()) {
+                            System.out.print("Position: ");
+                            int position =
+                                    Integer.parseInt(br.readLine());
+                            list.deleteAtPosition(position);
+                        } else {
+                            throw new IllegalStateException("List is empty!");
+                        }
+                        break;
+                    case 3:
+                        if (!list.isEmpty()) {
+                            System.out.print("Quantity: " +
+                                    list.intervalNumbers());
+                        } else {
+                            throw new IllegalStateException("List is empty!");
+                        }
+                        break;
+                    case 4:
                         listCreated();
                         if (!list.isEmpty()) {
+                            System.out.print("List size: " +
+                                    list.getSize());
                         } else {
                             System.out.println("List is empty!");
                         }
                         break;
-                    case 3:
-                        listCreated();
-                        System.out.println("List size: " +
-                                list.getSize());
-                        break;
-                    case 4:
+                    case 5:
                         System.out.println("Empty status: " +
                                 list.isEmpty());
                         break;
-                    case 5:
+                    case 6:
                         listCreated();
                         if (list.isFull()) {
                             System.out.println("List is full!");
                         } else {
                             System.out.println("List is not full!");
-                        }
-                        break;
-                    case 6:
-                        listCreated();
-                        if (!list.isEmpty()) {
-
-                        } else {
-                            System.out.println("Stack is empty!");
                         }
                         break;
                     default:

@@ -21,7 +21,7 @@ class SortedDoublyLinkedListTest {
     void sortedInsertionAndOutputTest() {
         Random rd = new Random();
         for (int i = 0; i < iterator; i++) {
-            list.insert(rd.nextInt(9) + 1);
+            list.insert(rd.nextInt(99) + 1);
         }
 
         list.display();
