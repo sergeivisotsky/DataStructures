@@ -29,7 +29,7 @@ class LinkedStackTest {
     @Test
     void pushTest() {
         pushableElements();
-        assertTrue(!stack.isEmpty() && stack.isFull());
+        assertTrue(stack.isFull());
         assertEquals(10, stack.getSize());
         stack.displayStack();
     }
