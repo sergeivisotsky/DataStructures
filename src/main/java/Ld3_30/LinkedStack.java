@@ -18,8 +18,7 @@ public class LinkedStack implements IStack {
     }
 
     private int size = 0;
-    private Node head = null;
-    private Node tail = null;
+    private Node top = null;
     private int maxSize;
 
     LinkedStack(int maxSize) {
@@ -38,19 +37,21 @@ public class LinkedStack implements IStack {
 
     @Override
     public boolean isEmpty() {
-        return head == null;
+        return top == null;
     }
 
     @Override
     public void push(int element) {
         Node node = new Node(element);
         if (isEmpty()) {
-            head = node;
-            tail = head;
+            top = node;
+            top.next = null;
+            top.prev = null;
         } else {
-            head.prev = node;
-            node.next = head;
-            head = node;
+            top.next = node;
+            node.next = null;
+            node.prev = top;
+            top = node;
         }
         size++;
     }
@@ -60,42 +61,42 @@ public class LinkedStack implements IStack {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty!");
         }
-        if (head.next == null) {
-            System.out.print(head.data);
-            return;
-        }
         Node node;
-        System.out.print(head.data + "\t");
-        node = head.next;
+        System.out.print(top.data + "\t");
 
-        while (node.next != null) {
+        for (node = top.prev;
+             top.prev != null;
+             node = node.prev) {
             System.out.print(node.data + "\t");
-            node = node.next;
+            top = node;
         }
-
-        System.out.print(node.data + "\t");
     }
 
     @Override
     public void pop() {
         if (size == 1) {
-            head = null;
-            tail = null;
+            top = null;
             size = 0;
             return;
         }
 
-        head = head.next;
-        head.prev = null;
+        top = top.prev;
+        top.next = null;
+
         size--;
+    }
+
+    @Override
+    public int peek() {
+        return top.data;
     }
 
     public int intervalNumbers() {
         int counter = 0;
         Node node;
-        for (node = head;
-             node != tail;
-             node = node.next) {
+        for (node = top;
+             node.prev != null;
+             node = node.prev) {
             if (node.data >= -10 && node.data <= 10) {
                 counter++;
             }
@@ -104,6 +105,7 @@ public class LinkedStack implements IStack {
     }
 
     private static boolean stackCreated = false; // Checks if queue was created
+
     public static void main(String[] args) {
         BufferedReader br =
                 new BufferedReader(
@@ -120,19 +122,19 @@ public class LinkedStack implements IStack {
             String yesNoAnswer;
             LinkedStack stack =
                     new LinkedStack(stackSize);
-            // User menu to choose answer variant
-            System.out.println("1: push");
-            System.out.println("2: pop");
-            System.out.println("3: getSize");
-            System.out.println("4: isEmpty?");
-            System.out.println("5: isFull?");
-            System.out.println("6: intervalNumbers");
 
             int choiceAnswer; // Operation to be performed
-
             int elementToBeAdded; // Element to be added to the list
 
             do {
+                // User menu to choose answer variant
+                System.out.println("1: push");
+                System.out.println("2: pop");
+                System.out.println("3: peek");
+                System.out.println("4: getSize");
+                System.out.println("5: isEmpty?");
+                System.out.println("6: isFull?");
+                System.out.println("7: intervalNumbers");
                 System.out.println();
                 System.out.print("Answer: ");
                 choiceAnswer =
@@ -163,14 +165,22 @@ public class LinkedStack implements IStack {
                         break;
                     case 3:
                         stackCreated();
+                        if (!stack.isEmpty()) {
+                            System.out.println("Peeked element: " +
+                                    stack.peek());
+                        } else {
+                            System.out.println("Stack is empty!");
+                        }
+                    case 4:
+                        stackCreated();
                         System.out.println("Stack size: " +
                                 stack.getSize());
                         break;
-                    case 4:
+                    case 5:
                         System.out.println("Empty status: " +
                                 stack.isEmpty());
                         break;
-                    case 5:
+                    case 6:
                         stackCreated();
                         if (stack.isFull()) {
                             System.out.println("Stack is full!");
@@ -178,7 +188,7 @@ public class LinkedStack implements IStack {
                             System.out.println("Stack is not full!");
                         }
                         break;
-                    case 6:
+                    case 7:
                         stackCreated();
                         if (!stack.isEmpty()) {
                             System.out.println("Number of elements in interval [-10; 10]: " +

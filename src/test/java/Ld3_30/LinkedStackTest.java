@@ -46,6 +46,12 @@ class LinkedStackTest {
     }
 
     @Test
+    void peekTest() {
+        pushableElements();
+        assertEquals(36, stack.peek());
+    }
+
+    @Test
     void intervalNumbersTest() {
         pushableElements();
         assertEquals(5, stack.intervalNumbers());
