@@ -148,9 +148,7 @@ public class LinkedStack implements IStack {
                                     Integer.parseInt(
                                             br.readLine());
                             stack.push(elementToBeAdded);
-                        }
-
-                        if (stack.isFull()) {
+                        } else {
                             System.out.println("\nStack if full!");
                         }
                         stackCreated = true;
@@ -204,7 +202,7 @@ public class LinkedStack implements IStack {
                     System.out.println("Created stack: ");
                     stack.displayStack();
                 } else {
-                    throw new IllegalStateException("List is empty!");
+                    throw new IllegalStateException("Stack is empty!");
                 }
                 System.out.print("\nContinue? (y/n) ");
                 yesNoAnswer = br.readLine();
