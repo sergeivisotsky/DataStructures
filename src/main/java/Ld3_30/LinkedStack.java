@@ -61,14 +61,12 @@ public class LinkedStack implements IStack {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty!");
         }
-        Node node;
-        System.out.print(top.data + "\t");
 
-        for (node = top.prev;
-             top.prev != null;
-             node = node.prev) {
+        Node node = top;
+
+        while (node != null) {
             System.out.print(node.data + "\t");
-            top = node;
+            node = node.prev;
         }
     }
 
