@@ -9,10 +9,10 @@ DoublyLinkedList_example.java
 *.jar
 *.war
 *.ear
+*.iml
 
 # idea project files
 .idea/*
-DataStructures.iml
 
 # Compilation binary files
 /out/*
