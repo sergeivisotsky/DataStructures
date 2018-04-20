@@ -14,7 +14,8 @@ public class Model {
                         Fields.textField.getText()));
     }
 
-    /*public void btnShowActionListener() {
-        Fields.textPane.setText(controller.postorderOutput());
-    }*/
+    public void btnShowActionListener() {
+    }
+
+
 }

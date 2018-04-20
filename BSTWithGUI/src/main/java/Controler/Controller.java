@@ -2,6 +2,9 @@ package Controler;
 
 import View.Fields;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Controller implements IBinarySearchTree {
 
     class Node {
@@ -61,8 +64,8 @@ public class Controller implements IBinarySearchTree {
 
             postorderWrapper(root.left);
             postorderWrapper(root.right);
-//            System.out.print(root.data + "\t");
-            Fields.textPane.setText(Integer.toString(root.data));
+            System.out.print(root.data + "\t");
+//            Fields.textPane.setText(Integer.toString(root.data));
 
         }
     }

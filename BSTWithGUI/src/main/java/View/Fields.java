@@ -12,5 +12,7 @@ public class Fields {
     public static JLabel lblEvenQuantity;
     public static JLabel lblNodesWithTwo;
     public static JLabel lblNodesWithTwoChildren;
+    public static JLabel lblSize;
+    public static JLabel lblSizeNumber;
     public static JTextField textField;
 }
