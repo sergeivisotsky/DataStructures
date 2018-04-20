@@ -4,23 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-interface IBinarySearchTree {
-    void insert(int element);
-
-    void postorderOutput();
-
-    int countNodesWithTwoChildren();
-
-    int evenElementQuantity();
-
-    int getSize();
-
-    boolean isEmpty();
-
-    boolean isFull();
-}
-
-
 class BinarySearchTree implements IBinarySearchTree {
     class Node {
         int data;
