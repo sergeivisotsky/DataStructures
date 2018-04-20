@@ -1,7 +1,6 @@
-package BSTWithGUI.Controler;
+package Controler;
 
-import BSTWithGUI.View.Fields;
-import Ld4_30.IBinarySearchTree;
+import View.Fields;
 
 public class Controller implements IBinarySearchTree {
 

@@ -1,6 +1,4 @@
-package BSTWithGUI;
-
-import BSTWithGUI.View.View;
+import View.View;
 
 public class MainRunner {
     public static void main(String[] args) {

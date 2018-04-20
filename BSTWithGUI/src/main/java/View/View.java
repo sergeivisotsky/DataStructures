@@ -1,7 +1,7 @@
-package BSTWithGUI.View;
+package View;
 
-import BSTWithGUI.Controler.Controller;
-import BSTWithGUI.Model.Model;
+import Controler.Controller;
+import Model.Model;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

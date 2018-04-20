@@ -1,8 +1,7 @@
-package BSTWithGUI.Model;
+package Model;
 
-import BSTWithGUI.Controler.Controller;
-import BSTWithGUI.View.Fields;
-import BSTWithGUI.View.View;
+import Controler.Controller;
+import View.Fields;
 
 public class Model {
 //    private View view = new View();

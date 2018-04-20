@@ -1,0 +1,20 @@
+*.class
+
+*.classpath
+*.project
+
+DoublyLinkedList_example.java
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.iml
+
+# idea project files
+.idea/*
+DataStructures.iml
+
+# Compilation binary files
+/out/*
+

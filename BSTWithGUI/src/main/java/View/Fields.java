@@ -1,4 +1,4 @@
-package BSTWithGUI.View;
+package View;
 
 import javax.swing.*;
 
