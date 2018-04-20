@@ -1,12 +1,17 @@
-package BSTWithGUI;
+package BSTWithGUI.View;
+
+import BSTWithGUI.Controler.Controller;
+import BSTWithGUI.Model.Model;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-class View extends JFrame {
+public class View extends JFrame {
 
     private Model model = new Model();
-    View() {
+    private Controller controller;
+
+    public View() {
         setTitle("Binary Search Tree");
         setVisible(true);
         setResizable(false);
@@ -17,27 +22,28 @@ class View extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
 
-        JLabel lblAddElement = new JLabel("Add element:");
+        Fields.lblAddElement = new JLabel("Add element:");
 
-        JTextField textField = new JTextField();
-        textField.setColumns(10);
+        Fields.textField = new JTextField();
+        Fields.textField.setColumns(10);
 
-        JButton btnAdd = new JButton("Add");
-        btnAdd.addActionListener(е -> model.btnAddActionListener());
+        Fields.btnAdd = new JButton("Add");
+        Fields.btnAdd.addActionListener(е -> model.btnAddActionListener());
 
-        JTextPane textPane = new JTextPane();
+        Fields.textPane = new JTextPane();
 
-        JLabel lblPostorderOutput = new JLabel("Postorder output");
+        Fields.lblPostorderOutput = new JLabel("Postorder output");
 
-        JButton btnShow = new JButton("Show");
+        Fields.btnShow = new JButton("Show");
+        Fields.btnShow.addActionListener(e -> controller.postorderOutput());
 
-        JLabel lblEvenElementQuantity = new JLabel("Even element quantity:");
+        Fields.lblEvenElementQuantity = new JLabel("Even element quantity:");
 
-        JLabel lblEvenQuantity = new JLabel("");
+        Fields.lblEvenQuantity = new JLabel("");
 
-        JLabel lblNodesWithTwo = new JLabel("Nodes with two children: ");
+        Fields.lblNodesWithTwo = new JLabel("Nodes with two children: ");
 
-        JLabel lblNodesWithTwoChildren = new JLabel("");
+        Fields.lblNodesWithTwoChildren = new JLabel("");
         GroupLayout gl_contentPane = new GroupLayout(contentPane);
         gl_contentPane.setHorizontalGroup(
                 gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -45,32 +51,32 @@ class View extends JFrame {
                                 .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(gl_contentPane.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(lblAddElement)
+                                                .addComponent(Fields.lblAddElement)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(textField, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                                                .addComponent(Fields.textField, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
                                         .addGroup(gl_contentPane.createSequentialGroup()
                                                 .addGap(113)
                                                 .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(lblPostorderOutput)
-                                                        .addComponent(btnAdd, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(Fields.lblPostorderOutput)
+                                                        .addComponent(Fields.btnAdd, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(gl_contentPane.createSequentialGroup()
                                                 .addGap(122)
-                                                .addComponent(btnShow, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(Fields.btnShow, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(GroupLayout.Alignment.LEADING, gl_contentPane.createSequentialGroup()
                                                         .addGap(106)
                                                         .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                 .addGroup(gl_contentPane.createSequentialGroup()
-                                                                        .addComponent(lblNodesWithTwo)
+                                                                        .addComponent(Fields.lblNodesWithTwo)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(lblNodesWithTwoChildren))
+                                                                        .addComponent(Fields.lblNodesWithTwoChildren))
                                                                 .addGroup(gl_contentPane.createSequentialGroup()
-                                                                        .addComponent(lblEvenElementQuantity)
+                                                                        .addComponent(Fields.lblEvenElementQuantity)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(lblEvenQuantity))))
+                                                                        .addComponent(Fields.lblEvenQuantity))))
                                                 .addGroup(GroupLayout.Alignment.LEADING, gl_contentPane.createSequentialGroup()
                                                         .addGap(47)
-                                                        .addComponent(textPane, GroupLayout.PREFERRED_SIZE, 259, GroupLayout.PREFERRED_SIZE))))
+                                                        .addComponent(Fields.textPane, GroupLayout.PREFERRED_SIZE, 259, GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap())
         );
         gl_contentPane.setVerticalGroup(
@@ -78,24 +84,24 @@ class View extends JFrame {
                         .addGroup(gl_contentPane.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblAddElement)
-                                        .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Fields.lblAddElement)
+                                        .addComponent(Fields.textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18)
-                                .addComponent(btnAdd)
+                                .addComponent(Fields.btnAdd)
                                 .addGap(43)
-                                .addComponent(lblPostorderOutput)
+                                .addComponent(Fields.lblPostorderOutput)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textPane, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Fields.textPane, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18)
-                                .addComponent(btnShow)
-                                .addGap(18)
-                                .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblEvenElementQuantity)
-                                        .addComponent(lblEvenQuantity))
+                                .addComponent(Fields.btnShow)
                                 .addGap(18)
                                 .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblNodesWithTwo)
-                                        .addComponent(lblNodesWithTwoChildren))
+                                        .addComponent(Fields.lblEvenElementQuantity)
+                                        .addComponent(Fields.lblEvenQuantity))
+                                .addGap(18)
+                                .addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(Fields.lblNodesWithTwo)
+                                        .addComponent(Fields.lblNodesWithTwoChildren))
                                 .addContainerGap(94, Short.MAX_VALUE))
         );
         contentPane.setLayout(gl_contentPane);

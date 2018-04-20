@@ -1,5 +1,6 @@
-package BSTWithGUI;
+package BSTWithGUI.Controler;
 
+import BSTWithGUI.View.Fields;
 import Ld4_30.IBinarySearchTree;
 
 public class Controller implements IBinarySearchTree {
@@ -20,7 +21,7 @@ public class Controller implements IBinarySearchTree {
     private int size;
     private int maxSize;
 
-    Controller(int maxSize) {
+    public Controller(int maxSize) {
         this.maxSize = maxSize;
     }
 
@@ -61,7 +62,8 @@ public class Controller implements IBinarySearchTree {
 
             postorderWrapper(root.left);
             postorderWrapper(root.right);
-            System.out.print(root.data + "\t");
+//            System.out.print(root.data + "\t");
+            Fields.textPane.setText(Integer.toString(root.data));
 
         }
     }
