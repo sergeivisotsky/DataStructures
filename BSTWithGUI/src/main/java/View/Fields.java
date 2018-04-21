@@ -3,9 +3,10 @@ package View;
 import javax.swing.*;
 
 public class Fields {
+    public static JPanel contentPane;
     public static JLabel lblAddElement;
     public static JButton btnAdd;
-    public static JTextPane textPane;
+    public static JList list;
     public static JLabel lblPostorderOutput;
     public static JButton btnShow;
     public static JLabel lblEvenElementQuantity;

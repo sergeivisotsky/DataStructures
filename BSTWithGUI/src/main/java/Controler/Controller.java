@@ -3,7 +3,6 @@ package Controler;
 import View.Fields;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Controller implements IBinarySearchTree {
 
@@ -57,6 +56,7 @@ public class Controller implements IBinarySearchTree {
     }
 
     private void postorderWrapper(Node root) {
+        DefaultListModel<Integer> model = new DefaultListModel<>();
         if (root != null) {
             if (isEmpty()) {
                 throw new IllegalStateException("Koks ir tukšs!");
@@ -64,9 +64,10 @@ public class Controller implements IBinarySearchTree {
 
             postorderWrapper(root.left);
             postorderWrapper(root.right);
-            System.out.print(root.data + "\t");
-//            Fields.textPane.setText(Integer.toString(root.data));
-
+//            System.out.print(root.data + "\t");
+            for (int i = 0; i < Fields.list.getModel().getSize(); i++) {
+                model.add(i, root.data);
+            }
         }
     }
 
