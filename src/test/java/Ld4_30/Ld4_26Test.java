@@ -1,0 +1,56 @@
+package Ld4_30;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class Ld4_26Test {
+    private Ld4_26 bstInOrder = new Ld4_26();
+
+    @Test
+    void emptyStatusTest() {
+        assertTrue(bstInOrder.isEmpty());
+        assertEquals(0, bstInOrder.getSize());
+    }
+
+    @Test
+    void isFullTest() {
+        for (int i = 0; i < 15; i++) {
+            bstInOrder.insert(i);
+        }
+
+        assertTrue(bstInOrder.isFull());
+        assertEquals(15, bstInOrder.getSize());
+    }
+
+    private void insertableElements() {
+        bstInOrder.insert(12);
+        bstInOrder.insert(3);
+        bstInOrder.insert(56);
+        bstInOrder.insert(78);
+        bstInOrder.insert(34);
+        bstInOrder.insert(1);
+        bstInOrder.insert(9);
+    }
+
+    @Test
+    void insertElementsTest() {
+        insertableElements();
+        assertTrue(!bstInOrder.isEmpty());
+        assertEquals(7, bstInOrder.getSize());
+    }
+
+    @Test
+    void insertAndInorderOutput() {
+        insertableElements();
+        bstInOrder.inorderOutput();
+        assertTrue(!bstInOrder.isEmpty());
+        assertEquals(7, bstInOrder.getSize());
+    }
+
+    @Test
+    void countNodesWithRightChildrenTest() {
+        insertableElements();
+        assertEquals(1, bstInOrder.countNodesWithRightChildren());
+    }
+}
