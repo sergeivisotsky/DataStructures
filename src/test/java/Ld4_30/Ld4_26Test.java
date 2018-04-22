@@ -24,21 +24,13 @@ class Ld4_26Test {
     }
 
     private void insertableElements() {
-        /*bstInOrder.insert(12);
+        bstInOrder.insert(12);
         bstInOrder.insert(3);
         bstInOrder.insert(56);
         bstInOrder.insert(78);
         bstInOrder.insert(34);
         bstInOrder.insert(1);
-        bstInOrder.insert(9);*/
-        bstInOrder.insert(2);
-        bstInOrder.insert(7);
-        bstInOrder.insert(5);
-        bstInOrder.insert(6);
-        bstInOrder.insert(1);
-        bstInOrder.insert(11);
         bstInOrder.insert(9);
-        bstInOrder.insert(4);
 
     }
 

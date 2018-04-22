@@ -84,21 +84,21 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
             return 0;
         }
 
-        int counter = 0;
+        /*int counter = 0;
         if (root.left == null && root.right != null) {
             counter++;
         }
 
         counter += (countNodesWithRightChildrenWrapper(root.left) +
                 countNodesWithRightChildrenWrapper(root.right));
-        return counter;
+        return counter;*/
 
-        /*if (root.left == null && root.right != null) {
+        if (root.left == null && root.right != null) {
             return 1 + countNodesWithRightChildrenWrapper(root.right);
         }
 
         return countNodesWithRightChildrenWrapper(root.left) +
-                countNodesWithRightChildrenWrapper(root.right);*/
+                countNodesWithRightChildrenWrapper(root.right);
     }
 
     @Override
