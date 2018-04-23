@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Ld4_26Test {
-    private Ld4_26 bstInOrder = new Ld4_26();
+    private Ld4_26 bstInOrder = new Ld4_26(15);
 
     @Test
     void emptyStatusTest() {

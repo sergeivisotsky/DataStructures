@@ -31,6 +31,11 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
 
     private Node root;
     private int size;
+    private int maxSize;
+
+    public Ld4_26(int maxSize) {
+        this.maxSize = maxSize;
+    }
 
     @Override
     public void insert(int element) {
@@ -124,6 +129,6 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
 
     @Override
     public boolean isFull() {
-        return size == 15;
+        return size == maxSize;
     }
 }
