@@ -22,7 +22,7 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
         Node left;
         Node right;
 
-        public Node(int data) {
+        Node(int data) {
             this.data = data;
             left = null;
             right = null;
@@ -33,7 +33,7 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
     private int size;
     private int maxSize;
 
-    public Ld4_26(int maxSize) {
+    Ld4_26(int maxSize) {
         this.maxSize = maxSize;
     }
 
