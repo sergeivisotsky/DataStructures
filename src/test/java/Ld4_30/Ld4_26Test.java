@@ -31,24 +31,28 @@ class Ld4_26Test {
         bstInOrder.insert(34);
         bstInOrder.insert(1);
         bstInOrder.insert(9);
-
+        bstInOrder.insert(80);
+        bstInOrder.insert(85);
     }
 
     /*
-    *      12
-    *     /  \
-    *    3   56
-    *       /  \
-    *     34   78
-    *    /  \
-    *   1    9
-    **/
+    *           12
+    *         /   \
+    *        /     \
+    *       3      56
+    *      / \    /  \
+    *     1   9  34  78
+    *                  \
+    *                  80
+    *                   \
+    *                   85
+    */
 
     @Test
     void insertElementsTest() {
         insertableElements();
         assertTrue(!bstInOrder.isEmpty());
-        assertEquals(7, bstInOrder.getSize());
+        assertEquals(9, bstInOrder.getSize());
     }
 
     @Test
@@ -56,12 +60,20 @@ class Ld4_26Test {
         insertableElements();
         bstInOrder.inorderOutput();
         assertTrue(!bstInOrder.isEmpty());
-        assertEquals(7, bstInOrder.getSize());
+        assertEquals(9, bstInOrder.getSize());
     }
 
     @Test
     void countNodesWithRightChildrenTest() {
         insertableElements();
-        assertEquals(1, bstInOrder.countNodesWithRightChildren());
+        assertEquals(2, bstInOrder.countNodesWithRightChildren());
+    }
+
+    @Test
+    void negativeElementQuantityTest() {
+        bstInOrder.insert(21);
+        bstInOrder.insert(-3);
+        bstInOrder.insert(-5);
+        assertEquals(2, bstInOrder.negativeElementQuantity());
     }
 }

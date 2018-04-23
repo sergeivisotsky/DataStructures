@@ -84,15 +84,6 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
             return 0;
         }
 
-        /*int counter = 0;
-        if (root.left == null && root.right != null) {
-            counter++;
-        }
-
-        counter += (countNodesWithRightChildrenWrapper(root.left) +
-                countNodesWithRightChildrenWrapper(root.right));
-        return counter;*/
-
         if (root.left == null && root.right != null) {
             return 1 + countNodesWithRightChildrenWrapper(root.right);
         }
@@ -103,7 +94,22 @@ public class Ld4_26 implements IBinarySearchTreeTwo {
 
     @Override
     public int negativeElementQuantity() {
-        return 0;
+        return negativeElementQuantityWrapper(root);
+    }
+
+    private int negativeElementQuantityWrapper(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int value = negativeElementQuantityWrapper(root.left) +
+                negativeElementQuantityWrapper(root.right);
+
+        if (root.data < 0) {
+            return value + 1;
+        } else {
+            return value;
+        }
     }
 
     @Override
