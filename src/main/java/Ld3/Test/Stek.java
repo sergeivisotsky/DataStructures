@@ -27,10 +27,11 @@ public class Stek {
     public static void main(String[] args) {
         Stek stack = new Stek();
         stack.top = null;
-        for (int i = 3; i < 20; i += 3)
+        for (int i = 3; i < 20; i += 3) {
             stack.push(i);
-            int info;
-            info = stack.pop();
-            System.out.println(info + stack.size);
+        }
+        int info;
+        info = stack.pop();
+        System.out.println(info + stack.size);
     }
 }
