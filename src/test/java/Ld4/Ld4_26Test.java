@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Ld4_26Test {
-    private BSTInOrder bstInOrder = new BSTInOrder(15);
+    private int maxSize = 15;
+
+    private BSTInOrder bstInOrder = new BSTInOrder(maxSize);
 
     @Test
     void emptyStatusTest() {
@@ -15,12 +17,12 @@ class Ld4_26Test {
 
     @Test
     void isFullTest() {
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < maxSize; i++) {
             bstInOrder.insert(i);
         }
 
         assertTrue(bstInOrder.isFull());
-        assertEquals(15, bstInOrder.getSize());
+        assertEquals(maxSize, bstInOrder.getSize());
     }
 
     private void insertableElements() {
