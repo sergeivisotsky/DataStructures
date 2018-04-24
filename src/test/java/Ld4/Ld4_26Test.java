@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BSTInOrderTest {
+class Ld4_26Test {
     private BSTInOrder bstInOrder = new BSTInOrder(15);
 
     @Test

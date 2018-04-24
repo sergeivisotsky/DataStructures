@@ -167,7 +167,7 @@ public class Ld4_26 {
                 System.out.println("2: Inorder output");
                 System.out.println("3: Nodes with one right children");
                 System.out.println("4: Negative element quantity");
-                System.out.print("\nIzvēlēties saskarnes vērtību: ");
+                System.out.print("\nAnswer: ");
                 answer = Integer.parseInt(input.readLine());
                 switch (answer) {
                     case 1:
