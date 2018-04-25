@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Ld4_1Test {
     private int maxSize = 15;
-    BSTPreOrder tree = new BSTPreOrder(maxSize);
+    private BSTPreOrder tree = new BSTPreOrder(maxSize);
 
     @Test
     void isEmptyTest() {
