@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Ld4_30Test {
     private Random random = new Random();
-    private int iterator = 15;
-    private BinarySearchTree tree = new BinarySearchTree(iterator);
+    private int maxSize = 15;
+    private BinarySearchTree tree = new BinarySearchTree(maxSize);
 
     @Test
     void treeIsEmptyTest() {
@@ -20,12 +20,12 @@ class Ld4_30Test {
 
     @Test
     void treeIsFullTest() {
-        for (int i = 0; i < iterator; i++) {
+        for (int i = 0; i < maxSize; i++) {
             tree.insert(random.nextInt(99) + 1);
         }
 
         assertTrue(tree.isFull());
-        assertEquals(iterator, tree.getSize());
+        assertEquals(maxSize, tree.getSize());
     }
 
     private void insertableElements() {
@@ -52,12 +52,12 @@ class Ld4_30Test {
 
     @Test
     void insertElementTest() {
-        for (int i = 0; i < iterator; i++) {
-            tree.insert(iterator);
+        for (int i = 0; i < maxSize; i++) {
+            tree.insert(maxSize);
         }
 
         assertTrue(!tree.isEmpty());
-        assertEquals(iterator, tree.getSize());
+        assertEquals(maxSize, tree.getSize());
     }
 
     @Test
