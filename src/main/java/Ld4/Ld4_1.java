@@ -3,7 +3,7 @@ package Ld4;
 interface IBinarySearchTreeThree {
     void insert(int element);
 
-    void preorderOutput();
+    void preOrderOutput();
 
     int countNodesWithoutChildren();
 
@@ -63,11 +63,11 @@ class BSTPreOrder implements IBinarySearchTreeThree {
     }
 
     @Override
-    public void preorderOutput() {
+    public void preOrderOutput() {
 
     }
 
-    private void preorderOutoutWrapper() {
+    private void preOrderOutputWrapper() {
 
     }
 
