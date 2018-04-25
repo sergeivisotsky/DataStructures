@@ -22,7 +22,7 @@ class BSTPreOrder implements IBinarySearchTreeThree {
         Node left;
         Node right;
 
-        public Node(int data) {
+        Node(int data) {
             this.data = data;
             left = null;
             right = null;
@@ -33,7 +33,7 @@ class BSTPreOrder implements IBinarySearchTreeThree {
     private int size;
     private int maxSize;
 
-    public BSTPreOrder(int maxSize) {
+    BSTPreOrder(int maxSize) {
         this.maxSize = maxSize;
     }
 
