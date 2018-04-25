@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 interface IBinarySearchTreeTwo {
     void insert(int element);
 
-    void inorderOutput();
+    void inOrderOutput();
 
     int countNodesWithRightChildren();
 
@@ -67,16 +67,16 @@ class BSTInOrder implements IBinarySearchTreeTwo {
     }
 
     @Override
-    public void inorderOutput() {
-        inorderOutputWrapper(root);
+    public void inOrderOutput() {
+        inOrderOutputWrapper(root);
     }
 
-    private void inorderOutputWrapper(Node root) {
+    private void inOrderOutputWrapper(Node root) {
         if (root != null) {
             emptyStatusChecker();
-            inorderOutputWrapper(root.left);
+            inOrderOutputWrapper(root.left);
             System.out.print(root.data + "\t");
-            inorderOutputWrapper(root.right);
+            inOrderOutputWrapper(root.right);
         }
     }
 
@@ -182,7 +182,7 @@ public class Ld4_26 {
                         break;
                     case 2:
                         treeIsNotCreated();
-                        tree.inorderOutput();
+                        tree.inOrderOutput();
                         break;
                     case 3:
                         treeIsNotCreated();

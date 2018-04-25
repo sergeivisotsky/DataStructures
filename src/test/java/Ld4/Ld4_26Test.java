@@ -60,7 +60,7 @@ class Ld4_26Test {
     @Test
     void insertAndInorderOutput() {
         insertableElements();
-        bstInOrder.inorderOutput();
+        bstInOrder.inOrderOutput();
         assertTrue(!bstInOrder.isEmpty());
         assertEquals(9, bstInOrder.getSize());
     }

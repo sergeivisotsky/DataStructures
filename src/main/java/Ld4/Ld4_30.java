@@ -4,6 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+interface IBinarySearchTree {
+    void insert(int element);
+
+    void postOrderOutput();
+
+    int countNodesWithTwoChildren();
+
+    int evenElementQuantity();
+
+    int getSize();
+
+    boolean isEmpty();
+
+    boolean isFull();
+}
+
 class BinarySearchTree implements IBinarySearchTree {
     class Node {
         int data;
@@ -65,18 +81,18 @@ class BinarySearchTree implements IBinarySearchTree {
     }
 
     @Override
-    public void postorderOutput() {
-        postorderWrapper(root);
+    public void postOrderOutput() {
+        postOrderWrapper(root);
     }
 
-    private void postorderWrapper(Node root) {
+    private void postOrderWrapper(Node root) {
         if (root != null) {
             if (isEmpty()) {
                 throw new IllegalStateException("Koks ir tukšs!");
             }
 
-            postorderWrapper(root.left);
-            postorderWrapper(root.right);
+            postOrderWrapper(root.left);
+            postOrderWrapper(root.right);
             System.out.print(root.data + "\t");
 
         }
@@ -163,7 +179,7 @@ public class Ld4_30 {
                         break;
                     case 2:
                         treeIsNotCreated();
-                        tree.postorderOutput();
+                        tree.postOrderOutput();
                         break;
                     case 3:
                         treeIsNotCreated();

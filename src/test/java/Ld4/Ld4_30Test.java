@@ -63,7 +63,7 @@ class Ld4_30Test {
     @Test
     void createTreeAndPostorderOutputTest() {
         insertableElements();
-        tree.postorderOutput();
+        tree.postOrderOutput();
         assertTrue(!tree.isEmpty());
         assertEquals(8, tree.getSize());
     }
