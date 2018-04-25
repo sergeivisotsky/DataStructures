@@ -50,4 +50,28 @@ class Ld4_1Test {
         assertTrue(!tree.isFull());
         assertEquals(7, tree.getSize());
     }
+
+    @Test
+    void preOrderOutputTest() {
+        insertableElements();
+        tree.preOrderOutput();
+        assertTrue(!tree.isEmpty());
+    }
+
+    @Test
+    void countEmptyNodesTest() {
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(7);
+        assertEquals(2, tree.countNodesWithoutChildren());
+    }
+
+    @Test
+    void intervalNumbersTest() {
+        tree.insert(-8);
+        tree.insert(9);
+        tree.insert(10);
+        tree.insert(12);
+        assertEquals(3, tree.intervalNumberQuantity());
+    }
 }
