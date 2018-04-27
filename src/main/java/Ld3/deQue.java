@@ -27,35 +27,11 @@ interface IdeQue {
 }
 
 class Node {
-    private int data;
-    private Node next;
-    private Node prev;
+    int data;
+    Node next;
+    Node prev;
 
     Node(int data) {
-        this.data = data;
-    }
-
-    public int getData() {
-        return data;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public Node getPrev() {
-        return prev;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public void setPrev(Node prev) {
-        this.prev = prev;
-    }
-
-    public void setData(int data) {
         this.data = data;
     }
 }
@@ -66,7 +42,7 @@ public class deQue implements IdeQue {
     private int size;
     private int maxSize;
 
-    public deQue(int maxSize) {
+    deQue(int maxSize) {
         this.maxSize = maxSize;
         head = null;
         tail = null;
@@ -77,10 +53,16 @@ public class deQue implements IdeQue {
         Node node = new Node(element);
         if (isFull()) {
             head = node;
-            tail = node;
+            head.next = null;
+            head.prev = null;
         } else {
-
+            head.next = node;
+            node.next = null;
+            node.prev = head;
+            head = node;
         }
+
+        size++;
     }
 
     @Override
