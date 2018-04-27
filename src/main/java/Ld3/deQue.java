@@ -46,6 +46,18 @@ class Node {
     public Node getPrev() {
         return prev;
     }
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
+
+    public void setData(int data) {
+        this.data = data;
+    }
 }
 
 public class deQue implements IdeQue {
@@ -62,7 +74,11 @@ public class deQue implements IdeQue {
 
     @Override
     public void insertAtStart(int element) {
+        Node node = new Node(element);
         if (isFull()) {
+            head = node;
+            tail = node;
+        } else {
 
         }
     }
