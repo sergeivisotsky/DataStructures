@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VectorQueueTest {
-    private VectorQueue queue = new VectorQueue(10);
+class ArrayQueueTest {
+    private ArrayQueue queue = new ArrayQueue(10);
     private int iterator = 10;
 
     @Test

@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-class VectorQueue implements IQueue {
+class ArrayQueue implements IQueue {
     private Object queue[];
     private int maxSize;
     private int size;
     private int head;
     private int tail;
 
-    VectorQueue(int maxSize) {
+    ArrayQueue(int maxSize) {
         this.maxSize = maxSize;
         queue = new Object[this.maxSize];
         tail = 0;
@@ -93,8 +93,8 @@ public class Ld3_30 {
                 throw new IllegalStateException("Rindas garums nevar būt lielāks par 10!");
             }
 
-            VectorQueue queue =
-                    new VectorQueue(queueSize);
+            ArrayQueue queue =
+                    new ArrayQueue(queueSize);
             // User menu to choose answer variant
             System.out.println("1: Pievienot elementu rindā");
             System.out.println("2: Izmest elementu no rindas");
