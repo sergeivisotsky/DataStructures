@@ -15,7 +15,25 @@ class deQueTest {
         assertEquals(0, deQue.getSize());
     }
 
+    @Test
+    void insertFirstTest() {
+        for (int i = 1; i <= 28; i += 3) {
+            deQue.insertFirst(i);
+        }
+        deQue.display();
+        assertTrue(!deQue.isEmpty());
+        assertEquals(10, deQue.getSize());
+    }
 
-
-
+    @Test
+    void insertLastTest() {
+//        deQue.insertLast(44);
+        for (int i = 1; i <= 28; i += 3) {
+            deQue.insertFirst(i);
+        }
+        deQue.insertLast(3);
+        deQue.display();
+        assertTrue(!deQue.isEmpty());
+        assertEquals(11, deQue.getSize());
+    }
 }

@@ -11,11 +11,11 @@ interface IList {
 
     int getSize();
 
-    void insertAtBeginning(int element);
+    void insertFirst(int element);
 
     void insertAtPosition(int element, int position);
 
-    void insertAtEnd(int element);
+    void insertLast(int element);
 
     void display();
 
@@ -56,7 +56,7 @@ public class DoublyLinkedList implements IList {
     }
 
     @Override
-    public void insertAtBeginning(int element) {
+    public void insertFirst(int element) {
         NodeD node = new NodeD(element);
         if (isEmpty()) {
             head = node;
@@ -73,7 +73,7 @@ public class DoublyLinkedList implements IList {
     public void insertAtPosition(int element, int position) {
         NodeD node = new NodeD(element);
         if (position == 1) {
-            insertAtBeginning(element);
+            insertFirst(element);
             return;
         }
 
@@ -95,7 +95,7 @@ public class DoublyLinkedList implements IList {
     }
 
     @Override
-    public void insertAtEnd(int element) {
+    public void insertLast(int element) {
         NodeD node = new NodeD(element);
         if (head == null) {
             head = node;
@@ -199,7 +199,7 @@ public class DoublyLinkedList implements IList {
             do {
                 System.out.println("1: insertElementAtBeginning");
                 System.out.println("2: insertAtPosition");
-                System.out.println("3: insertAtEnd");
+                System.out.println("3: insertLast");
                 System.out.println("4: Delete data");
                 System.out.println("5: negativeElementQuantity");
                 System.out.println("6: Size");
@@ -211,7 +211,7 @@ public class DoublyLinkedList implements IList {
                         if (!list.isFull()) {
                             System.out.print("Add data: ");
                             element = Integer.parseInt(input.readLine());
-                            list.insertAtBeginning(element);
+                            list.insertFirst(element);
                         } else {
                             System.out.println("List is full!");
                         }
@@ -232,7 +232,7 @@ public class DoublyLinkedList implements IList {
                         if (!list.isFull()) {
                             System.out.print("Add data: ");
                             element = Integer.parseInt(input.readLine());
-                            list.insertAtEnd(element);
+                            list.insertLast(element);
                         } else {
                             System.out.println("List is full!");
                         }

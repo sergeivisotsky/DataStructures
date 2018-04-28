@@ -5,19 +5,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 interface IdeQue {
-    void insertAtStart(int element);
+    void insertFirst(int element);
 
-    void insertAtEnd(int element);
+    void insertLast(int element);
 
     void display();
 
-    void deQueueAtStart();
+    void deQueueFirst();
 
-    void deQueueInTheEnd();
+    void deQueueLast();
 
-    int peekAtStart();
+    int peekFirst();
 
-    int peekAtTheEnd();
+    int peekLast();
 
     boolean isFull();
 
@@ -29,7 +29,6 @@ interface IdeQue {
 class Node {
     int data;
     Node next;
-    Node prev;
 
     Node(int data) {
         this.data = data;
@@ -49,16 +48,13 @@ public class deQue implements IdeQue {
     }
 
     @Override
-    public void insertAtStart(int element) {
+    public void insertFirst(int element) {
         Node node = new Node(element);
-        if (isFull()) {
+        if (isEmpty()) {
             head = node;
-            head.next = null;
-            head.prev = null;
+            tail = head;
         } else {
-            head.next = node;
-            node.next = null;
-            node.prev = head;
+            node.next = head;
             head = node;
         }
 
@@ -66,32 +62,50 @@ public class deQue implements IdeQue {
     }
 
     @Override
-    public void insertAtEnd(int element) {
+    public void insertLast(int element) {
+        Node node = new Node(element);
+        if (isEmpty()) {
+            tail = node;
+            head = tail;
+        } else {
+            tail.next = node;
+            tail = node;
+        }
 
+        size++;
     }
 
     @Override
     public void display() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Deque is empty!");
+        }
+
+        Node node;
+        for (node = head;
+             node != tail;
+             node = node.next) {
+            System.out.print(node.data + "\t");
+        }
+    }
+
+    @Override
+    public void deQueueFirst() {
 
     }
 
     @Override
-    public void deQueueAtStart() {
+    public void deQueueLast() {
 
     }
 
     @Override
-    public void deQueueInTheEnd() {
-
-    }
-
-    @Override
-    public int peekAtStart() {
+    public int peekFirst() {
         return 0;
     }
 
     @Override
-    public int peekAtTheEnd() {
+    public int peekLast() {
         return 0;
     }
 
@@ -128,13 +142,13 @@ public class deQue implements IdeQue {
             String yesNoAnswer;
             int element;
             do {
-                System.out.println("1: insertAtStart");
-                System.out.println("2: insertAtEnd");
+                System.out.println("1: insertFirst");
+                System.out.println("2: insertLast");
                 System.out.println("3: Show deque");
-                System.out.println("4: deQueueAtStart");
-                System.out.println("5: deQueueInTheEnd");
-                System.out.println("6: peekAtStart");
-                System.out.println("7: peekAtTheEnd");
+                System.out.println("4: deQueueFirst");
+                System.out.println("5: deQueueLast");
+                System.out.println("6: peekFirst");
+                System.out.println("7: peekLast");
                 System.out.println("8: size");
                 System.out.println("9: isEmpty");
                 System.out.print("\nChoose answer: ");
@@ -143,13 +157,13 @@ public class deQue implements IdeQue {
                     case 1:
                         System.out.print("Add element in the start: ");
                         element = Integer.parseInt(input.readLine());
-                        deQue.insertAtEnd(element);
+                        deQue.insertLast(element);
                         deQueCreated = true;
                         break;
                     case 2:
                         System.out.print("Add element in the end: ");
                         deQueIsNotCreated();
-//                        deQue.insertAtEnd(element);
+//                        deQue.insertLast(element);
                         break;
                     case 3:
                         deQueIsNotCreated();

@@ -20,7 +20,7 @@ class DoublyLinkedListTest {
     @Test
     void insertAtBeginningTest() {
         for (int i = 0; i < iterator; i++) {
-            list.insertAtBeginning(rd.nextInt(29) + 1);
+            list.insertFirst(rd.nextInt(29) + 1);
         }
         list.display();
         assertTrue(list.isFull());
@@ -29,23 +29,23 @@ class DoublyLinkedListTest {
 
     @Test
     void insertAtPositionTest() {
-        list.insertAtBeginning(12);
+        list.insertFirst(12);
         list.insertAtPosition(5, 1);
         list.display();
     }
 
     @Test
     void insertAtTheEndTest() {
-        list.insertAtBeginning(12);
+        list.insertFirst(12);
         list.insertAtPosition(5, 1);
-        list.insertAtEnd(56);
+        list.insertLast(56);
         list.display();
     }
 
     @Test
     void insertAndDisplayTest() {
         for (int i = 0; i < iterator; i++) {
-            list.insertAtBeginning(rd.nextInt(29) + 1);
+            list.insertFirst(rd.nextInt(29) + 1);
         }
 
         list.display();
@@ -53,11 +53,11 @@ class DoublyLinkedListTest {
 
     @Test
     void deleteAndDisplayTest() {
-        list.insertAtBeginning(36);
+        list.insertFirst(36);
         for (int i = 1; i < 3; i++) {
             list.insertAtPosition(i, i);
         }
-        list.insertAtEnd(46);
+        list.insertLast(46);
         System.out.println("Before deletion: ");
         list.display();
 
@@ -68,11 +68,11 @@ class DoublyLinkedListTest {
 
     @Test
     void negativeElementQuantityTest() {
-        list.insertAtBeginning(36);
+        list.insertFirst(36);
         for (int i = 1; i <= 3; i++) {
             list.insertAtPosition(-3, i);
         }
-        list.insertAtEnd(46);
+        list.insertLast(46);
 
         assertEquals(3, list.negativeElementQuantity());
     }
