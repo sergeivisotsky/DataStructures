@@ -4,16 +4,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-interface IdeQue {
+interface IDoubleEndedQueue {
     void insertFirst(int element);
 
     void insertLast(int element);
 
     void display();
 
-    void deQueueFirst();
+    int deQueueFirst();
 
-    void deQueueLast();
+    int deQueueLast();
 
     int peekFirst();
 
@@ -35,20 +35,33 @@ class Node {
     }
 }
 
-public class deQue implements IdeQue {
+public class DoubleEndedQueue implements IDoubleEndedQueue {
     private Node head;
     private Node tail;
     private int size;
     private int maxSize;
 
-    deQue(int maxSize) {
+    DoubleEndedQueue(int maxSize) {
         this.maxSize = maxSize;
         head = null;
         tail = null;
     }
 
+    private void fullStatusChecker() {
+        if (isFull()) {
+            throw new IllegalStateException("DeQue is full!");
+        }
+    }
+
+    private void emptyStatusChecker() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Deque is empty!");
+        }
+    }
+
     @Override
     public void insertFirst(int element) {
+        fullStatusChecker();
         Node node = new Node(element);
         if (isEmpty()) {
             head = node;
@@ -63,6 +76,7 @@ public class deQue implements IdeQue {
 
     @Override
     public void insertLast(int element) {
+        fullStatusChecker();
         Node node = new Node(element);
         if (isEmpty()) {
             tail = node;
@@ -77,36 +91,51 @@ public class deQue implements IdeQue {
 
     @Override
     public void display() {
-        if (isEmpty()) {
-            throw new IllegalStateException("Deque is empty!");
-        }
-
+        emptyStatusChecker();
         Node node;
         for (node = head;
-             node != tail;
+             node != tail.next;
              node = node.next) {
             System.out.print(node.data + "\t");
         }
     }
 
     @Override
-    public void deQueueFirst() {
-
+    public int deQueueFirst() {
+        emptyStatusChecker();
+        Node node = head;
+        head = node.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return node.data;
     }
 
     @Override
-    public void deQueueLast() {
-
+    public int deQueueLast() {
+        emptyStatusChecker();
+        int temp = tail.data;
+        Node first = head;
+        Node second = head;
+        while (first != tail) {
+            second = first;
+            first = first.next;
+        }
+        tail = second;
+        tail.next = null;
+        size--;
+        return temp;
     }
 
     @Override
     public int peekFirst() {
-        return 0;
+        return head.data;
     }
 
     @Override
     public int peekLast() {
-        return 0;
+        return tail.data;
     }
 
     @Override
@@ -137,61 +166,71 @@ public class deQue implements IdeQue {
             if (deQueSize > 10) {
                 throw new IllegalStateException("Size shouldn't be greater than 10!");
             }
-            deQue deQue = new deQue(deQueSize);
+            DoubleEndedQueue deQue = new DoubleEndedQueue(deQueSize);
             int answer;
             String yesNoAnswer;
             int element;
             do {
+                System.out.println();
                 System.out.println("1: insertFirst");
                 System.out.println("2: insertLast");
-                System.out.println("3: Show deque");
-                System.out.println("4: deQueueFirst");
-                System.out.println("5: deQueueLast");
-                System.out.println("6: peekFirst");
-                System.out.println("7: peekLast");
-                System.out.println("8: size");
-                System.out.println("9: isEmpty");
+                System.out.println("3: deQueueFirst");
+                System.out.println("4: deQueueLast");
+                System.out.println("5: peekFirst");
+                System.out.println("6: peekLast");
+                System.out.println("7: size");
+                System.out.println("8: isEmpty");
                 System.out.print("\nChoose answer: ");
                 answer = Integer.parseInt(input.readLine());
                 switch (answer) {
                     case 1:
                         System.out.print("Add element in the start: ");
                         element = Integer.parseInt(input.readLine());
-                        deQue.insertLast(element);
+                        deQue.insertFirst(element);
                         deQueCreated = true;
                         break;
                     case 2:
                         System.out.print("Add element in the end: ");
+                        element = Integer.parseInt(input.readLine());
+                        deQue.insertLast(element);
                         deQueIsNotCreated();
-//                        deQue.insertLast(element);
                         break;
                     case 3:
                         deQueIsNotCreated();
+                        System.out.println("Deleted first element: " +
+                                deQue.deQueueFirst());
                         break;
                     case 4:
                         deQueIsNotCreated();
+                        System.out.println("Deleted last element: " +
+                                deQue.deQueueLast());
                         break;
                     case 5:
                         deQueIsNotCreated();
+                        System.out.println("First element: " +
+                                deQue.peekFirst());
                         break;
                     case 6:
                         deQueIsNotCreated();
+                        System.out.println("Last element: " +
+                                deQue.peekLast());
                         break;
                     case 7:
-                        deQueIsNotCreated();
-                        break;
-                    case 8:
                         deQueIsNotCreated();
                         System.out.println("Queue size: " +
                                 deQue.getSize());
                         break;
-                    case 9:
+                    case 8:
                         System.out.println("Empty status: " +
                                 deQue.isEmpty());
                         break;
                     default:
                         throw new IllegalStateException("Illegal state!");
                 }
+
+                System.out.println("\nCreated deque:");
+                deQue.display();
+                System.out.println();
                 System.out.print("\nContinue? (y/n) ");
                 yesNoAnswer = input.readLine();
             } while (yesNoAnswer.equals("y") || yesNoAnswer.equals("Y"));
