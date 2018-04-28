@@ -1,4 +1,4 @@
-package Ld3.Test;
+package Ld3.Assignment;
 
 class Comp {
     int info;

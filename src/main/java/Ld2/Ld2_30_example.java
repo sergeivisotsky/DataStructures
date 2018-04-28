@@ -168,7 +168,7 @@ public class Ld2_30_example {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         linkedListEx list = new linkedListEx();
-        System.out.println("Sorted Circular Singly Linked List Test\n");
+        System.out.println("Sorted Circular Singly Linked List Assignment\n");
         char ch;
 
         /*  Perform list operations  */
