@@ -5,47 +5,41 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 
-class Node {
-    public int data;
-    private Node next;
+interface ILinkedList {
+    void insert(int element);
 
-    Node(int number) {
-        data = number;
-    }
+    void deleteNode(int nodeIndex);
 
-    public int getData() {
-        return data;
-    }
+    void display();
 
-    public Node getNext() {
-        return next;
-    }
+    int equalsToZero();
 
-    public void setNext(Node next) {
-        this.next = next;
-    }
+    boolean isEmpty();
+
+    boolean isFull();
+
+    int getSize();
 }
 
-class LinkedList {
+
+class LinkedList implements ILinkedList {
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int number) {
+            data = number;
+        }
+    }
+
     private Node head = null, tail = null;
     private int size = 0;
 
-    public boolean isEmpty() {
-        return head == null;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public boolean isFull() {
-        return size == 10;
-    }
-
-    private void insertAtBeginning(int current) {
+    private void insertAtStart(int current) {
         Node node = new Node(current);
-        node.setNext(head);
-        tail.setNext(node);
+        node.next = head;
+        tail.next = node;
         head = node;
     }
 
@@ -53,37 +47,38 @@ class LinkedList {
         Node node, temp, ptr;
         node = new Node(current);
         temp = head;
-        ptr = head.getNext();
+        ptr = head.next;
 
         while (temp != tail) {
-            if (current >= temp.getData() &&
-                    current <= ptr.getData()) {
-                temp.setNext(node);
-                node.setNext(ptr);
+            if (current >= temp.data &&
+                    current <= ptr.data) {
+                temp.next = node;
+                node.next = ptr;
                 break;
             } else {
                 temp = ptr;
-                ptr = ptr.getNext();
+                ptr = ptr.next;
             }
         }
     }
 
     private void insertAtTheEnd(int current) {
         Node node = new Node(current);
-        tail.setNext(node);
-        node.setNext(head);
+        tail.next = node;
+        node.next = head;
         tail = node;
     }
 
+    @Override
     public void insert(int current) {
         Node node = new Node(current);
         if (isEmpty()) {
             head = node;
-            node.setNext(head);
+            node.next = head;
             tail = head;
-        } else if (current <= head.getData()) {
-            insertAtBeginning(current);
-        } else if (current >= tail.getData()) {
+        } else if (current <= head.data) {
+            insertAtStart(current);
+        } else if (current >= tail.data) {
             insertAtTheEnd(current);
         } else {
             insertInTheMiddle(current);
@@ -91,6 +86,7 @@ class LinkedList {
         size++;
     }
 
+    @Override
     public void deleteNode(int nodeIndex) {
         if (nodeIndex == 1 && size == 1) {
             head = null;
@@ -100,8 +96,8 @@ class LinkedList {
         }
 
         if (nodeIndex == 1) {
-            head = head.getNext();
-            tail.setNext(head);
+            head = head.next;
+            tail.next = head;
             size--;
             return;
         }
@@ -109,9 +105,9 @@ class LinkedList {
         if (nodeIndex == size) {
             Node node = head;
             for (int i = 1; i < size - 1; i++) {
-                node = node.getNext();
+                node = node.next;
             }
-            node.setNext(head);
+            node.next = head;
             tail = node;
             size--;
             return;
@@ -121,40 +117,41 @@ class LinkedList {
         nodeIndex--;
         for (int i = 1; i < size - 1; i++) {
             if (i == nodeIndex) {
-                Node temp = node.getNext();
-                temp = temp.getNext();
-                node.setNext(temp);
+                Node temp = node.next;
+                temp = temp.next;
+                node.next = temp;
                 break;
             }
-            node = node.getNext();
+            node = node.next;
         }
         size--;
     }
 
-    public void outputSortedList() {
-        Node node = head;
+    @Override
+    public void display() {
+        Node node;
         if (isEmpty()) {
             System.out.println("Saraksts ir tukšs!");
             return;
         }
 
-        if (head.getNext() == head) {
-            System.out.print(head.getData());
+        if (head.next == head) {
+            System.out.print(head.data);
             return;
         }
 
-        System.out.print(head.getData() + "\t");
-        node = head.getNext();
+        System.out.print(head.data + "\t");
+        node = head.next;
 
-        while (node.getNext() != head) {
-            System.out.print(node.getData() + "\t");
-            node = node.getNext();
+        while (node.next != head) {
+            System.out.print(node.data + "\t");
+            node = node.next;
         }
 
-        System.out.print(node.getData() + "\n");
+        System.out.print(node.data + "\n");
     }
 
-
+    @Override
     public int equalsToZero() {
         Node node;
         int quantifier = 0;
@@ -165,12 +162,27 @@ class LinkedList {
 
         for (node = head;
              node != tail;
-             node = node.getNext()) {
-            if (node.getNext().data == 0) {
+             node = node.next) {
+            if (node.next.data == 0) {
                 quantifier++;
             }
         }
         return quantifier;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public boolean isFull() {
+        return size == 10;
     }
 }
 
@@ -214,7 +226,7 @@ public class Ld2_30 {
                                     "Ievietot elementus vairs nav iespējams!");
                         }
                         System.out.println("\nIzveidots saraksts:");
-                        list.outputSortedList();
+                        list.display();
 
                         listCreated = true;
                         break;
@@ -234,7 +246,7 @@ public class Ld2_30 {
                             } else {
                                 list.deleteNode(deletableElementIndex);
                                 System.out.println("\nIzveidots saraksts:");
-                                list.outputSortedList();
+                                list.display();
                             }
                         } else {
                             System.out.println("Saraksts ir tukšs!");
