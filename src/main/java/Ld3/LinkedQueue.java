@@ -71,8 +71,7 @@ public class LinkedQueue implements IQueue {
         }
 
         if (head.next == head) {
-            System.out.print(head.data +
-                    "\t" + nodeA.next);
+            System.out.print(head.data);
             return;
         }
 
