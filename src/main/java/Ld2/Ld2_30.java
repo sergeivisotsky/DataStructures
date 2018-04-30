@@ -139,8 +139,7 @@ class LinkedList {
         }
 
         if (head.getNext() == head) {
-            System.out.print(head.getData() +
-                    "\t" + node.getNext());
+            System.out.print(head.getData());
             return;
         }
 
