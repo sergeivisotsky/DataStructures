@@ -3,7 +3,6 @@ package Controler;
 import View.Fields;
 
 import javax.swing.*;
-import java.util.LinkedList;
 
 public class Controller implements IBinarySearchTree {
 
@@ -50,30 +49,22 @@ public class Controller implements IBinarySearchTree {
     }
 
     @Override
-    public void postorderOutput() {
-        postorderWrapper(root);
+    public void postOrderOutput() {
+        postOrderOutputWrapper(root);
     }
 
-    private void postorderWrapper(Node root) {
+    private void postOrderOutputWrapper(Node root) {
 
         if (root != null) {
-            /*if (isEmpty()) {
-//                throw new IllegalStateException("Koks ir tukšs!");
+            if (isEmpty()) {
                 JOptionPane.showMessageDialog(Fields.contentPane, "BST is empty!");
-            }*/
+            }
 
-            postorderWrapper(root.left);
+            postOrderOutputWrapper(root.left);
             model.addElement(root.data);
-            postorderWrapper(root.right);
+            postOrderOutputWrapper(root.right);
             model.addElement(root.data);
-//            System.out.print(root.data + "\t");
             Fields.list.setModel(model);
-
-//            LinkedList<Node> element = new LinkedList<>();
-//            for (int i = 0; i < ; i++) {
-//
-//            }
-
         }
     }
 

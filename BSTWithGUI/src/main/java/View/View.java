@@ -50,7 +50,7 @@ public class View extends JFrame {
 
         Fields.lblSizeNumber = new JLabel("");
 
-        JList list = new JList();
+        Fields.list = new JList();
         GroupLayout gl_contentPane = new GroupLayout(Fields.contentPane);
         gl_contentPane.setHorizontalGroup(
                 gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -86,7 +86,7 @@ public class View extends JFrame {
                                                 .addComponent(Fields.textField, GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
                                         .addGroup(gl_contentPane.createSequentialGroup()
                                                 .addGap(47)
-                                                .addComponent(list, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(Fields.list, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
         );
         gl_contentPane.setVerticalGroup(
@@ -101,7 +101,7 @@ public class View extends JFrame {
                                 .addGap(43)
                                 .addComponent(Fields.lblPostorderOutput)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(list, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Fields.list, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
                                 .addGap(39)
                                 .addComponent(Fields.btnShow)
                                 .addGap(18)

@@ -3,7 +3,7 @@ package Controler;
 public interface IBinarySearchTree {
     void insert(int element);
 
-    void postorderOutput();
+    void postOrderOutput();
 
     int countNodesWithTwoChildren();
 

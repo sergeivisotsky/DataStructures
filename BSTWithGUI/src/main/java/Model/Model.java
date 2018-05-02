@@ -22,7 +22,7 @@ public class Model {
 
     public void btnShowActionListener() {
         if (!controller.isEmpty()) {
-            controller.postorderOutput();
+            controller.postOrderOutput();
         } else {
             JOptionPane.showMessageDialog(Fields.contentPane, "BST is empty!");
         }
