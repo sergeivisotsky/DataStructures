@@ -99,6 +99,24 @@ class BSTInOrder implements IBinarySearchTreeTwo {
                 countNodesWithRightChildrenWrapper(root.right);
     }
 
+    public int countNodesWithoutChildren() {
+        emptyStatusChecker();
+        return coundNodesWithoutChildrenWrapper(root);
+    }
+
+    private int coundNodesWithoutChildrenWrapper(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        return coundNodesWithoutChildrenWrapper(root.left) +
+                coundNodesWithoutChildrenWrapper(root.right);
+    }
+
     @Override
     public int negativeElementQuantity() {
         emptyStatusChecker();

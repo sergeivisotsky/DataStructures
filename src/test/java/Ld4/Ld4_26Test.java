@@ -72,6 +72,12 @@ class Ld4_26Test {
     }
 
     @Test
+    void countNodesWithoutChildren() {
+        insertableElements();
+        assertEquals(4, bstInOrder.countNodesWithoutChildren());
+    }
+
+    @Test
     void negativeElementQuantityTest() {
         bstInOrder.insert(21);
         bstInOrder.insert(-3);
