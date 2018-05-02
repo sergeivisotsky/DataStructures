@@ -184,7 +184,8 @@ public class Ld4_26 {
                 System.out.println("1: insert");
                 System.out.println("2: Inorder output");
                 System.out.println("3: Nodes with one right children");
-                System.out.println("4: Negative element quantity");
+                System.out.println("4: Nodes without children");
+                System.out.println("5: Negative element quantity");
                 System.out.print("\nAnswer: ");
                 answer = Integer.parseInt(input.readLine());
                 switch (answer) {
@@ -208,6 +209,10 @@ public class Ld4_26 {
                                 tree.countNodesWithRightChildren());
                         break;
                     case 4:
+                        treeIsNotCreated();
+                        System.out.println(tree.countNodesWithoutChildren());
+                        break;
+                    case 5:
                         treeIsNotCreated();
                         System.out.println(
                                 tree.negativeElementQuantity());
