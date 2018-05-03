@@ -1,8 +1,7 @@
 package Abstract;
 
-/**
- * Data structure example
- */
+import java.util.LinkedList;
+
 class Student {
     private String name;
     private String surname;
@@ -10,54 +9,49 @@ class Student {
     private String studentNumber;
     private String groupNumber;
 
-    public String getName() {
+    Student(String name, String surname, int age,
+            String studentNumber, String groupNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.studentNumber = studentNumber;
+        this.groupNumber = groupNumber;
+    }
+
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
+    String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public int getAge() {
+    int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getStudentNumber() {
+    String getStudentNumber() {
         return studentNumber;
     }
 
-    public void setStudentNumber(String studentNumber) {
-        this.studentNumber = studentNumber;
-    }
-
-    public String getGroupNumber() {
+    String getGroupNumber() {
         return groupNumber;
-    }
-
-    public void setGroupNumber(String groupNumber) {
-        this.groupNumber = groupNumber;
     }
 }
 
 public class MainDS {
     public static void main(String[] args) {
-        Student student = new Student();
-        student.setName("John");
-        student.setSurname("Kensington");
-        student.setAge(19);
-        student.setStudentNumber("111rdb111");
-        student.setGroupNumber("IRDBD00");
+        LinkedList<Student> students = new LinkedList<>();
+        students.add(new Student("John", "Smith", 23, "171rdb042", "IRDBD13"));
+        students.add(new Student("Lilia", "Quick", 19, "171rdb056", "IRDBD10"));
+        students.add(new Student("Johanna", "Bloom", 20, "171rdb045", "IRDBD02"));
+        for (Student student : students) {
+            System.out.print(student.getName() + "\t\t");
+            System.out.print(student.getSurname() + "\t\t");
+            System.out.print(student.getAge() + "\t\t");
+            System.out.print(student.getStudentNumber() + "\t\t");
+            System.out.print(student.getGroupNumber() + "\t\t");
+            System.out.println();
+        }
     }
 }

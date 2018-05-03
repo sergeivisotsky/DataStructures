@@ -11,6 +11,8 @@ struct Student {
 };
 
 void main() {
+	list<Student> students;
+	students.push_front(new Student(""))
     Student.name = "John";
     Student.surname = "Kensington";
     Student.age = 19;
