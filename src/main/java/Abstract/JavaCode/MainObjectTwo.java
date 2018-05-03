@@ -1,4 +1,4 @@
-package Abstract;
+package Abstract.JavaCode;
 
 abstract class StudentLife {
     abstract void working();

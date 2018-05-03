@@ -1,4 +1,4 @@
-package Abstract;
+package Abstract.JavaCode;
 
 interface IStudentState {
     void working();
