@@ -1,16 +1,17 @@
 package Ld3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class deQueTest {
+public class deQueTest {
 
     private int maxSize = 10;
     private DoubleEndedQueue deQue = new DoubleEndedQueue(maxSize);
 
     @Test
-    void isEmptyTest() {
+    public void isEmptyTest() {
         assertTrue(deQue.isEmpty());
         assertEquals(0, deQue.getSize());
     }
@@ -25,14 +26,14 @@ class deQueTest {
     }
 
     @Test
-    void isFullTest() {
+    public void isFullTest() {
         insertableElements();
         assertTrue(deQue.isFull());
         assertEquals(10, deQue.getSize());
     }
 
     @Test
-    void insertFirstTest() {
+    public void insertFirstTest() {
         for (int i = 1; i <= 28; i += 3) {
             deQue.insertFirst(i);
         }
@@ -42,7 +43,7 @@ class deQueTest {
     }
 
     @Test
-    void insertLastTest() {
+    public void insertLastTest() {
         for (int i = 1; i <= 25; i += 3) {
             deQue.insertFirst(i);
         }
@@ -53,7 +54,7 @@ class deQueTest {
     }
 
     @Test
-    void deQueFirstTest() {
+    public void deQueFirstTest() {
         insertableElements();
         System.out.println("Before: ");
         deQue.display();
@@ -63,7 +64,7 @@ class deQueTest {
     }
 
     @Test
-    void deQueLastTest() {
+    public void deQueLastTest() {
         insertableElements();
         System.out.println("Before: ");
         deQue.display();
@@ -73,13 +74,13 @@ class deQueTest {
     }
 
     @Test
-    void peekFirstTest() {
+    public void peekFirstTest() {
         insertableElements();
         assertEquals(13, deQue.peekFirst());
     }
 
     @Test
-    void peekLastTest() {
+    public void peekLastTest() {
         insertableElements();
         assertEquals(13, deQue.peekLast());
     }

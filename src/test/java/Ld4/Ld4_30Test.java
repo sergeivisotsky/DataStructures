@@ -1,25 +1,25 @@
 package Ld4;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class Ld4_30Test {
+public class Ld4_30Test {
     private Random random = new Random();
     private int maxSize = 15;
     private BinarySearchTree tree = new BinarySearchTree(maxSize);
 
     @Test
-    void treeIsEmptyTest() {
+    public void treeIsEmptyTest() {
         assertTrue(tree.isEmpty());
         assertEquals(0, tree.getSize());
     }
 
     @Test
-    void treeIsFullTest() {
+    public void treeIsFullTest() {
         for (int i = 0; i < maxSize; i++) {
             tree.insert(random.nextInt(99) + 1);
         }
@@ -40,18 +40,18 @@ class Ld4_30Test {
     }
 
     /**
-     *          20
-     *       /     \
-     *     /        \
-     *    10         30
-     *  /   \       /  \
+     * 20
+     * /     \
+     * /        \
+     * 10         30
+     * /   \       /  \
      * 5     15   25    50
-     *                 /
-     *                28
+     * /
+     * 28
      */
 
     @Test
-    void insertElementTest() {
+    public void insertElementTest() {
         for (int i = 0; i < maxSize; i++) {
             tree.insert(maxSize);
         }
@@ -61,7 +61,7 @@ class Ld4_30Test {
     }
 
     @Test
-    void createTreeAndPostorderOutputTest() {
+    public void createTreeAndPostorderOutputTest() {
         insertableElements();
         tree.postOrderOutput();
         assertTrue(!tree.isEmpty());
@@ -69,13 +69,13 @@ class Ld4_30Test {
     }
 
     @Test
-    void countNodesWithTwoChildrenTest() {
+    public void countNodesWithTwoChildrenTest() {
         insertableElements();
         assertEquals(3, tree.countNodesWithTwoChildren());
     }
 
     @Test
-    void evenElementQuantity() {
+    public void evenElementQuantity() {
         insertableElements();
         tree.evenElementQuantity();
         assertEquals(5, tree.evenElementQuantity());

@@ -1,24 +1,26 @@
 package Ld2;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class SortedDoublyLinkedCircularListTest {
+public class SortedDoublyLinkedListTest {
     private int maxSize = 10;
     private SortedDoublyLinkedCircularList list =
             new SortedDoublyLinkedCircularList(maxSize);
     private int iterator = maxSize;
 
     @Test
-    void emptyStatusTest() {
+    public void emptyStatusTest() {
         assertTrue(list.isEmpty());
         assertEquals(0, list.getSize());
     }
+
     @Test
-    void sortedInsertionAndOutputTest() {
+    public void sortedInsertionAndOutputTest() {
         Random rd = new Random();
         for (int i = 0; i < iterator; i++) {
             list.insert(rd.nextInt(99) + 1);
@@ -43,7 +45,7 @@ class SortedDoublyLinkedCircularListTest {
     }
 
     @Test
-    void removeAtPositionTest() {
+    public void removeAtPositionTest() {
         insertionScope();
         System.out.println("Before: ");
         list.display();
@@ -53,7 +55,7 @@ class SortedDoublyLinkedCircularListTest {
     }
 
     @Test
-    void intervalNumber() {
+    public void intervalNumber() {
         insertionScope();
         assertEquals(3, list.intervalNumbers());
     }

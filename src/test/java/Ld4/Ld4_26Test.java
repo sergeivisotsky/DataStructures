@@ -1,22 +1,23 @@
 package Ld4;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class Ld4_26Test {
+public class Ld4_26Test {
     private int maxSize = 15;
 
     private BSTInOrder bstInOrder = new BSTInOrder(maxSize);
 
     @Test
-    void emptyStatusTest() {
+    public void emptyStatusTest() {
         assertTrue(bstInOrder.isEmpty());
         assertEquals(0, bstInOrder.getSize());
     }
 
     @Test
-    void isFullTest() {
+    public void isFullTest() {
         for (int i = 0; i < maxSize; i++) {
             bstInOrder.insert(i);
         }
@@ -51,14 +52,14 @@ class Ld4_26Test {
      */
 
     @Test
-    void insertElementsTest() {
+    public void insertElementsTest() {
         insertableElements();
         assertTrue(!bstInOrder.isEmpty());
         assertEquals(9, bstInOrder.getSize());
     }
 
     @Test
-    void insertAndInorderOutput() {
+    public void insertAndInorderOutput() {
         insertableElements();
         bstInOrder.inOrderOutput();
         assertTrue(!bstInOrder.isEmpty());
@@ -66,19 +67,19 @@ class Ld4_26Test {
     }
 
     @Test
-    void countNodesWithRightChildrenTest() {
+    public void countNodesWithRightChildrenTest() {
         insertableElements();
         assertEquals(2, bstInOrder.countNodesWithRightChildren());
     }
 
     @Test
-    void countNodesWithoutChildren() {
+    public void countNodesWithoutChildren() {
         insertableElements();
         assertEquals(4, bstInOrder.countNodesWithoutChildren());
     }
 
     @Test
-    void negativeElementQuantityTest() {
+    public void negativeElementQuantityTest() {
         bstInOrder.insert(21);
         bstInOrder.insert(-3);
         bstInOrder.insert(-5);

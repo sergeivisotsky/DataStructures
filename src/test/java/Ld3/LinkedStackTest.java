@@ -1,14 +1,15 @@
 package Ld3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class LinkedStackTest {
+public class LinkedStackTest {
     private LinkedStack stack = new LinkedStack(10);
 
     @Test
-    void isEmptyTest() {
+    public void isEmptyTest() {
         assertTrue(stack.isEmpty());
         assertEquals(0, stack.getSize());
     }
@@ -27,7 +28,7 @@ class LinkedStackTest {
     }
 
     @Test
-    void pushTest() {
+    public void pushTest() {
         pushableElements();
         assertTrue(stack.isFull());
         assertEquals(10, stack.getSize());
@@ -35,7 +36,7 @@ class LinkedStackTest {
     }
 
     @Test
-    void popTest() {
+    public void popTest() {
         pushableElements();
         System.out.println("Before: ");
         stack.displayStack();
@@ -46,13 +47,13 @@ class LinkedStackTest {
     }
 
     @Test
-    void peekTest() {
+    public void peekTest() {
         pushableElements();
         assertEquals(36, stack.peek());
     }
 
     @Test
-    void intervalNumbersTest() {
+    public void intervalNumbersTest() {
         pushableElements();
         assertEquals(5, stack.intervalNumbers());
     }

@@ -1,10 +1,11 @@
 package Ld2;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.*;
 
-class LinkedListTest {
+public class LinkedListTest {
     private LinkedList linkedList = new LinkedList();
     private int iterator = 10;
 

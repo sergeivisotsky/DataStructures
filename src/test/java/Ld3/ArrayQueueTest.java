@@ -1,21 +1,22 @@
 package Ld3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
-class ArrayQueueTest {
+public class ArrayQueueTest {
     private ArrayQueue queue = new ArrayQueue(10);
     private int iterator = 10;
 
     @Test
-    void newQueueIsEmptyTest() {
+    public void newQueueIsEmptyTest() {
         assertTrue(queue.isEmpty());
         assertEquals(0, queue.getSize());
     }
 
     @Test
-    void insertsToEmptyQueueTest() {
+    public void insertsToEmptyQueueTest() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
@@ -24,7 +25,7 @@ class ArrayQueueTest {
     }
 
     @Test
-    void enQueueAndOutput() {
+    public void enQueueAndOutput() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
@@ -33,7 +34,7 @@ class ArrayQueueTest {
     }
 
     @Test
-    void enQueueThenDequeueTest() {
+    public void enQueueThenDequeueTest() {
         int number = 0;
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
@@ -45,7 +46,7 @@ class ArrayQueueTest {
     }
 
     @Test
-    void enQueueThenPeekTest() {
+    public void enQueueThenPeekTest() {
         int number = 19;
         queue.enQueue(number);
         int size = queue.getSize();
@@ -54,7 +55,7 @@ class ArrayQueueTest {
     }
 
     @Test
-    void tenInThenTenOutTest() {
+    public void tenInThenTenOutTest() {
         for (int i = 0; i < 10; i++) {
             queue.enQueue(i);
         }
@@ -64,7 +65,7 @@ class ArrayQueueTest {
     }
 
     @Test
-    void removingDownToEmptyTest() {
+    public void removingDownToEmptyTest() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
@@ -76,7 +77,7 @@ class ArrayQueueTest {
     }
 
     @Test
-    void enQueueDequeueOutputTest() {
+    public void enQueueDequeueOutputTest() {
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(i);
         }
@@ -88,13 +89,13 @@ class ArrayQueueTest {
     }
 
     @Test
-    void peekIntoEmptyQueueTest() {
+    public void peekIntoEmptyQueueTest() {
         assertTrue(queue.isEmpty());
         queue.peek();
     }
 
     @Test
-    void negativeElementQuantityTest() {
+    public void negativeElementQuantityTest() {
         int element = -1;
         for (int i = 0; i < iterator; i++) {
             queue.enQueue(element);

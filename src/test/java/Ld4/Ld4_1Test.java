@@ -1,21 +1,22 @@
 package Ld4;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class Ld4_1Test {
+public class Ld4_1Test {
     private int maxSize = 15;
     private BSTPreOrder tree = new BSTPreOrder(maxSize);
 
     @Test
-    void isEmptyTest() {
+    public void isEmptyTest() {
         assertTrue(tree.isEmpty());
         assertEquals(0, tree.getSize());
     }
 
     @Test
-    void isFullTest() {
+    public void isFullTest() {
         for (int i = 0; i < maxSize; i++) {
             tree.insert(i);
         }
@@ -45,21 +46,21 @@ class Ld4_1Test {
     **/
 
     @Test
-    void insertElementsTest() {
+    public void insertElementsTest() {
         insertableElements();
         assertTrue(!tree.isFull());
         assertEquals(7, tree.getSize());
     }
 
     @Test
-    void preOrderOutputTest() {
+    public void preOrderOutputTest() {
         insertableElements();
         tree.preOrderOutput();
         assertTrue(!tree.isEmpty());
     }
 
     @Test
-    void countEmptyNodesTest() {
+    public void countEmptyNodesTest() {
         tree.insert(5);
         tree.insert(2);
         tree.insert(7);
@@ -67,7 +68,7 @@ class Ld4_1Test {
     }
 
     @Test
-    void intervalNumbersTest() {
+    public void intervalNumbersTest() {
         tree.insert(-8);
         tree.insert(9);
         tree.insert(10);

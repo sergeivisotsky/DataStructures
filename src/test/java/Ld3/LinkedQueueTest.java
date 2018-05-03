@@ -1,22 +1,22 @@
 package Ld3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-class LinkedQueueTest {
+public class LinkedQueueTest {
     private LinkedQueue linkedQueue = new LinkedQueue();
     private int iterator = 10;
 
     @Test
-    void QueueIsEmptyTest() {
+    public void QueueIsEmptyTest() {
         assertTrue(linkedQueue.isEmpty());
         assertEquals(0, linkedQueue.getSize());
     }
 
     @Test
-    void enQueueAndOutputTest() {
+    public void enQueueAndOutputTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
@@ -28,7 +28,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    void enqueueThanDequeueTest() {
+    public void enqueueThanDequeueTest() {
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(i);
         }
@@ -40,7 +40,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    void enqueueThanPeekTest() {
+    public void enqueueThanPeekTest() {
         int number = 90;
         linkedQueue.enQueue(number);
         int size = linkedQueue.getSize();
@@ -49,7 +49,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    void removingDownToEmpty() {
+    public void removingDownToEmpty() {
         int numberOfRemoves = 10;
         for (int i = 0; i < numberOfRemoves; i++) {
             linkedQueue.enQueue(i);
@@ -63,7 +63,7 @@ class LinkedQueueTest {
     }
 
     @Test
-    void negativeNumberQuantityTest() {
+    public void negativeNumberQuantityTest() {
         int element = -1;
         for (int i = 0; i < iterator; i++) {
             linkedQueue.enQueue(element);
