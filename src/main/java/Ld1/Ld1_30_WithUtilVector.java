@@ -25,9 +25,9 @@ public class Ld1_30_WithUtilVector {
         }
 
         // Array display
-        for (int i = 0; i < array.length; i++) {
+        for (int[] anArray : array) {
             for (int j = 0; j <= array.length - 1; j++) {
-                System.out.print(array[i][j] + "\t");
+                System.out.print(anArray[j] + "\t");
             }
             System.out.println();
         }
