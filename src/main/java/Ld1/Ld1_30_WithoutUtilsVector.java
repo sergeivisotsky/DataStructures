@@ -14,7 +14,7 @@ public class Ld1_30_WithoutUtilsVector {
     /**
      * Array creation and display method
      */
-    protected void arrayCreationAndOutput() {
+    private void arrayCreationAndOutput() {
         Random rd = new Random();
 
         // Array creation
@@ -25,9 +25,9 @@ public class Ld1_30_WithoutUtilsVector {
         }
 
         // Array display
-        for (int i = 0; i < array.length; i++) {
+        for (int[] anArray : array) {
             for (int j = 0; j <= array.length - 1; j++) {
-                System.out.print(array[i][j] + "\t");
+                System.out.print(anArray[j] + "\t");
             }
             System.out.println();
         }
@@ -37,13 +37,13 @@ public class Ld1_30_WithoutUtilsVector {
     /**
      * Vector with non homagen creation and display
      */
-    protected void vectorCreationAndOutput() {
+    private void vectorCreationAndOutput() {
 
         int k = 0;
-        for (int i = 0; i < array.length; i++) {
+        for (int[] anArray : array) {
             for (int j = 0; j < array.length; j++) {
-                if (array[i][j] != 0) {
-                    vector[k] = array[i][j];
+                if (anArray[j] != 0) {
+                    vector[k] = anArray[j];
                     k++;
                 }
             }
@@ -61,7 +61,7 @@ public class Ld1_30_WithoutUtilsVector {
      * @param element Searchable element
      * @param vector  One-dimensional array as a vector
      */
-    protected void linearSearch(int element, int[] vector) {
+    private void linearSearch(int element, int[] vector) {
         boolean found = false;
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] == element) {
@@ -79,7 +79,7 @@ public class Ld1_30_WithoutUtilsVector {
      *
      * @param vector Gets vector data
      */
-    protected void insertionSort(int[] vector) {
+    private void insertionSort(int[] vector) {
         int temp;
         for (int i = 1; i < vector.length; i++) {
             temp = vector[i];
