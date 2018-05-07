@@ -100,7 +100,7 @@ public class Ld1_30_WithoutUtilsVector {
     }
 
     public static void main(String[] args) {
-        Ld1_30_WithoutUtilsVector ld1_30_withoutUtilsVector =
+        Ld1_30_WithoutUtilsVector ld1_30 =
                 new Ld1_30_WithoutUtilsVector();
         System.out.println("Sergejs Visockis IRDBD12 171RDB043");
         BufferedReader br =
@@ -128,8 +128,7 @@ public class Ld1_30_WithoutUtilsVector {
                         Integer.parseInt(br.readLine());
                 switch (choiceAnswer) {
                     case 1:
-                        ld1_30_withoutUtilsVector
-                                .arrayCreationAndOutput(); // Create and display array
+                        ld1_30.arrayCreationAndOutput(); // Create and display array
                         inputValueChecker = true;
                         break;
                     case 2:
@@ -138,8 +137,7 @@ public class Ld1_30_WithoutUtilsVector {
                             System.out.println("Sākuma nepieciešams izveidot masīvu!");
                             continue;
                         }
-                        ld1_30_withoutUtilsVector
-                                .vectorCreationAndOutput(); // Create and display vector
+                        ld1_30.vectorCreationAndOutput(); // Create and display vector
                         vectorCreated = true;
                         break;
                     case 3:
@@ -151,8 +149,7 @@ public class Ld1_30_WithoutUtilsVector {
                         System.out.print("\n" + "Meklēt vērtību: ");
                         int inputElement =
                                 Integer.parseInt(br.readLine());
-                        ld1_30_withoutUtilsVector
-                                .linearSearch(inputElement, vector); // Linear search function call
+                        ld1_30.linearSearch(inputElement, vector); // Linear search function call
                         break;
                     case 4:
 
@@ -161,8 +158,7 @@ public class Ld1_30_WithoutUtilsVector {
                             continue;
                         }
 
-                        ld1_30_withoutUtilsVector
-                                .insertionSort(vector); // Insertion sort function call
+                        ld1_30.insertionSort(vector); // Insertion sort function call
                         break;
                     case 0:
                         endSession = true;
