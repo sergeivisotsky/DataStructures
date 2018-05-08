@@ -14,7 +14,7 @@ public class View extends JFrame {
     private Controller controller;
 
     public View() {
-        setTitle("Binary Search Tree");
+        setTitle("Binary Search Trees");
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
