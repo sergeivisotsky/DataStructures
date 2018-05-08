@@ -1,4 +1,4 @@
-package Abstract.JavaCode;
+package ObjectsAndDataStructures.JavaCode;
 
 interface IStudentState {
     void working();

@@ -1,4 +1,4 @@
-package Abstract.JavaCode;
+package ObjectsAndDataStructures.JavaCode;
 
 import java.util.LinkedList;
 

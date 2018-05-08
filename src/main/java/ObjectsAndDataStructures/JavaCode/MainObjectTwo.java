@@ -1,4 +1,4 @@
-package Abstract.JavaCode;
+package ObjectsAndDataStructures.JavaCode;
 
 abstract class StudentLife {
     abstract void working();
