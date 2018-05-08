@@ -1,6 +1,9 @@
 package Trees;
 
 interface IAVLTree {
+    int getSize();
+
+    boolean isEmpty();
 
     int getHeight(AVLTreeClass.Node node);
 
@@ -10,15 +13,13 @@ interface IAVLTree {
 
     AVLTreeClass.Node rightRotate(AVLTreeClass.Node y);
 
+    int getBalance(AVLTreeClass.Node node);
+
     void insert(int data);
 
     int find(int data);
 
     void delete(int data);
-
-    int getSize();
-
-    boolean isEmpty();
 
 //    boolean isFull();
 }
@@ -36,8 +37,18 @@ class AVLTreeClass implements IAVLTree {
         }
     }
 
-    private Node root;
+    Node root;
     private int size = 0;
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
     @Override
     public int getHeight(Node node) {
@@ -82,6 +93,15 @@ class AVLTreeClass implements IAVLTree {
     }
 
     @Override
+    public int getBalance(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        return getHeight(node.left) - getHeight(node.right);
+    }
+
+    @Override
     public void insert(int data) {
 
     }
@@ -95,18 +115,6 @@ class AVLTreeClass implements IAVLTree {
     public void delete(int data) {
 
     }
-
-    @Override
-    public int getSize() {
-        return size;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-
 }
 
 public class AVLTree {

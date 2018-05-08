@@ -14,6 +14,7 @@ public class AVLTreeTest {
     }
 
     @Test
-    public void heightCalculationTest() {
+    public void getHeightTest() {
+        assertEquals(0, AVLTree.getHeight(AVLTree.root));
     }
 }
