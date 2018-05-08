@@ -12,4 +12,8 @@ public class AVLTreeTest {
         assertTrue(AVLTree.isEmpty());
         assertEquals(0, AVLTree.getSize());
     }
+
+    @Test
+    public void heightCalculationTest() {
+    }
 }

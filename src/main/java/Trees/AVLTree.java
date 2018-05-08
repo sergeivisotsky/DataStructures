@@ -30,7 +30,7 @@ class AVLTreeClass implements IAVLTree {
         Node right;
         int height;
 
-        public Node(int data) {
+        Node(int data) {
             this.data = data;
             height = 1;
         }
