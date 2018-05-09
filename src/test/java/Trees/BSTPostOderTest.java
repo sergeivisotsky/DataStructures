@@ -7,7 +7,7 @@ import java.util.Random;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-public class Ld4_30Test {
+public class BSTPostOderTest {
     private Random random = new Random();
     private int maxSize = 15;
     private BinarySearchTree tree = new BinarySearchTree(maxSize);

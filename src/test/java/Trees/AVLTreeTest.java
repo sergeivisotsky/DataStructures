@@ -53,4 +53,12 @@ public class AVLTreeTest {
         AVLTree.insert(40);
         AVLTree.insert(50);
     }
+
+    @Test
+    public void inOrderTraversalTest() {
+        insertingElements();
+        AVLTree.inOrderTraversal();
+        assertTrue(!AVLTree.isEmpty());
+        assertEquals(11, AVLTree.getSize());
+    }
 }

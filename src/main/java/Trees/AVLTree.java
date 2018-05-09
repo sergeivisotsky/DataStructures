@@ -155,7 +155,19 @@ public class AVLTree implements IAVLTree {
 
     }
 
-    private void inOrder(Node node) {
+    public void inOrderTraversal() {
+        inOrderTraversalWrapper(root);
+    }
 
+    private void inOrderTraversalWrapper(Node root) {
+        if (root != null) {
+            if (isEmpty()) {
+                throw new IllegalStateException("Tree is empty!");
+            }
+
+            inOrderTraversalWrapper(root.left);
+            System.out.print(root.data + "\t");
+            inOrderTraversalWrapper(root.right);
+        }
     }
 }

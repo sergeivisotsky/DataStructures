@@ -5,7 +5,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-public class Ld4_1Test {
+public class BSTPreOrderTest {
     private int maxSize = 15;
     private BSTPreOrderClass tree = new BSTPreOrderClass(maxSize);
 
