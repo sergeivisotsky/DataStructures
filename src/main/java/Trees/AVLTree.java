@@ -5,15 +5,15 @@ interface IAVLTree {
 
     boolean isEmpty();
 
-    int getHeight(AVLTreeClass.Node node);
+    int getHeight(AVLTree.Node node);
 
     int maximum(int firstData, int secondData);
 
-    AVLTreeClass.Node leftRotate(AVLTreeClass.Node x);
+    AVLTree.Node leftRotate(AVLTree.Node x);
 
-    AVLTreeClass.Node rightRotate(AVLTreeClass.Node y);
+    AVLTree.Node rightRotate(AVLTree.Node y);
 
-    int getBalance(AVLTreeClass.Node node);
+    int getBalance(AVLTree.Node node);
 
     void insert(int data);
 
@@ -24,7 +24,7 @@ interface IAVLTree {
 //    boolean isFull();
 }
 
-class AVLTreeClass implements IAVLTree {
+public class AVLTree implements IAVLTree {
     class Node {
         int data;
         Node left;
@@ -103,7 +103,46 @@ class AVLTreeClass implements IAVLTree {
 
     @Override
     public void insert(int data) {
+        size++;
+        insertionWrapper(root, data);
+    }
 
+    private Node insertionWrapper(Node node, int data) {
+        if (node == null) {
+            return new Node(data);
+        }
+
+        if (data < node.data) {
+            node.left = insertionWrapper(node.left, data);
+        } else if (data > node.data) {
+            node.right = insertionWrapper(node.right, data);
+        } else {
+            return node;
+        }
+
+        node.height = 1 + maximum(getHeight(node.left),
+                getHeight(node.right));
+
+        int balance = getBalance(node);
+
+        if (balance > 1 && data < node.left.data) {
+            return rightRotate(node);
+        }
+
+        if (balance < -1 && data < node.right.data) {
+            return leftRotate(node);
+        }
+
+        if (balance > 1 && data > node.left.data) {
+            node.left = leftRotate(node);
+            return rightRotate(node);
+        }
+
+        if (balance < -1 && data < node.right.data) {
+            node.right = rightRotate(node);
+            return leftRotate(node);
+        }
+        return node;
     }
 
     @Override
@@ -115,10 +154,8 @@ class AVLTreeClass implements IAVLTree {
     public void delete(int data) {
 
     }
-}
 
-public class AVLTree {
-    public static void main(String[] args) {
+    private void inOrder(Node node) {
 
     }
 }
