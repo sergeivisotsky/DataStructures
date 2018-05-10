@@ -43,7 +43,7 @@ public class AVLTreeTest {
         assertEquals(15, AVLTree.root.left.data);
         assertEquals(35, AVLTree.root.right.data);
         assertTrue(!AVLTree.isEmpty());
-        assertEquals(11, AVLTree.getSize());
+        assertEquals(5, AVLTree.getSize());
     }
 
     @Test

@@ -26,10 +26,8 @@ interface IAVLTree {
 
 public class AVLTree implements IAVLTree {
     class Node {
-        int data;
-        Node left;
-        Node right;
-        int height;
+        int data, height;
+        Node left, right;
 
         Node(int data) {
             this.data = data;
@@ -104,7 +102,7 @@ public class AVLTree implements IAVLTree {
     @Override
     public void insert(int data) {
         size++;
-        insertionWrapper(root, data);
+        root = insertionWrapper(root, data);
     }
 
     private Node insertionWrapper(Node node, int data) {
@@ -134,12 +132,12 @@ public class AVLTree implements IAVLTree {
         }
 
         if (balance > 1 && data > node.left.data) {
-            node.left = leftRotate(node);
+            node.left = leftRotate(node.left);
             return rightRotate(node);
         }
 
         if (balance < -1 && data < node.right.data) {
-            node.right = rightRotate(node);
+            node.right = rightRotate(node.right);
             return leftRotate(node);
         }
         return node;
@@ -155,7 +153,7 @@ public class AVLTree implements IAVLTree {
 
     }
 
-    public void inOrderTraversal() {
+    void inOrderTraversal() {
         inOrderTraversalWrapper(root);
     }
 
@@ -168,6 +166,8 @@ public class AVLTree implements IAVLTree {
             inOrderTraversalWrapper(root.left);
             System.out.print(root.data + "\t");
             inOrderTraversalWrapper(root.right);
+        } else {
+            throw new NullPointerException("root = null");
         }
     }
 }
