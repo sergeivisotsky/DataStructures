@@ -34,7 +34,6 @@ public class AVLTreeTest {
 
     @Test
     public void insertionTest() {
-//        insertingElements();
         AVLTree.insert(30);
         AVLTree.insert(15);
         AVLTree.insert(35);
