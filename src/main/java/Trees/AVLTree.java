@@ -167,7 +167,7 @@ public class AVLTree implements IAVLTree {
             System.out.print(root.data + "\t");
             inOrderTraversalWrapper(root.right);
         } else {
-            throw new NullPointerException("root = null");
+            throw new NullPointerException("root == null");
         }
     }
 }
