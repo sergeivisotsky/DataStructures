@@ -23,9 +23,9 @@ struct student_struct {
 
 int main() {
 	list<student_struct> students;
-	students.push_front(student_struct("John", "Smith", 23, "171rdb042", "IRDBD13"));
-	students.push_front(student_struct("Lilia", "Quick", 19, "171rdb056", "IRDBD10"));
-	students.push_front(student_struct("Johanna", "Bloom", 20, "171rdb045", "IRDBD02"));
+	students.push_front(student_struct("Name_1", "Surname_1", 23, "171rdb042", "IRDBD13"));
+	students.push_front(student_struct("Name_2", "Surname_2", 19, "171rdb056", "IRDBD10"));
+	students.push_front(student_struct("Name_3", "Surname_3", 20, "171rdb045", "IRDBD02"));
 	for (auto student : students)
 	{
 		cout << student.name << "\t";

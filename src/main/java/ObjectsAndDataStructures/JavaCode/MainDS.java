@@ -42,9 +42,9 @@ class Student {
 public class MainDS {
     public static void main(String[] args) {
         LinkedList<Student> students = new LinkedList<>();
-        students.add(new Student("John", "Smith", 23, "171rdb042", "IRDBD13"));
-        students.add(new Student("Lilia", "Quick", 19, "171rdb056", "IRDBD10"));
-        students.add(new Student("Johanna", "Bloom", 20, "171rdb045", "IRDBD02"));
+        students.add(new Student("Name_1", "Surname_1", 23, "171rdb042", "IRDBD13"));
+        students.add(new Student("Name_2", "Surname_2", 19, "171rdb056", "IRDBD10"));
+        students.add(new Student("Name_3", "Surname_3", 20, "171rdb045", "IRDBD02"));
         for (Student student : students) {
             System.out.print(student.getName() + "\t\t");
             System.out.print(student.getSurname() + "\t\t");

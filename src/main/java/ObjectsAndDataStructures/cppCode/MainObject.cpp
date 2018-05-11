@@ -14,14 +14,14 @@ public:
 class StudentStateRealization : public StudentState {
 public:
     void working() {
-        cout << "Student is working too hard doing math!";
+        cout << "Student is working";
     }
 
     void going() {
-        cout << "Student is going to the gym!";
+        cout << "Student is going somewhere";
     }
 
     void relaxing() {
-        cout << "Student is watching movie in the cinema!";
+        cout << "Student is relaxing";
     }
 };

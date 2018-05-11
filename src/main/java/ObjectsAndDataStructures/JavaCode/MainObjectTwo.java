@@ -13,17 +13,17 @@ public class MainObjectTwo {
         StudentLife student = new StudentLife() {
             @Override
             void working() {
-                System.out.println("Student is working too hard doing math!");
+                System.out.println("Student is working");
             }
 
             @Override
             void going() {
-                System.out.println("Student is going to the gym!");
+                System.out.println("Student is going somewhere");
             }
 
             @Override
             void relaxing() {
-                System.out.println("Student is watching movie in the cinema!");
+                System.out.println("Student is relaxing");
             }
         };
 

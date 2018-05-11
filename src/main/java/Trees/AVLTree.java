@@ -105,42 +105,42 @@ public class AVLTree implements IAVLTree {
         root = insertionWrapper(root, data);
     }
 
-    private Node insertionWrapper(Node node, int data) {
-        if (node == null) {
+    private Node insertionWrapper(Node root, int data) {
+        if (root == null) {
             return new Node(data);
         }
 
-        if (data < node.data) {
-            node.left = insertionWrapper(node.left, data);
-        } else if (data > node.data) {
-            node.right = insertionWrapper(node.right, data);
+        if (data < root.data) {
+            root.left = insertionWrapper(root.left, data);
+        } else if (data > root.data) {
+            root.right = insertionWrapper(root.right, data);
         } else {
-            return node;
+            return root;
         }
 
-        node.height = 1 + maximum(getHeight(node.left),
-                getHeight(node.right));
+        root.height = 1 + maximum(getHeight(root.left),
+                getHeight(root.right));
 
-        int balance = getBalance(node);
+        int balance = getBalance(root);
 
-        if (balance > 1 && data < node.left.data) {
-            return rightRotate(node);
+        if (balance > 1 && data < root.left.data) {
+            return rightRotate(root);
         }
 
-        if (balance < -1 && data < node.right.data) {
-            return leftRotate(node);
+        if (balance < -1 && data < root.right.data) {
+            return leftRotate(root);
         }
 
-        if (balance > 1 && data > node.left.data) {
-            node.left = leftRotate(node.left);
-            return rightRotate(node);
+        if (balance > 1 && data > root.left.data) {
+            root.left = leftRotate(root.left);
+            return rightRotate(root);
         }
 
-        if (balance < -1 && data < node.right.data) {
-            node.right = rightRotate(node.right);
-            return leftRotate(node);
+        if (balance < -1 && data < root.right.data) {
+            root.right = rightRotate(root.right);
+            return leftRotate(root);
         }
-        return node;
+        return root;
     }
 
     @Override
