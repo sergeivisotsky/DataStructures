@@ -20,8 +20,6 @@ interface IAVLTree {
     int find(int data);
 
     void delete(int data);
-
-//    boolean isFull();
 }
 
 public class AVLTree implements IAVLTree {

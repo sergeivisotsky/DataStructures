@@ -39,11 +39,11 @@ public class AVLTreeTest {
         AVLTree.insert(35);
         AVLTree.insert(22);
         AVLTree.insert(21);
-        assertEquals(30, AVLTree.root.data);
+        assertEquals(22, AVLTree.root.data);
+        assertEquals(21, AVLTree.root.left.data);
+        assertEquals(30, AVLTree.root.right.data);
         assertEquals(15, AVLTree.root.left.data);
         assertEquals(35, AVLTree.root.right.data);
-        assertEquals(22, AVLTree.root.right.data);
-        assertEquals(21, AVLTree.root.left.data);
         assertTrue(!AVLTree.isEmpty());
         assertEquals(5, AVLTree.getSize());
     }
