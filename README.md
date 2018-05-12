@@ -5,3 +5,4 @@
     -Binary trees
       --AVL tree
       --Binary search tree
+    - Graph
