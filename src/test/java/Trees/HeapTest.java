@@ -8,10 +8,10 @@ import static org.junit.Assert.*;
 
 public class HeapTest {
 
-    private int maxSize = 15;
+    private int maxSize = 16;
     private Heap heap = new Heap(maxSize);
 
-    private void insertableElements() {
+    private void insertingElements() {
         var rd = new Random();
         for (int i = 1; i <= maxSize; i++) {
             heap.insert(rd.nextInt(99) + 1);
@@ -19,18 +19,23 @@ public class HeapTest {
     }
 
     @Test
-    public void insertionTest() {
-        insertableElements();
+    public void insertionAndDisplayTest() {
+        insertingElements();
+        heap.display();
+        assertTrue(!heap.isEmpty());
         assertEquals(15, heap.size());
     }
 
     @Test
     public void removalTest() {
-
-    }
-
-    @Test
-    public void displayTest() {
-
+        insertingElements();
+        assertTrue(!heap.isEmpty());
+        assertEquals(15, heap.size());
+        System.out.println("Heap before: ");
+        heap.display();
+        heap.remove();
+        System.out.println("\nHeap after: ");
+        heap.display();
+        assertEquals(14, heap.size());
     }
 }

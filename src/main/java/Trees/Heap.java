@@ -7,7 +7,7 @@ interface IHeap {
 
     void insert(int data);
 
-    void remove();
+    int remove();
 
     void display();
 }
@@ -18,7 +18,7 @@ public class Heap implements IHeap {
     private int maxSize;
     private int size = 0;
 
-    public Heap(int maxSize) {
+    Heap(int maxSize) {
         this.maxSize = maxSize;
         heapArray = new int[maxSize];
     }
@@ -48,16 +48,38 @@ public class Heap implements IHeap {
             position /= 2;
         }
         heapArray[position] = data;
-        size++;
     }
 
     @Override
-    public void remove() {
-
+    public int remove() {
+        int parent = 1;
+        int child = 1;
+        int data, temp;
+        if (isEmpty()) {
+            throw new RuntimeException("Heap is empty!");
+        }
+        data = heapArray[1];
+        temp = heapArray[size--];
+        while (child <= size) {
+            if (child < size &&
+                    heapArray[child] < heapArray[child + 1]) {
+                child++;
+            }
+            if (temp >= heapArray[child]) {
+                break;
+            }
+            heapArray[parent] = heapArray[child];
+            parent = child;
+            child *= 2;
+        }
+        heapArray[parent] = temp;
+        return data;
     }
 
     @Override
     public void display() {
-
+        for (int i = 1; i < size - 1; i++) {
+            System.out.print(heapArray[i] + "\t");
+        }
     }
 }
