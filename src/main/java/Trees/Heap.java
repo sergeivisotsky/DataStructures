@@ -1,7 +1,13 @@
 package Trees;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 interface IHeap {
     boolean isEmpty();
+
+    boolean isFull();
 
     int size();
 
@@ -30,6 +36,11 @@ public class Heap implements IHeap {
     }
 
     @Override
+    public boolean isFull() {
+        return size == maxSize;
+    }
+
+    @Override
     public int size() {
         return size;
     }
@@ -48,6 +59,7 @@ public class Heap implements IHeap {
             position /= 2;
         }
         heapArray[position] = data;
+        size++;
     }
 
     @Override
@@ -80,6 +92,41 @@ public class Heap implements IHeap {
     public void display() {
         for (int i = 1; i < size - 1; i++) {
             System.out.print(heapArray[i] + "\t");
+        }
+    }
+
+    public static void main(String[] args) {
+        try (var reader = new BufferedReader(
+                new InputStreamReader(System.in))) {
+            System.out.print("Heap maxSize: ");
+            int maxSize = Integer.parseInt(reader.readLine());
+            Heap heap = new Heap(maxSize);
+            String yesNoAnswer;
+            int answer;
+            do {
+                System.out.println("1: Insert");
+                System.out.println("2: remove");
+                System.out.print("\nAnswer: ");
+                answer = Integer.parseInt(reader.readLine());
+                switch (answer) {
+                    case 1:
+                        System.out.print("Element: ");
+                        int element = Integer.parseInt(reader.readLine());
+                        heap.insert(element);
+                        break;
+                    case 2:
+                        System.out.println("Removable element: " + heap.remove());
+                        break;
+                    default:
+                        throw new RuntimeException("No such a choice");
+                }
+                System.out.println("Created heap: ");
+                heap.display();
+                System.out.print("Continue(y/n)? ");
+                yesNoAnswer = reader.readLine();
+            } while (yesNoAnswer.equals("y") || yesNoAnswer.equals("Y"));
+        } catch (IOException e) {
+            System.out.println("Input-output error!");
         }
     }
 }

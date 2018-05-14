@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class HeapTest {
 
-    private int maxSize = 11;
+    private int maxSize = 10;
     private Heap heap = new Heap(maxSize);
 
     private void insertingElements() {
