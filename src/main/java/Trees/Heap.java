@@ -16,7 +16,7 @@ public class Heap implements IHeap {
 
     private int[] heapArray;
     private int maxSize;
-    private int size = 0;
+    private int size;
 
     Heap(int maxSize) {
         this.maxSize = maxSize;
