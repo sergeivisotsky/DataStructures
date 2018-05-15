@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 interface IHeap {
     boolean isEmpty();
 
-    boolean isFull();
-
     int size();
 
     void insert(int data);
@@ -36,11 +34,6 @@ public class Heap implements IHeap {
     }
 
     @Override
-    public boolean isFull() {
-        return size == maxSize;
-    }
-
-    @Override
     public int size() {
         return size;
     }
@@ -48,7 +41,7 @@ public class Heap implements IHeap {
     @Override
     public void insert(int data) {
         if ((size + 1) == maxSize) {
-            return;
+            System.out.println("Heap is full!");
         }
 
         heapArray[++size] = data;
@@ -59,7 +52,6 @@ public class Heap implements IHeap {
             position /= 2;
         }
         heapArray[position] = data;
-        size++;
     }
 
     @Override
@@ -103,6 +95,7 @@ public class Heap implements IHeap {
             Heap heap = new Heap(maxSize);
             String yesNoAnswer;
             int answer;
+            int element;
             do {
                 System.out.println("1: Insert");
                 System.out.println("2: remove");
@@ -111,7 +104,7 @@ public class Heap implements IHeap {
                 switch (answer) {
                     case 1:
                         System.out.print("Element: ");
-                        int element = Integer.parseInt(reader.readLine());
+                        element = Integer.parseInt(reader.readLine());
                         heap.insert(element);
                         break;
                     case 2:
