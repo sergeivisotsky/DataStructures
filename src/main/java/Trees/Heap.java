@@ -86,40 +86,4 @@ public class Heap implements IHeap {
             System.out.print(heapArray[i] + "\t");
         }
     }
-
-    public static void main(String[] args) {
-        try (var reader = new BufferedReader(
-                new InputStreamReader(System.in))) {
-            System.out.print("Heap maxSize: ");
-            int maxSize = Integer.parseInt(reader.readLine());
-            Heap heap = new Heap(maxSize);
-            String yesNoAnswer;
-            int answer;
-            int element;
-            do {
-                System.out.println("1: Insert");
-                System.out.println("2: remove");
-                System.out.print("\nAnswer: ");
-                answer = Integer.parseInt(reader.readLine());
-                switch (answer) {
-                    case 1:
-                        System.out.print("Element: ");
-                        element = Integer.parseInt(reader.readLine());
-                        heap.insert(element);
-                        break;
-                    case 2:
-                        System.out.println("Removable element: " + heap.remove());
-                        break;
-                    default:
-                        throw new RuntimeException("No such a choice");
-                }
-                System.out.println("Created heap: ");
-                heap.display();
-                System.out.print("Continue(y/n)? ");
-                yesNoAnswer = reader.readLine();
-            } while (yesNoAnswer.equals("y") || yesNoAnswer.equals("Y"));
-        } catch (IOException e) {
-            System.out.println("Input-output error!");
-        }
-    }
 }
