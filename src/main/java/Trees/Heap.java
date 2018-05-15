@@ -1,9 +1,5 @@
 package Trees;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 interface IHeap {
     boolean isEmpty();
 
