@@ -5,11 +5,11 @@ class Comp {
     Comp next;
 }
 
-public class Stek {
-    Comp top;
-    int size = 0;
+public class Stack {
+    private Comp top;
+    private int size = 0;
 
-    void push(int e) {
+    private void push(int e) {
         Comp t = new Comp();
         t.info = e;
         t.next = top;
@@ -17,7 +17,7 @@ public class Stek {
         size++;
     }
 
-    int pop() {
+    private int pop() {
         int i = top.info;
         top = top.next;
         size--;
@@ -25,7 +25,7 @@ public class Stek {
     }
 
     public static void main(String[] args) {
-        Stek stack = new Stek();
+        Stack stack = new Stack();
         stack.top = null;
         for (int i = 3; i < 20; i += 3) {
             stack.push(i);

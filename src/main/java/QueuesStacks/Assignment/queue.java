@@ -4,7 +4,7 @@ class CompQ {
     int item;
     CompQ next;
 
-    public CompQ(int s) {
+    CompQ(int s) {
         item = s;
         next = null;
     }
@@ -14,13 +14,13 @@ public class queue {
     private CompQ pBegin;
     private CompQ pEnd;
     private int size;
-    public queue() {
+    private queue() {
         pBegin = null;
         pEnd = null;
         size = 0;
     }
 
-    public void addQueue(int c) {
+    private void enQueue(int c) {
         CompQ temp = new CompQ(c);
         if (pBegin == null) {
             pBegin = temp;
@@ -32,7 +32,7 @@ public class queue {
         size++;
     }
 
-    public int delQueue() {
+    private int deQueue() {
         int c = pBegin.item;
         pBegin = pBegin.next;
         size--;
@@ -42,9 +42,9 @@ public class queue {
     public static void main(String[] args) {
         queue queue = new queue();
         for (int i = 20; i >= 1; i -= 2) {
-            queue.addQueue(i);
+            queue.enQueue(i);
         }
-        int c = queue.delQueue();
+        int c = queue.deQueue();
         System.out.println(c + queue.size);
     }
 }
